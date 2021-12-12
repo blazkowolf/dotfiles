@@ -1,1 +1,21 @@
+- defaults:
+    link:
+      relink: true
 
+- clean: ['$LOCALAPPDATA/nvim']
+
+- link:
+    $LOCALAPPDATA/nvim/init.vim:
+      force: true
+      path: nvim/init.vim
+    $LOCALAPPDATA/nvim/:
+      glob: true
+      force: true
+      path: nvim/plugins/*
+
+# - create:
+#     - ~/downloads
+#     - ~/.vim/undo-history
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
