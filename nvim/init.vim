@@ -53,10 +53,10 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   source ~/AppData/Local/nvim/plugins/nerdcommenter.vim
   source ~/AppData/Local/nvim/plugins/ale.vim
   source ~/AppData/Local/nvim/plugins/rust.vim
-  Plug 'rust-lang/rust.vim'
 call plug#end()
 
 doautocmd User PlugLoaded
+
 """ ALE (Asynchronous Linting Engine) configuration --------------------
 
 " Handle file types
@@ -83,8 +83,8 @@ let s:salmon = "EE6E73"
 let s:green = "8FAA54"
 let s:lightGreen = "31B53E"
 let s:white = "FFFFFF"
-let s:rspec_red = 'FE405F'
-let s:git_orange = 'F54D27'
+let s:rspec_red = "FE405F"
+let s:git_orange = "F54D27"
 
 " Sets the color for any folders not matching any rules
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige
