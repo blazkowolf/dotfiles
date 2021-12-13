@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+$schema: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+console_title: true
+console_title_style: 'template'
+console_title_template: "{{if .Root}}🔓 {{end}}{{.Shell}} 📂 {{.Folder}}"
+transient_prompt:
+  template: " <#CB4B16>[</>{{ .Folder }}<#CB4B16>]\u03BB</> <#F7DC66>{{ .Command }}</>"
+final_space: true
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - type: session
+    style: plain
+    foreground: 'foreground'
+    properties:
+      display_host: false
+      postfix: <#CB4B16>]</>
+      prefix: <#CB4B16>┌[</>
+      user_info_separator: ""
+  - type: git
+    style: plain
+    foreground: 'foreground'
+    properties:
+      postfix: <#CB4B16>]</>
+      prefix: <#CB4B16>[</>
+  - type: root
+    style: plain
+    foreground: 'foreground'
+    properties:
+      postfix: <#CB4B16>]</>
+      prefix: <#CB4B16>[</>
+  - type: exit
+    style: plain
+    foreground: 'foreground'
+    properties:
+      postfix: <#CB4B16>]</>
+      prefix: <#CB4B16>[x</>
+- type: prompt
+  alignment: right
+  newline: false
+  segments:
+  - type: angular
+    style: diamond
+    foreground: 'foreground'
+    leading_diamond: <#CB4B16>[</>
+    trailing_diamond: <#CB4B16>]</>
+    properties:
+      postfix: ""
+      prefix: "ng"
+      style: folder
+      display_version: false
+  - type: node
+    style: diamond
+    foreground: 'foreground'
+    leading_diamond: <#CB4B16>[</>
+    trailing_diamond: <#CB4B16>]</>
+    properties:
+      postfix: ""
+      prefix: ""
+      style: folder
+      display_version: false
+      display_package_manager: true
+      yarn_icon: "yarn"
+      npm_icon: "npm"
+  - type: rust
+    style: diamond
+    foreground: 'foreground'
+    leading_diamond: <#CB4B16>[</>
+    trailing_diamond: <#CB4B16>]</>
+    properties:
+      postfix: ""
+      prefix: "rust"
+      style: folder
+      display_version: false
+  - type: java
+    style: diamond
+    foreground: 'foreground'
+    leading_diamond: <#CB4B16>[</>
+    trailing_diamond: <#CB4B16>]</>
+    properties:
+      postfix: ""
+      prefix: "java"
+      style: folder
+      display_version: false
+- type: prompt
+  alignment: left
+  newline: true
+  segments:
+  - type: path
+    style: plain
+    foreground: 'foreground'
+    properties:
+      postfix: "<#CB4B16>]\u03BB</>"
+      prefix: <#CB4B16>└[</>
+      style: folder
+

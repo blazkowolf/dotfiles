@@ -5,17 +5,15 @@
 - clean: ['$LOCALAPPDATA/nvim']
 
 - link:
+    $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+      path: pwsh/Microsoft.PowerShell_profile.ps1
+    $USERPROFILE/.custom.omp.yaml:
+      path: posh/.custom.omp.yaml
     $LOCALAPPDATA/nvim/init.vim:
-      force: true
       path: nvim/init.vim
     $LOCALAPPDATA/nvim/:
       glob: true
-      force: true
       path: nvim/plugins/*
-
-# - create:
-#     - ~/downloads
-#     - ~/.vim/undo-history
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
