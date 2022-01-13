@@ -7,6 +7,8 @@
 - link:
     $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
       path: pwsh/Microsoft.PowerShell_profile.ps1
+    $LOCALAPPDATA/clink/oh-my-posh.lua:
+      path: clink/scripts/oh-my-posh.lua
     $USERPROFILE/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
     $LOCALAPPDATA/nvim/init.vim:

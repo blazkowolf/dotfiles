@@ -1,0 +1,17 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~/nvim']
+
+- link:
+    ~/.custom.omp.yaml:
+      path: posh/.custom.omp.yaml
+    ~/.config/nvim/init.vim:
+      path: nvim/init.vim
+    ~/.config/nvim/:
+      glob: true
+      path: nvim/plugins/*
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
