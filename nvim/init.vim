@@ -6,13 +6,13 @@ let mapleader = "\<space>"
 
 """ Look and feel
 
-if (has("termguicolors"))
+if has('termguicolors')
   set termguicolors
 endif
 set background=dark
 
-" Disable default status indicators for NORMAL, INSERT, VISUAL, etc.
-" so they don't visually conflict with airline's 
+" I don't want the default status indicators for NORMAL, 
+" INSERT, VISUAL, etc. to visually conflict with airline's 
 set noshowmode
 
 set number relativenumber
@@ -69,18 +69,19 @@ call plug#end()
 
 doautocmd User PlugLoaded
 
+""" nvim-lsp configuration ---------------------------------------------
+
 lua << EOF
 require('rust-tools').setup({})
 EOF
-
-""" ALE (Asynchronous Linting Engine) configuration --------------------
 
 " Handle file types
 autocmd BufNewFile,BufRead *.rs set filetype=rust
 
 let g:rustfmt_autosave = 1
 
-set completeopt=menu,menuone,preview,noselect,noinsert " As-you-type autocompletion
+" I want as-you-type autocompletion
+set completeopt=menu,menuone,preview,noselect,noinsert
 
 " Color customization
 let s:brown = "905532"
