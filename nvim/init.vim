@@ -45,9 +45,10 @@ nnoremap <C-l> <C-w>l
 
 """ Vim-Plug plugins ---------------------------------------------------
 
-let g:nvim_config_dir = '~/.config/nvim'
 if has('win32')
-  g:nvim_config_dir = '~/AppData/Local/nvim'
+  let g:nvim_config_dir = '~/AppData/Local/nvim'
+else
+  let g:nvim_config_dir = '~/.config/nvim'
 endif
 
 call plug#begin(g:nvim_config_dir . '/plugged')
