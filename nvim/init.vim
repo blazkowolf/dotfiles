@@ -11,6 +11,10 @@ if (has("termguicolors"))
 endif
 set background=dark
 
+" Disable default status indicators for NORMAL, INSERT, VISUAL, etc.
+" so they don't visually conflict with airline's 
+set noshowmode
+
 set number relativenumber
 set guifont=CaskaydiaCove_NF:h14
 
@@ -53,6 +57,8 @@ endif
 
 call plug#begin(g:nvim_config_dir . '/plugged')
   execute "source" g:nvim_config_dir . '/plugins/gruvbox.vim'
+  execute "source" g:nvim_config_dir . '/plugins/vim-airline.vim'
+  execute "source" g:nvim_config_dir . '/plugins/vim-fugitive.vim'
   execute "source" g:nvim_config_dir . '/plugins/fzf.vim'
   execute "source" g:nvim_config_dir . '/plugins/auto-pairs.vim'
   execute "source" g:nvim_config_dir . '/plugins/nerdtree.vim'
