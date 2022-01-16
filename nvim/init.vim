@@ -45,17 +45,26 @@ nnoremap <C-l> <C-w>l
 
 """ Vim-Plug plugins ---------------------------------------------------
 
-call plug#begin('~/AppData/Local/nvim/plugged')
-  source ~/AppData/Local/nvim/plugins/gruvbox.vim
-  source ~/AppData/Local/nvim/plugins/fzf.vim
-  source ~/AppData/Local/nvim/plugins/auto-pairs.vim
-  source ~/AppData/Local/nvim/plugins/nerdtree.vim
-  source ~/AppData/Local/nvim/plugins/nerdcommenter.vim
-  source ~/AppData/Local/nvim/plugins/ale.vim
-  source ~/AppData/Local/nvim/plugins/rust.vim
+let g:nvim_config_dir = '~/.config/nvim'
+if has('win32')
+  g:nvim_config_dir = '~/AppData/Local/nvim'
+endif
+
+call plug#begin(g:nvim_config_dir . '/plugged')
+  execute "source" g:nvim_config_dir . '/plugins/gruvbox.vim'
+  execute "source" g:nvim_config_dir . '/plugins/fzf.vim'
+  execute "source" g:nvim_config_dir . '/plugins/auto-pairs.vim'
+  execute "source" g:nvim_config_dir . '/plugins/nerdtree.vim'
+  execute "source" g:nvim_config_dir . '/plugins/nerdcommenter.vim'
+  execute "source" g:nvim_config_dir . '/plugins/nvim-lspconfig.vim'
+  execute "source" g:nvim_config_dir . '/plugins/rust.vim'
 call plug#end()
 
 doautocmd User PlugLoaded
+
+lua << EOF
+require('rust-tools').setup({})
+EOF
 
 """ ALE (Asynchronous Linting Engine) configuration --------------------
 
