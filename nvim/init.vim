@@ -11,8 +11,8 @@ if has('termguicolors')
 endif
 set background=dark
 
-" I don't want the default status indicators for NORMAL, 
-" INSERT, VISUAL, etc. to visually conflict with airline's 
+" I don't want the vim status indicators for the 
+" various editor modes to visually conflict with airline's 
 set noshowmode
 
 set number relativenumber
