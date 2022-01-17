@@ -7,8 +7,8 @@
 - link:
     ~/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
-    ~/.config/nvim/init.vim:
-      path: nvim/init.vim
+    ~/.config/nvim/init.lua:
+      path: nvim/init.lua
     ~/.config/nvim/plugins/:
       glob: true
       path: nvim/plugins/*
