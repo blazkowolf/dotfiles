@@ -15,4 +15,3 @@ let g:NERDCustomDelimiters = {
 \    'right': '*/' 
 \  } 
 \} 
-

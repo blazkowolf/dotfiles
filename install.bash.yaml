@@ -2,14 +2,22 @@
     link:
       relink: true
 
-- clean: ['~/.config/nvim']
+- clean: 
+  - '~/.config/nvim'
+  - '~/.config/nvim/plugins'
+  - '~/.config/nvim/lua/*'
 
 - link:
     ~/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
     ~/.config/nvim/init.lua:
       path: nvim/init.lua
+    ~/.config/nvim/lua/blaz/:
+      create: true
+      glob: true
+      path: nvim/lua/blaz/*
     ~/.config/nvim/plugins/:
+      create: true
       glob: true
       path: nvim/plugins/*
 

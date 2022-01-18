@@ -6,77 +6,9 @@ end
 
 vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
--- Editor configuration -----------------------------------------------
-
--- Look and feel
-
-if has("termguicolors") then
-  vim.o.termguicolors = true
-end
-vim.o.background = "dark"
-
--- I don't want vim's status indicators for the various
--- editor modes to visually conflict with airline's
-vim.o.showmode = false
-
-vim.o.number = true
-vim.o.relativenumber = true
-
-vim.o.guifont = "CaskaydiaCove_NF:h14"
-
-vim.cmd([[
-syntax enable
-syntax on
-filetype plugin on
-]])
-
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 0
-vim.o.expandtab = true
-
-vim.o.splitright = true
-vim.o.splitbelow = true
-
--- Keymaps
-
-vim.api.nvim_set_keymap("", "gf", ":edit <cfile><cr>", {})
-
--- Move split panes to left/bottom/top/right
-vim.api.nvim_set_keymap("n", "<A-h>", "<C-W>H", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-j>", "<C-W>J", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-k>", "<C-W>K", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-l>", "<C-W>L", { noremap = true })
-
--- Move between panes to left/bottom/top/right
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true })
-
--- Vim-Plug -----------------------------------------------------------
-
-vim.g.nvim_config_dir = "~/.config/nvim"
-if has("win32") then
-  vim.g.nvim_config_dir = "~/AppData/Local/nvim"
-end
-
--- TODO replace vim-plug with Packer
-vim.fn["plug#begin"](vim.g.nvim_config_dir .. "/plugged")
-vim.cmd([[
-execute "source" g:nvim_config_dir . '/plugins/gruvbox.vim'
-execute "source" g:nvim_config_dir . '/plugins/vim-airline.vim'
-execute "source" g:nvim_config_dir . '/plugins/vim-fugitive.vim'
-execute "source" g:nvim_config_dir . '/plugins/fzf.vim'
-execute "source" g:nvim_config_dir . '/plugins/auto-pairs.vim'
-execute "source" g:nvim_config_dir . '/plugins/nerdtree.vim'
-execute "source" g:nvim_config_dir . '/plugins/nerdcommenter.vim'
-execute "source" g:nvim_config_dir . '/plugins/nvim-lspconfig.vim'
-execute "source" g:nvim_config_dir . '/plugins/rust.vim'
-]])
-vim.fn["plug#end"]()
-
-vim.cmd("doautocmd User PlugLoaded")
+require("blaz.editor")
+require("blaz.keymap")
+require("blaz.plugins").load(vim.fn.stdpath("config") .. "/plugged")
 
 -- nvim-lsp -----------------------------------------------------------
 
