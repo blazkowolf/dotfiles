@@ -9,16 +9,15 @@ local has = function(feature)
   return vim.fn.has(feature) == 1
 end
 
-local plug_dir = string.format("%s/site/autoload/plug.vim", vim.fn.stdpath("data"))
+local data_dir = string.format("%s/site", vim.fn.stdpath("data"))
 
 local download_vim_plug = function()
-  vim.fn.mkdir(plug_dir, "p")
-
   local plug_download_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
   local cmd_str = has("win32")
-    and string.format([[Invoke-WebRequest -UseBasicParsing %s | ni "%s"]], plug_download_url, plug_dir)
-    or string.format("!curl -fLo %s %s", plug_dir, plug_download_url)
+    and string.format([[Invoke-WebRequest -UseBasicParsing %s | New-Item "%s/autoload/plug.vim" -Force]], plug_download_url, data_dir)
+    or string.format("curl -fLo %s/autoload/plug.vim --create-dirs %s", data_dir, plug_download_url)
+  print(cmd_str)
 
   local out = vim.fn.system(cmd_str)
   print(out)
@@ -34,7 +33,8 @@ M.load = function(plugin_download_dir)
   plugin_download_dir = plugin_download_dir or vim.fn.stdpath("data") .. "/plugged"
 
   -- Perform interstitial safeguard check for Vim-Plug
-  if empty(vim.fn.glob(plug_dir)) then
+  -- Adapted from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+  if empty(vim.fn.glob(data_dir .. "/autoload/plug.vim")) then
     download_vim_plug()
   end
 
