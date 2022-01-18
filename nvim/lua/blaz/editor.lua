@@ -31,3 +31,6 @@ vim.o.expandtab = true
 
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- I want as-you-type autocompletion
+vim.opt.completeopt = { "menu", "menuone", "preview", "noselect", "noinsert" }
