@@ -27,4 +27,3 @@ autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | en
 
 " Close window if NERDTree is the last thing open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && NERDTree.isTabTree()) | q | endif
-

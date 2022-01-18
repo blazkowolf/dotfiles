@@ -2,16 +2,24 @@
     link:
       relink: true
 
-- clean: ['~/.config/nvim']
+- clean: 
+  - '~/.config/nvim'
+  - '~/.config/nvim/plugins'
+  - '~/.config/nvim/lua/*'
 
 - link:
     ~/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
-    ~/.config/nvim/init.vim:
-      path: nvim/init.vim
-    ~/.config/nvim/plugins/:
+    ~/.config/nvim/init.lua:
+      path: nvim/init.lua
+    ~/.config/nvim/lua/blaz/:
+      create: true
       glob: true
-      path: nvim/plugins/*
+      path: nvim/lua/blaz/*
+    # ~/.config/nvim/plugins/:
+    #   create: true
+    #   glob: true
+    #   path: nvim/plugins/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
