@@ -41,20 +41,93 @@ M.load = function(plugin_download_dir)
   vim.fn["plug#begin"](plugin_download_dir)
   vim.cmd([[
   Plug 'jiangmiao/auto-pairs'
-  Plug 'tpope/vim-fugitive'
+
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
+  Plug 'morhetz/gruvbox'
+
+  Plug 'preservim/nerdcommenter'
+
   Plug 'neovim/nvim-lspconfig'
   Plug 'simrat39/rust-tools.nvim'
   Plug 'rust-lang/rust.vim'
-  execute "source" stdpath('config') . '/plugins/fzf.vim'
-  execute "source" stdpath('config') . '/plugins/gruvbox.vim'
-  execute "source" stdpath('config') . '/plugins/nerdcommenter.vim'
-  execute "source" stdpath('config') . '/plugins/nerdtree.vim'
-  execute "source" stdpath('config') . '/plugins/vim-airline.vim'
+
+  Plug 'tpope/vim-fugitive'
+
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   ]])
   -- `plug#end` automatically executes `filetype plugin indent on` and `syntax enable`
   vim.fn["plug#end"]() 
 
-  vim.cmd("doautocmd User PlugLoaded")
+  -- vim.cmd("doautocmd User PlugLoaded")
+
+  -- FZF malarchy
+  vim.api.nvim_set_keymap("n", "<C-p>", ":GFiles<CR>", { noremap = true })
+  vim.g.fzf_action = {
+    ["ctrl-t"] = "tab split",
+    ["ctrl-s"] = "split",
+    ["ctrl-v"] = "vsplit"
+  }
+  vim.g.fzf_preview_window = { "right:50%", "ctrl-/" }
+
+  -- Gruvbox crap
+  vim.cmd("colorscheme gruvbox")
+
+  -- NERDCommenter waste
+  vim.g.NERDCreateDefaultMappings = 1  -- Create default mappings
+  vim.g.NERDSpaceDelims = 1            -- Add spaces after comment delimiters by default
+  vim.g.NERDCompactSexyComs = 1        -- Use compact syntax for prettified multi-line comments
+  vim.g.NERDDefaultAlign = "left"      -- Align line-wise comment delimiters flush left instead of following code indentation
+  vim.g.NERDAltDelims_java = 1         -- Set a language to use its alternate delimiters by default
+  vim.g.NERDCommentEmptyLines = 1      -- Allow commenting and inverting empty lines (useful when commenting a region)
+  vim.g.NERDTrimTrailingWhitespace = 1 -- Enable trimming of trailing whitespace when uncommenting
+  vim.g.NERDToggleCheckAllLines = 1    -- Enable NERDCommenterToggle to check all selected lines is commented or not 
+  -- Add your own custom formats or override the defaults
+  vim.g.NERDCustomDelimiters = {
+    ["c"] = {
+      ["left"] = "/**",
+      ["right"] = "*/"
+    }
+  }
+
+  -- NERDTree feces
+  vim.g.NERDTreeDirArrowExpandable = "▶"
+  vim.g.NERDTreeDirArrowCollapsible = "▼"
+  vim.g.NERDTreeHighlightFolders = 1
+  vim.g.NERDTreeHighlightFoldersFullName = 1
+  vim.g.NERDTreeShowHidden = 1
+  vim.g.NERDTreeMinimalUI = 1 -- Hide ?
+  vim.g.NERDTreeIgnore = { "^node_modules$" }
+  vim.g.NERDTreeStatusline = "" -- Use lightline
+  vim.g.plug_window = "noautocmd vertical topleft new"
+  vim.g.WebDevIconsUnicodeDecorateFolderNodes = 1
+  vim.g.DevIconsEnableFoldersOpenClose = 1
+  vim.g.DevIconsEnableFolderExtensionPatternMatching = 1
+
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-b>",
+    [[g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>']],
+    { noremap = true, expr = true }
+  )
+
+  vim.api.nvim_set_keymap("n", "<leader>N", ":NERDTreeFind<CR>", {})
+
+  -- If more than one window and previous buffer was NERDTree, go back to it
+  vim.cmd([[autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif]])
+
+  -- Close window if NERDTree is the last thing open
+  vim.cmd([[autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && NERDTree.isTabTree()) | q | endif]])
+
+  -- vim-airline rubbish
+  vim.g.airline_theme = "base16_gruvbox_dark_soft"
 end
 
 return M

@@ -16,10 +16,10 @@
       create: true
       glob: true
       path: nvim/lua/blaz/*
-    ~/.config/nvim/plugins/:
-      create: true
-      glob: true
-      path: nvim/plugins/*
+    # ~/.config/nvim/plugins/:
+    #   create: true
+    #   glob: true
+    #   path: nvim/plugins/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
