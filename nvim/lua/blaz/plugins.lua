@@ -14,9 +14,7 @@ local data_dir = string.format("%s/site", vim.fn.stdpath("data"))
 local download_vim_plug = function()
   local plug_download_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-  local cmd_str = has("win32")
-    and string.format([[Invoke-WebRequest -UseBasicParsing %s | New-Item "%s/autoload/plug.vim" -Force]], plug_download_url, data_dir)
-    or string.format("curl -fLo %s/autoload/plug.vim --create-dirs %s", data_dir, plug_download_url)
+  local cmd_str = string.format("curl -fLo %s/autoload/plug.vim --create-dirs %s", data_dir, plug_download_url)
   print(cmd_str)
 
   local out = vim.fn.system(cmd_str)
