@@ -5,18 +5,18 @@ end
 -- Look and feel
 
 if has("termguicolors") then
-  vim.o.termguicolors = true
+  vim.opt.termguicolors = true
 end
-vim.o.background = "dark"
+vim.opt.background = "dark"
 
 -- I don't want vim's status indicators for the various
 -- editor modes to visually conflict with airline's
-vim.o.showmode = false
+vim.opt.showmode = false
 
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.o.guifont = "CaskaydiaCove_NF:h14"
+vim.opt.guifont = "CaskaydiaCove_NF:h14"
 
 vim.cmd([[
 syntax enable
@@ -24,13 +24,13 @@ syntax on
 filetype plugin on
 ]])
 
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 0
-vim.o.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 0
+vim.opt.expandtab = true
 
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- I want as-you-type autocompletion
-vim.opt.completeopt = { "menu", "menuone", "preview", "noselect", "noinsert" }
+-- vim.opt.completeopt = { "menu", "menuone", "preview", "noselect", "noinsert" }
