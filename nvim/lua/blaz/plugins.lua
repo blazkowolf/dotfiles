@@ -36,44 +36,55 @@ M.load = function(plugin_download_dir)
     download_vim_plug()
   end
 
+  local function Plug(plugin, opts_str)
+    if type(plugin) ~= "string" then
+      return
+    end
+
+    local cmd_str = (opts_str == nil or opts_str == "")
+      and string.format([[Plug '%s']], plugin)
+      or string.format([[Plug '%s', %s]], plugin, opts_str)
+    vim.cmd(cmd_str)
+  end
+
   vim.fn["plug#begin"](plugin_download_dir)
-  vim.cmd([[
-  Plug 'jiangmiao/auto-pairs'
 
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  Plug "jiangmiao/auto-pairs"
+  Plug "morhetz/gruvbox"
 
-  Plug 'morhetz/gruvbox'
+  Plug("junegunn/fzf", "{ 'do': { -> fzf#install() } }")
+  Plug "junegunn/fzf.vim"
 
-  Plug 'preservim/nerdcommenter'
+  Plug "preservim/nerdcommenter"
 
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'simrat39/rust-tools.nvim'
-  Plug 'rust-lang/rust.vim'
+  Plug "neovim/nvim-lspconfig"
+  Plug "simrat39/rust-tools.nvim"
+  Plug "rust-lang/rust.vim"
 
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
-  Plug 'hrsh7th/cmp-nvim-lua'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
+  Plug "hrsh7th/cmp-nvim-lsp"
+  Plug "hrsh7th/cmp-nvim-lsp-document-symbol"
+  Plug "hrsh7th/cmp-nvim-lua"
+  Plug "hrsh7th/cmp-buffer"
+  Plug "hrsh7th/cmp-path"
+  Plug "hrsh7th/cmp-cmdline"
+  Plug "hrsh7th/nvim-cmp"
 
-  " nvim-cmp requires a snippet engine
-  Plug 'L3MON4D3/LuaSnip'
-  " LuaSnip completion source for nvim-cmp
-  Plug 'saadparwaiz1/cmp_luasnip'
+  -- nvim-cmp requires a snippet engine
+  Plug "L3MON4D3/LuaSnip"
+  -- LuaSnip completion source for nvim-cmp
+  Plug "saadparwaiz1/cmp_luasnip"
 
-  Plug 'tpope/vim-fugitive'
+  Plug "tpope/vim-fugitive"
 
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug "preservim/nerdtree"
+  Plug "Xuyuanp/nerdtree-git-plugin"
 
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  ]])
+  Plug "vim-airline/vim-airline"
+  Plug "vim-airline/vim-airline-themes"
+
+  -- vim-devicons MUST be loaded after NERDTree and Airline
+  Plug "ryanoasis/vim-devicons"
+  Plug "tiagofumo/vim-nerdtree-syntax-highlight"
   -- `plug#end` automatically executes `filetype plugin indent on` and `syntax enable`
   vim.fn["plug#end"]() 
 
@@ -107,35 +118,6 @@ M.load = function(plugin_download_dir)
       ["right"] = "*/"
     }
   }
-
-  -- NERDTree feces
-  vim.g.NERDTreeDirArrowExpandable = "▶"
-  vim.g.NERDTreeDirArrowCollapsible = "▼"
-  vim.g.NERDTreeHighlightFolders = 1
-  vim.g.NERDTreeHighlightFoldersFullName = 1
-  vim.g.NERDTreeShowHidden = 1
-  vim.g.NERDTreeMinimalUI = 1 -- Hide ?
-  vim.g.NERDTreeIgnore = { "^node_modules$" }
-  vim.g.NERDTreeStatusline = "" -- Use lightline
-  vim.g.plug_window = "noautocmd vertical topleft new"
-  vim.g.WebDevIconsUnicodeDecorateFolderNodes = 1
-  vim.g.DevIconsEnableFoldersOpenClose = 1
-  vim.g.DevIconsEnableFolderExtensionPatternMatching = 1
-
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-b>",
-    [[g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>']],
-    { noremap = true, expr = true }
-  )
-
-  vim.api.nvim_set_keymap("n", "<leader>N", ":NERDTreeFind<CR>", {})
-
-  -- If more than one window and previous buffer was NERDTree, go back to it
-  vim.cmd([[autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif]])
-
-  -- Close window if NERDTree is the last thing open
-  vim.cmd([[autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && NERDTree.isTabTree()) | q | endif]])
 
   -- vim-airline rubbish
   vim.g.airline_theme = "base16_gruvbox_dark_soft"

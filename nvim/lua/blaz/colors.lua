@@ -20,12 +20,4 @@ local M = {
   git_orange = "F54D27",
 }
 
-vim.g.NERDTreeExtensionHighlightColor = {
-  ["css"] = M.blue,
-  [".gitignore"] = M.git_orange,
-  [".*_spec\\.rb$"] = M.rspec_red,
-}
-vim.g.WebDevIconsDefaultFolderSymbolColor = M.beige
-vim.g.WebDevIconsDefaultFileSymbolColor = M.blue
-
 return M
