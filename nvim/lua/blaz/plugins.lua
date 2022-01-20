@@ -51,6 +51,19 @@ M.load = function(plugin_download_dir)
   Plug 'simrat39/rust-tools.nvim'
   Plug 'rust-lang/rust.vim'
 
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+  Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+
+  " nvim-cmp requires a snippet engine
+  Plug 'L3MON4D3/LuaSnip'
+  " LuaSnip completion source for nvim-cmp
+  Plug 'saadparwaiz1/cmp_luasnip'
+
   Plug 'tpope/vim-fugitive'
 
   Plug 'preservim/nerdtree'

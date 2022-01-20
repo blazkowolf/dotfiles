@@ -10,16 +10,13 @@
 - link:
     ~/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
-    ~/.config/nvim/init.lua:
-      path: nvim/init.lua
-    ~/.config/nvim/lua/blaz/:
+    ~/.config/nvim/:
+      path: nvim/**/*
       create: true
       glob: true
-      path: nvim/lua/blaz/*
-    # ~/.config/nvim/plugins/:
-    #   create: true
-    #   glob: true
-    #   path: nvim/plugins/*
+      exclude:
+      - nvim/init.vim
+      - nvim/plugins/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
