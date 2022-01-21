@@ -16,7 +16,8 @@ vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.guifont = "CaskaydiaCove_NF:h14"
+-- Only used for nvim-qt GUI application
+vim.opt.guifont = "CaskaydiaCove_NF:h12"
 
 vim.cmd([[
 syntax enable

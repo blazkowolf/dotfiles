@@ -52,12 +52,11 @@ M.load = function(plugin_download_dir)
   Plug "jiangmiao/auto-pairs"
   Plug "morhetz/gruvbox"
 
-  Plug("junegunn/fzf", "{ 'do': { -> fzf#install() } }")
-  Plug "junegunn/fzf.vim"
-
   Plug "preservim/nerdcommenter"
 
   Plug "neovim/nvim-lspconfig"
+  Plug "williamboman/nvim-lsp-installer"
+
   Plug "simrat39/rust-tools.nvim"
   Plug "rust-lang/rust.vim"
 
@@ -82,6 +81,11 @@ M.load = function(plugin_download_dir)
   Plug "vim-airline/vim-airline"
   Plug "vim-airline/vim-airline-themes"
 
+  Plug "nvim-lua/plenary.nvim"
+  Plug "nvim-telescope/telescope.nvim"
+  Plug "nvim-telescope/telescope-fzy-native.nvim"
+  Plug("nvim-treesitter/nvim-treesitter", "{ 'do': ':TSUpdate' }")
+
   -- vim-devicons MUST be loaded after NERDTree and Airline
   Plug "ryanoasis/vim-devicons"
   Plug "tiagofumo/vim-nerdtree-syntax-highlight"
@@ -89,15 +93,6 @@ M.load = function(plugin_download_dir)
   vim.fn["plug#end"]() 
 
   -- vim.cmd("doautocmd User PlugLoaded")
-
-  -- FZF malarchy
-  vim.api.nvim_set_keymap("n", "<C-p>", ":GFiles<CR>", { noremap = true })
-  vim.g.fzf_action = {
-    ["ctrl-t"] = "tab split",
-    ["ctrl-s"] = "split",
-    ["ctrl-v"] = "vsplit"
-  }
-  vim.g.fzf_preview_window = { "right:50%", "ctrl-/" }
 
   -- Gruvbox crap
   vim.cmd("colorscheme gruvbox")
