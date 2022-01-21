@@ -1,6 +1,24 @@
-require("nvim-treesitter.configs").setup {
+local has_treesitter, _ = pcall(require, "nvim-treesitter")
+if not has_treesitter then
+  vim.notify(
+    {
+      "nvim-treesitter not found!",
+      "Skipping configuration for this plugin...",
+      "Some features may not work properly..."
+    },
+    vim.lsp.log_levels.WARN,
+    {
+      title = "Treesitter"
+    }
+  )
+  return
+end
+
+require("nvim-treesitter.configs").setup({
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {
+    "css",
+    "scss",
     "rust",
     "lua",
     "java",
@@ -31,4 +49,4 @@ require("nvim-treesitter.configs").setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-}
+})

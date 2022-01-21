@@ -1,11 +1,26 @@
 -- Enable as-you-type autocompletion
-vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
+-- vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 
-local cmp = require("cmp")
+local has_cmp, cmp = pcall(require, "cmp")
+if not has_cmp then
+  vim.notify(
+    {
+      "nvim-cmp not found!",
+      "Skipping configuration for this plugin...",
+      "Some features may not work properly..."
+    },
+    vim.lsp.log_levels.WARN,
+    {
+      title = "Completion"
+    }
+  )
+  return
+end
 
 cmp.setup({
   completion = {
     autocomplete = false,
+    completeopt = "menu,menuone,noinsert"
   },
   snippet = {
     expand = function(args)
@@ -23,13 +38,12 @@ cmp.setup({
     }),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
-  sources = cmp.config.sources({
+  sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "luasnip" }
-  }, {
+    { name = "luasnip" },
     { name = "buffer" },
-  })
+  }
 })
 
 -- Use buffer source for "/" (if you enabled "native_menu", this won't work anymore)
@@ -41,9 +55,8 @@ cmp.setup.cmdline("/", {
 
 -- Use cmdline & path source for "/" (if you enabled "native_menu", this won't work anymore)
 cmp.setup.cmdline(":", {
-  sources = cmp.config.sources({
-    { name = "path" }
-  }, {
-    { name = "cmdline" }
-  })
+  sources = {
+    { name = "path" },
+    { name = "cmdline" },
+  }
 })

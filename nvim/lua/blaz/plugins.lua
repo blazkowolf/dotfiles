@@ -86,33 +86,28 @@ M.load = function(plugin_download_dir)
   Plug "nvim-telescope/telescope-fzy-native.nvim"
   Plug("nvim-treesitter/nvim-treesitter", "{ 'do': ':TSUpdate' }")
 
+  Plug "rcarriga/nvim-notify"
+
   -- vim-devicons MUST be loaded after NERDTree and Airline
   Plug "ryanoasis/vim-devicons"
   Plug "tiagofumo/vim-nerdtree-syntax-highlight"
   -- `plug#end` automatically executes `filetype plugin indent on` and `syntax enable`
-  vim.fn["plug#end"]() 
+  vim.fn["plug#end"]()
 
   -- vim.cmd("doautocmd User PlugLoaded")
 
+  -- Make every notification go through nvim-notify
+  local has_notify, notify = pcall(require, "notify")
+  if has_notify then
+    -- Only overwrite default notify settings
+    -- when the plugin successfully loads
+    vim.notify = notify
+  else
+    vim.notify("nvim-notify not found! Outputting incoming notifications to the default :Messages provider...", vim.log.levels.WARN)
+  end
+
   -- Gruvbox crap
   vim.cmd("colorscheme gruvbox")
-
-  -- NERDCommenter waste
-  vim.g.NERDCreateDefaultMappings = 1  -- Create default mappings
-  vim.g.NERDSpaceDelims = 1            -- Add spaces after comment delimiters by default
-  vim.g.NERDCompactSexyComs = 1        -- Use compact syntax for prettified multi-line comments
-  vim.g.NERDDefaultAlign = "left"      -- Align line-wise comment delimiters flush left instead of following code indentation
-  vim.g.NERDAltDelims_java = 1         -- Set a language to use its alternate delimiters by default
-  vim.g.NERDCommentEmptyLines = 1      -- Allow commenting and inverting empty lines (useful when commenting a region)
-  vim.g.NERDTrimTrailingWhitespace = 1 -- Enable trimming of trailing whitespace when uncommenting
-  vim.g.NERDToggleCheckAllLines = 1    -- Enable NERDCommenterToggle to check all selected lines is commented or not 
-  -- Add your own custom formats or override the defaults
-  vim.g.NERDCustomDelimiters = {
-    ["c"] = {
-      ["left"] = "/**",
-      ["right"] = "*/"
-    }
-  }
 
   -- vim-airline rubbish
   vim.g.airline_theme = "base16_gruvbox_dark_soft"
