@@ -4,22 +4,17 @@
 
 - clean: 
   - '$LOCALAPPDATA/nvim'
-  - '$LOCALAPPDATA/nvim/lua'
-  - '$LOCALAPPDATA/nvim/lua/blaz'
+  - '$LOCALAPPDATA/clink'
 
 - link:
     $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
       path: pwsh/Microsoft.PowerShell_profile.ps1
-    $LOCALAPPDATA/clink/oh-my-posh.lua:
-      path: clink/scripts/oh-my-posh.lua
     $USERPROFILE/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
-    $LOCALAPPDATA/nvim/init.lua:
-      path: nvim/init.lua
-    $LOCALAPPDATA/nvim/lua/:
+    $LOCALAPPDATA/:
+      path: nvim/**/*
       create: true
       glob: true
-      path: nvim/lua/blaz/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
