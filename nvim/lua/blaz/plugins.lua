@@ -68,6 +68,8 @@ M.load = function(plugin_download_dir)
   Plug "hrsh7th/cmp-cmdline"
   Plug "hrsh7th/nvim-cmp"
 
+  Plug "onsails/lspkind-nvim"
+
   -- nvim-cmp requires a snippet engine
   Plug "L3MON4D3/LuaSnip"
   -- LuaSnip completion source for nvim-cmp
@@ -88,9 +90,9 @@ M.load = function(plugin_download_dir)
 
   Plug "rcarriga/nvim-notify"
 
+  Plug "tiagofumo/vim-nerdtree-syntax-highlight"
   -- vim-devicons MUST be loaded after NERDTree and Airline
   Plug "ryanoasis/vim-devicons"
-  Plug "tiagofumo/vim-nerdtree-syntax-highlight"
   -- `plug#end` automatically executes `filetype plugin indent on` and `syntax enable`
   vim.fn["plug#end"]()
 
@@ -107,7 +109,10 @@ M.load = function(plugin_download_dir)
   end
 
   -- Gruvbox crap
-  vim.cmd("colorscheme gruvbox")
+  vim.cmd([[
+  colorscheme gruvbox
+  highlight Normal guibg=NONE ctermbg=NONE
+  ]])
 
   -- vim-airline rubbish
   vim.g.airline_theme = "base16_gruvbox_dark_soft"
