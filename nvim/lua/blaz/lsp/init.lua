@@ -25,7 +25,7 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local function on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -70,20 +70,17 @@ local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 --    `client_capabilities`
 local capabilities = require("cmp_nvim_lsp").update_capabilities(client_capabilities)
 
--- I believe calling `setup` on "rust-tools" attaches the opts to nvim_lsp
-require("rust-tools").setup({})
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {}
-for _, server in ipairs(servers) do
-	nvim_lsp[server].setup({
-		-- on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-		},
-	})
-end
+-- local servers = {}
+-- for _, server in ipairs(servers) do
+--   nvim_lsp[server].setup({
+--     -- on_attach = on_attach,
+--     flags = {
+--       debounce_text_changes = 150,
+--     },
+--   })
+-- end
 
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -92,14 +89,22 @@ local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		},
 	}
-
 	-- (optional) Customize the options passed to the server
-	-- if server.name == "tsserver" then
-	--     opts.root_dir = function() ... end
-	-- end
-
-	-- This setup() function is exactly the same as lspconfig's setup function.
-	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-	server:setup(opts)
+	if server.name == "rust_analyzer" then
+		-- Initialize the LSP via rust-tools instead
+		require("rust-tools").setup({
+			-- The "server" property provided in rust-tools setup function are the
+			-- settings rust-tools will provide to lspconfig during init.
+			-- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
+			-- with the user's own settings (opts).
+			server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+		})
+		server:attach_buffers()
+	else
+		server:setup(opts)
+	end
 end)

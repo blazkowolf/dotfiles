@@ -1,11 +1,11 @@
-local has = function(feature)
-	return vim.fn.has(feature) == 1
-end
-
-if has("termguicolors") then
-	vim.opt.termguicolors = true
-end
-vim.opt.background = "dark"
+-- local has = function(feature)
+--   return vim.fn.has(feature) == 1
+-- end
+--
+-- if has("termguicolors") then
+--   vim.opt.termguicolors = true
+-- end
+-- vim.opt.background = "dark"
 
 -- Gruvbox configuration values found here:
 -- https://github.com/gruvbox-community/gruvbox/wiki/Configuration

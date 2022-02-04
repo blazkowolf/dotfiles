@@ -54,7 +54,7 @@ M.load = function(plugin_download_dir)
 
 	vim.fn["plug#begin"](plugin_download_dir)
 
-	Plug("jiangmiao/auto-pairs")
+	Plug("windwp/nvim-autopairs")
 	Plug("gruvbox-community/gruvbox")
 
 	Plug("preservim/nerdcommenter")
@@ -82,15 +82,20 @@ M.load = function(plugin_download_dir)
 
 	Plug("tpope/vim-fugitive")
 
-	Plug("preservim/nerdtree")
-	Plug("Xuyuanp/nerdtree-git-plugin")
+	-- Plug("preservim/nerdtree")
+	-- Plug("Xuyuanp/nerdtree-git-plugin")
+	Plug("kyazdani42/nvim-web-devicons") -- for file icons
+	Plug("kyazdani42/nvim-tree.lua")
 
 	Plug("vim-airline/vim-airline")
 	Plug("vim-airline/vim-airline-themes")
 
+	Plug("nvim-lua/popup.nvim")
 	Plug("nvim-lua/plenary.nvim")
 	Plug("nvim-telescope/telescope.nvim")
 	Plug("nvim-telescope/telescope-fzy-native.nvim")
+	Plug("nvim-telescope/telescope-ui-select.nvim")
+
 	Plug("nvim-treesitter/nvim-treesitter", "{ 'do': ':TSUpdate' }")
 
 	Plug("rcarriga/nvim-notify")

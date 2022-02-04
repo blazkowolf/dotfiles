@@ -1,5 +1,14 @@
+local has = function(feature)
+	return vim.fn.has(feature) == 1
+end
+
+if has("termguicolors") then
+	vim.opt.termguicolors = true
+end
+vim.opt.background = "dark"
+
 -- Workaround for setting a transparent background
-vim.cmd([[autocmd VimEnter * highlight Normal guibg=NONE ctermbg=NONE]])
+-- vim.cmd([[autocmd VimEnter * highlight Normal guibg=NONE ctermbg=NONE]])
 
 -- I don't want vim's status indicators for the various
 -- editor modes to visually conflict with airline's

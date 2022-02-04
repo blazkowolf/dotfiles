@@ -7,7 +7,4 @@ require("blaz.keymap")
 require("blaz.plugins").load(vim.fn.stdpath("config") .. "/plugged")
 
 -- The following must be `required` after plugins load
-require("blaz.colors")
 require("blaz.lsp")
-
-require("blaz.helper.telescope")

@@ -40,8 +40,12 @@ telescope.setup({
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+		["ui-select"] = {},
 	},
 })
+
+telescope.load_extension("fzy_native")
+telescope.load_extension("ui-select")
 
 vim.api.nvim_set_keymap(
 	"n",
@@ -50,7 +54,12 @@ vim.api.nvim_set_keymap(
 	{ noremap = true }
 )
 -- Need ripgrep installed for the `live-grep` functionality
--- vim.api.nvim_set_keymap("n", "<leader>fg", [[<cmd>lua require("telescope.builtin").live_grep()<cr>]], { noremap = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>fg",
+	[[<cmd>lua require("telescope.builtin").live_grep()<cr>]],
+	{ noremap = true }
+)
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>fb",
