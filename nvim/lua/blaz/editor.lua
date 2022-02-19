@@ -18,7 +18,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Only used for nvim-qt GUI application
-vim.opt.guifont = "CascadiaCode_NF:h12"
+vim.opt.guifont = [[CaskaydiaCove Nerd Font:h12]]
 
 vim.cmd([[syntax enable]])
 -- vim.cmd([[syntax on]])

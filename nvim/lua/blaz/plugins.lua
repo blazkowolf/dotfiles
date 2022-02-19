@@ -5,13 +5,9 @@ local empty = function(thing)
 	return vim.fn.empty(thing) == 1
 end
 
-local has = function(feature)
-	return vim.fn.has(feature) == 1
-end
-
 local data_dir = string.format("%s/site", vim.fn.stdpath("data"))
 
-local download_vim_plug = function()
+local function download_vim_plug()
 	local plug_download_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 	local cmd_str = string.format(
