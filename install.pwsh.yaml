@@ -11,10 +11,20 @@
       path: pwsh/Microsoft.PowerShell_profile.ps1
     $USERPROFILE/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
+    $LOCALAPPDATA/clink/lf.lua:
+      path: clink/lf.lua
+    $LOCALAPPDATA/lf/lfrc:
+      path: lf/lfrc
+    $LOCALAPPDATA/lf/pv.cmd:
+      path: lf/pv.cmd
+    $LOCALAPPDATA/lf/rn.cmd:
+      path: lf/rn.cmd
+    $LOCALAPPDATA/lf/icons:
+      path: lf/icons
     $LOCALAPPDATA/:
-      path: nvim/**/*
-      create: true
       glob: true
+      create: true
+      path: nvim/**/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
