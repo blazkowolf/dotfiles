@@ -24,7 +24,7 @@ if has_notify then
 		minimum_width = 50,
 		icons = {
 			ERROR = "",
-			WARN = "",
+			WARN = "",
 			INFO = "",
 			DEBUG = "",
 			TRACE = "✎",

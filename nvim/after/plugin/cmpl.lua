@@ -24,7 +24,7 @@ local has_lspkind, lspkind = pcall(require, "lspkind")
 if not has_lspkind then
 	return
 end
-lspkind.init()
+-- lspkind.init()
 
 cmp.setup({
 	-- completion = {
@@ -62,15 +62,24 @@ cmp.setup({
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
 	formatting = {
+		-- Change the displayed fields in completion menu
+		-- fields = { "kind", "abbr", "menu" },
 		format = lspkind.cmp_format({
-			with_text = true,
-			menu = {
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[API]",
-				treesitter = "[TRS]",
-				luasnip = "[SNP]",
-				buffer = "[BUF]",
-			},
+			-- Show only symbol annotations
+			mode = "symbol",
+			maxwidth = 50,
+			before = function(entry, vim_item)
+				-- vim_item.with_text = true
+				vim_item.menu = ({
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[API]",
+					treesitter = "[TRS]",
+					luasnip = "[SNP]",
+					buffer = "[BUF]",
+					path = "[PAT]",
+				})[entry.source.name]
+				return vim_item
+			end,
 		}),
 	},
 	sources = {
@@ -79,10 +88,11 @@ cmp.setup({
 		{ name = "treesitter" },
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
+		{ name = "path" },
 	},
 	experimental = {
-		native_menu = false,
 		ghost_text = false,
+		native_menu = false,
 	},
 })
 

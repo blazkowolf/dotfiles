@@ -51,7 +51,9 @@ M.load = function(plugin_download_dir)
 	vim.fn["plug#begin"](plugin_download_dir)
 
 	Plug("windwp/nvim-autopairs")
-	Plug("gruvbox-community/gruvbox")
+	Plug("ellisonleao/gruvbox.nvim")
+	-- Plug("gruvbox-community/gruvbox")
+	Plug("folke/tokyonight.nvim", "{ 'branch': 'main' }")
 
 	Plug("preservim/nerdcommenter")
 
@@ -63,6 +65,8 @@ M.load = function(plugin_download_dir)
 
 	Plug("hrsh7th/cmp-nvim-lsp")
 	Plug("hrsh7th/cmp-nvim-lsp-document-symbol")
+	-- LuaSnip completion source for nvim-cmp
+	Plug("saadparwaiz1/cmp_luasnip")
 	Plug("hrsh7th/cmp-nvim-lua")
 	Plug("hrsh7th/cmp-buffer")
 	Plug("hrsh7th/cmp-path")
@@ -73,9 +77,8 @@ M.load = function(plugin_download_dir)
 
 	-- nvim-cmp requires a snippet engine
 	Plug("L3MON4D3/LuaSnip")
-	-- LuaSnip completion source for nvim-cmp
-	Plug("saadparwaiz1/cmp_luasnip")
 
+	Plug("lewis6991/gitsigns.nvim")
 	Plug("tpope/vim-fugitive")
 
 	-- Plug("preservim/nerdtree")
@@ -83,8 +86,9 @@ M.load = function(plugin_download_dir)
 	Plug("kyazdani42/nvim-web-devicons") -- for file icons
 	Plug("kyazdani42/nvim-tree.lua")
 
-	Plug("vim-airline/vim-airline")
-	Plug("vim-airline/vim-airline-themes")
+	Plug("nvim-lualine/lualine.nvim")
+	-- Plug("vim-airline/vim-airline")
+	-- Plug("vim-airline/vim-airline-themes")
 
 	Plug("nvim-lua/popup.nvim")
 	Plug("nvim-lua/plenary.nvim")
@@ -96,9 +100,9 @@ M.load = function(plugin_download_dir)
 
 	Plug("rcarriga/nvim-notify")
 
-	Plug("tiagofumo/vim-nerdtree-syntax-highlight")
+	-- Plug("tiagofumo/vim-nerdtree-syntax-highlight")
 	-- vim-devicons MUST be loaded after NERDTree and Airline
-	Plug("ryanoasis/vim-devicons")
+	-- Plug("ryanoasis/vim-devicons")
 	-- `plug#end` automatically executes `filetype plugin indent on` and `syntax enable`
 	vim.fn["plug#end"]()
 

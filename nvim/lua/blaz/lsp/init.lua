@@ -23,6 +23,47 @@ if not has_lsp then
 	return
 end
 
+local signs = {
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+}
+
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+local config = {
+	-- disable virtual text
+	-- virtual_text = false,
+	-- show signs
+	signs = {
+		active = signs,
+	},
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
+}
+
+vim.diagnostic.config(config)
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
@@ -82,17 +123,40 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(client_capabili
 --   })
 -- end
 
-local lsp_installer = require("nvim-lsp-installer")
+local has_lsp_installer, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not has_lsp_installer then
+	vim.notify(
+		{
+			"nvim-lsp-installer not found!",
+			"Skipping configuration for this plugin...",
+			"Some features may not work properly...",
+		},
+		vim.log.levels.WARN,
+		{
+			title = "LSP Installer",
+		}
+	)
+	return
+end
+
+local enhance_server_opts = require("blaz.lsp.opts")
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = on_attach,
+		capabilities = capabilities,
 		flags = {
 			debounce_text_changes = 150,
 		},
 	}
+
+	if enhance_server_opts[server.name] then
+		-- Enhnace the default opts with the server-specific ones
+		opts = enhance_server_opts[server.name](opts)
+	end
+
 	-- (optional) Customize the options passed to the server
 	if server.name == "rust_analyzer" then
 		-- Initialize the LSP via rust-tools instead

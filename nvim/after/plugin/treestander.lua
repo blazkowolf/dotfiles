@@ -14,6 +14,8 @@ if not has_treesitter then
 	return
 end
 
+-- require("nvim-treesitter.install").compilers = { "gcc", "cl" }
+
 require("nvim-treesitter.configs").setup({
 	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = {
@@ -25,9 +27,9 @@ require("nvim-treesitter.configs").setup({
 		"json",
 		"typescript",
 		"javascript",
-		"markdown",
+		-- "markdown",
 		"vim",
-		"html",
+		-- "html",
 	},
 
 	-- Install languages synchronously (only applied to `ensure_installed`)
