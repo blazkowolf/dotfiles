@@ -29,6 +29,7 @@ vim.opt.splitbelow = true
 vim.opt.swapfile = false
 vim.opt.updatetime = 300
 vim.opt.number = true
+vim.opt.numberwidth = 4
 vim.opt.relativenumber = true
 -- I don't want my cursor to be too close to the window boundaries
 vim.opt.scrolloff = 8

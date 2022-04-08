@@ -1,4 +1,6 @@
-return {
+local default_opts = require("blaz.lsp.opts.defaults")
+
+local opts = {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -18,3 +20,5 @@ return {
 		},
 	},
 }
+
+return vim.tbl_deep_extend("force", default_opts, opts)
