@@ -13,6 +13,8 @@
       path: posh/.custom.omp.yaml
     $LOCALAPPDATA/clink/lf.lua:
       path: clink/lf.lua
+    $LOCALAPPDATA/clink/neovide.lua:
+      path: clink/neovide.lua
     $LOCALAPPDATA/lf/lfrc:
       path: lf/lfrc
     $LOCALAPPDATA/lf/pv.cmd:
