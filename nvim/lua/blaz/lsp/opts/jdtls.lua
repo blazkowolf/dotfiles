@@ -1,17 +1,14 @@
+local notify = require("blaz.helper.notify")
+
 local status_ok, jdtls_setup = pcall(require, "jdtls.setup")
 if not status_ok then
-	vim.notify(
-		{
-			"jdtls not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "LSP (Java)",
-		}
+	notify.warn(
+		"LSP (Java)",
+		"jdtls not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
-  return
+	return
 end
 
 local default_opts = require("blaz.lsp.opts.defaults")
@@ -59,7 +56,7 @@ local opts = {
 		-- 💀
 		-- See `data directory configuration` section in the README
 		"-data",
-    workspace_root_dir .. project_name,
+		workspace_root_dir .. project_name,
 	},
 
 	-- 💀

@@ -7,18 +7,15 @@ vim.opt.signcolumn = "yes"
 
 vim.g.rustfmt_autosave = 1
 
+local notify = require("blaz.helper.notify")
+
 local has_lsp, _ = pcall(require, "lspconfig")
 if not has_lsp then
-	vim.notify(
-		{
-			"nvim-lspconfig not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "LSP Config",
-		}
+	notify.warn(
+		"LSP",
+		"nvim-lspconfig not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

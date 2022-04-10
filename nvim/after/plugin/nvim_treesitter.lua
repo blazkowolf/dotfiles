@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local has_treesitter, _ = pcall(require, "nvim-treesitter")
 if not has_treesitter then
-	vim.notify(
-		{
-			"nvim-treesitter not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.lsp.log_levels.WARN,
-		{
-			title = "Treesitter",
-		}
+	notify.warn(
+		"Treesitter",
+		"nvim-treesitter not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

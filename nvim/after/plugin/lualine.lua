@@ -1,22 +1,19 @@
+local notify = require("blaz.helper.notify")
+
 local lualine_ok, lualine = pcall(require, "lualine")
 if not lualine_ok then
-	vim.notify(
-		{
-			"lualine not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "Statusline",
-		}
+	notify.warn(
+		"Statusline",
+		"lualine not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end
 
 -- Pulled from https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/lualine.lua
 -- cool function for progress
-local progress = function()
+local function progress()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
 	local chars = {
@@ -35,7 +32,7 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
+local function spaces()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 

@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local status_ok, null_ls = pcall(require, "null-ls")
 if not status_ok then
-	vim.notify(
-		{
-			"null-ls not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "LSP",
-		}
+	notify.warn(
+		"LSP",
+		"null-ls not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

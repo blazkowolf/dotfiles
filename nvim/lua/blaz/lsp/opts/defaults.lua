@@ -1,3 +1,5 @@
+local notify = require("blaz.helper.notify")
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
@@ -8,6 +10,7 @@ local function on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+  ---@diagnostic disable-next-line
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -49,16 +52,11 @@ local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 --    `client_capabilities`
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not has_cmp_nvim_lsp then
-	vim.notify(
-		{
-			"cmp_nvim_lsp not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "Completion",
-		}
+	notify.warn(
+		"Completion",
+		"cmp_nvim_lsp not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

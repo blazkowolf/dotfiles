@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local has_telescope, telescope = pcall(require, "telescope")
 if not has_telescope then
-	vim.notify(
-		{
-			"nvim-telescope not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.lsp.log_levels.WARN,
-		{
-			title = "Telescope",
-		}
+	notify.warn(
+		"Fuzzy Finder",
+		"nvim-telescope not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

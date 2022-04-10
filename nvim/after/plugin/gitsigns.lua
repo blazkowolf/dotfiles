@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
-	vim.notify(
-		{
-			"gitsigns not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "VCS",
-		}
+	notify.warn(
+		"VCS",
+		"gitsigns not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end
@@ -51,7 +48,7 @@ gitsigns.setup({
 		follow_files = true,
 	},
 	attach_to_untracked = true,
-	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	current_line_blame_opts = {
 		virt_text = true,
 		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'

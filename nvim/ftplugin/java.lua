@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local has_jdtls, jdtls = pcall(require, "jdtls")
 if not has_jdtls then
-	vim.notify(
-		{
-			"nvim-jdtls not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.log.levels.WARN,
-		{
-			title = "LSP (Java)",
-		}
+	notify.warn(
+		"LSP (Java)",
+		"nvim-jdtls not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

@@ -1,15 +1,12 @@
+local notify = require("blaz.helper.notify")
+
 local has_nvim_autopairs, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not has_nvim_autopairs then
-	vim.notify(
-		{
-			"nvim-autopairs not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.lsp.log_levels.WARN,
-		{
-			title = "Autopairs",
-		}
+	notify.warn(
+		"Autopairs",
+		"nvim-autopairs not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end

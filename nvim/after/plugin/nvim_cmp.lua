@@ -4,27 +4,29 @@ vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess:append("c")
 
+local notify = require("blaz.helper.notify")
+
 local has_cmp, cmp = pcall(require, "cmp")
 if not has_cmp then
-	vim.notify(
-		{
-			"nvim-cmp not found!",
-			"Skipping configuration for this plugin...",
-			"Some features may not work properly...",
-		},
-		vim.lsp.log_levels.WARN,
-		{
-			title = "Completion",
-		}
+	notify.warn(
+		"Completion",
+		"nvim-cmp not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
 	)
 	return
 end
 
 local has_lspkind, lspkind = pcall(require, "lspkind")
 if not has_lspkind then
+  notify.warn(
+    "LSP",
+    "lspkind not found!",
+    "Skipping configuration for this plugin...",
+    "Some features may not work properly..."
+  )
 	return
 end
--- lspkind.init()
 
 cmp.setup({
 	-- completion = {
