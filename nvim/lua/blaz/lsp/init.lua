@@ -1,12 +1,6 @@
 -- Handle file types
 vim.cmd([[autocmd BufNewFile,BufRead *.rs set filetype=rust]])
 
--- Avoid vertical jitter from lsp diagnostics populating
--- by always showing the sign column they display inside of
-vim.opt.signcolumn = "yes"
-
-vim.g.rustfmt_autosave = 1
-
 local notify = require("blaz.helper.notify")
 
 local has_lsp, _ = pcall(require, "lspconfig")

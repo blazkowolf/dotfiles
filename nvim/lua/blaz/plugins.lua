@@ -1,9 +1,7 @@
 -- Inspiration from tjdevries
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/first_load.lua
 
-local empty = function(thing)
-	return vim.fn.empty(thing) == 1
-end
+local empty = require("blaz.helper.vim").empty
 
 local data_dir = string.format("%s/site", vim.fn.stdpath("data"))
 
@@ -26,9 +24,13 @@ local function download_vim_plug()
 	)
 end
 
+---@module "blaz.plugins"
 local M = {}
 
 -- TODO replace vim-plug with Packer
+
+---Load Neovim plugins
+---@param plugin_download_dir string directory to store downloaded plugins
 M.load = function(plugin_download_dir)
 	plugin_download_dir = plugin_download_dir or vim.fn.stdpath("data") .. "/plugged"
 
