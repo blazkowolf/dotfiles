@@ -42,6 +42,7 @@ vim.opt.relativenumber = true
 -- I don't want my cursor to be too close to the window boundaries
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
 vim.opt.guifont = [[CaskaydiaCove Nerd Font:h12]]
 
