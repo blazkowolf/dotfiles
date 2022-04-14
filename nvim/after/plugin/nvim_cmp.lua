@@ -22,17 +22,24 @@ if not has_lspkind then
 	return
 end
 
+local has_luasnip, luasnip = pcall(require, "luasnip")
+if not has_luasnip then
+	notify.warn(
+		"LSP",
+		"luasnip not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
+	)
+	return
+end
+
 cmp.setup({
-	-- completion = {
-	--   autocomplete = false,
-	--   completeopt = "menu,menuone,preview,noinsert"
-	-- },
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		["<C-j>"] = cmp.mapping(
 			cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 			{ "i", "c" }
@@ -53,9 +60,13 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		})),
-	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	}),
+	window = {
+		-- documentation = "native",
+		-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		documentation = {
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		},
 	},
 	formatting = {
 		-- Change the displayed fields in completion menu
@@ -88,12 +99,12 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = false,
-		native_menu = false,
 	},
 })
 
 -- Use buffer source for "/" (if you enabled "native_menu", this won't work anymore)
 cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "buffer" },
 	},
@@ -101,6 +112,7 @@ cmp.setup.cmdline("/", {
 
 -- Use cmdline & path source for "/" (if you enabled "native_menu", this won't work anymore)
 cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "path" },
 		{ name = "cmdline" },

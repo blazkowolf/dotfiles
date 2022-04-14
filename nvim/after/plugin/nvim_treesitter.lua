@@ -1,7 +1,7 @@
 local notify = require("blaz.helper.notify")
 
-local has_treesitter, _ = pcall(require, "nvim-treesitter")
-if not has_treesitter then
+local status_ok, nvim_treesitter_configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
 	notify.warn(
 		"Treesitter",
 		"nvim-treesitter not found!",
@@ -13,19 +13,30 @@ end
 
 -- require("nvim-treesitter.install").compilers = { "gcc", "cl" }
 
-require("nvim-treesitter.configs").setup({
+nvim_treesitter_configs.setup({
 	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = {
+    "bash",
+		"c",
+    "comment",
+		"cpp",
 		"css",
-		"scss",
-		"rust",
-		"lua",
+		"dockerfile",
+    "graphql",
+    "help",
 		"java",
-		"json",
-		"typescript",
 		"javascript",
+		"jsdoc",
+		"json",
+		"lua",
+		"toml",
+		"typescript",
 		-- "markdown",
+		"rust",
+		"scss",
+    "todotxt",
 		"vim",
+    "yaml"
 		-- "html",
 	},
 
