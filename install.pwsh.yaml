@@ -11,6 +11,8 @@
       path: pwsh/Microsoft.PowerShell_profile.ps1
     $USERPROFILE/.custom.omp.yaml:
       path: posh/.custom.omp.yaml
+    $USERPROFILE/.ideavimrc:
+      path: idea/.ideavimrc
     $LOCALAPPDATA/clink/lf.lua:
       path: clink/lf.lua
     $LOCALAPPDATA/clink/neovide.lua:

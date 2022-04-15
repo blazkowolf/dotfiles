@@ -1,0 +1,64 @@
+
+""" Use system clipboard
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+""" Remap leader key to space ---------------
+let mapleader=" "
+
+""" Emulated VIM plugins --------------------
+set NERDTree
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+set number relativenumber
+
+""" Remap commands --------------------------
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+""" Remap Intellij Actions ------------------
+set incsearch
+map / <Action>(Find)
+
+map <leader>cc <Action>(CommentByLineComment)
+
+" Pickers
+map <leader>ff <Action>(GotoFile)
+map <leader>fg <Action>(FindInPath)
+map <leader>fb <Action>(Switcher)
+map <leader>fv <Action>(Git.Branches)
+map <leader>fr <Action>(ChooseRunConfiguration)
+
+" Code actions
+map gD <Action>(GotoDeclaration)
+map gd <Action>(GotoDefinition)
+map gi <Action>(GotoImplementation)
+map gr <Action>(FindUsages)
+
+map <leader>rn <Action>(RenameElement)
+
+" Git actions
+map <leader>G <Action>(CheckinProject)
+map <leader>U <Action>(Vcs.UpdateProject)
+map <leader>gg <Action>(Git.Commit.And.Push.Executor)
+
+map <leader>vs <Action>(SplitVertically)
+map <leader>sp <Action>(SplitHorizontally)
+
+map <leader>er <Action>(editRunConfigurations)
+map <leader>ru <Action>(Run)
+map <leader>st <Action>(Stop)
+
+map <leader>% <Action>(IdeaVim.ReloadVimRc.reload)
+" map <silent> <leader>, :e $USERPROFILE/.ideavimrc<CR>

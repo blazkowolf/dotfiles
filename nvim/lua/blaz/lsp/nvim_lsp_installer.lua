@@ -16,8 +16,8 @@ local server_opts = require("blaz.lsp.opts")
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
-	local opts = require("blaz.lsp.opts.defaults")
-	-- (optional) Customize the options passed to the server
+	local default_opts = require("blaz.lsp.opts.defaults")
+
 	if server.name == "rust_analyzer" then
 		-- Initialize the LSP via rust-tools instead
 		require("rust-tools").setup({
@@ -25,16 +25,16 @@ lsp_installer.on_server_ready(function(server)
 			-- settings rust-tools will provide to lspconfig during init.
 			-- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
 			-- with the user's own settings (opts).
-			server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+			server = vim.tbl_deep_extend("force", server:get_default_options(), default_opts),
 		})
 		server:attach_buffers()
-	elseif server.name == "jdtls" then
-		-- do nothing...
 		return
-	elseif server_opts[server.name] then
-		-- Enhnace the default opts with the server-specific ones
-		server:setup(server_opts[server.name])
-	else
-		server:setup(opts)
 	end
+
+	if server.name == "jdtls" then
+		-- Let `ftplugin/jdtls.lua` handle it...
+		return
+	end
+
+	server:setup(server_opts[server.name] or default_opts)
 end)
