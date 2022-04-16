@@ -5,14 +5,15 @@
 - clean: 
   - '$LOCALAPPDATA/nvim'
   - '$LOCALAPPDATA/clink'
+  - '$LOCALAPPDATA/lf'
 
 - link:
     $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
       path: pwsh/Microsoft.PowerShell_profile.ps1
-    $USERPROFILE/.custom.omp.yaml:
-      path: posh/.custom.omp.yaml
     $USERPROFILE/.ideavimrc:
       path: idea/.ideavimrc
+    $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
+      path: winget/settings.json
     $LOCALAPPDATA/clink/lf.lua:
       path: clink/lf.lua
     $LOCALAPPDATA/clink/neovide.lua:
