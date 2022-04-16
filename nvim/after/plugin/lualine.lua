@@ -42,7 +42,7 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "vim-plug", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "checkhealth", "fugitive", "terminal", "dashboard", "vim-plug", "NvimTree", "Outline" },
 		always_divide_middle = true,
 		-- Have single statusline at the bottom of Neovim instead of one for every window
 		-- Requires Neovim >= v7
