@@ -16,14 +16,14 @@ end
 nvim_treesitter_configs.setup({
 	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = {
-    "bash",
+		"bash",
 		"c",
-    "comment",
+		"comment",
 		"cpp",
 		"css",
 		"dockerfile",
-    "graphql",
-    "help",
+		"graphql",
+		"help",
 		"java",
 		"javascript",
 		"jsdoc",
@@ -34,9 +34,9 @@ nvim_treesitter_configs.setup({
 		-- "markdown",
 		"rust",
 		"scss",
-    "todotxt",
+		"todotxt",
 		"vim",
-    "yaml"
+		"yaml",
 		-- "html",
 	},
 

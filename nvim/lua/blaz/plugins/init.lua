@@ -65,7 +65,7 @@ M.load = function(plugin_download_dir)
 	Plug("simrat39/rust-tools.nvim")
 	Plug("rust-lang/rust.vim")
 
-  Plug("mfussenegger/nvim-jdtls")
+	Plug("mfussenegger/nvim-jdtls")
 
 	Plug("hrsh7th/cmp-nvim-lsp")
 	Plug("hrsh7th/cmp-nvim-lsp-document-symbol")
