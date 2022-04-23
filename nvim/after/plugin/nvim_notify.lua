@@ -35,15 +35,15 @@ if has_notify then
 	-- Make every notification go through nvim-notify
 	vim.notify = nvim_notify
 
-  notify.debug(
-    "Notify",
-    "nvim-notify setup successful!",
-    "Outputting incoming notifications to nvim-notify..."
-  )
+	notify.debug(
+		"Notify",
+		"nvim-notify setup successful!",
+		"Outputting incoming notifications to nvim-notify..."
+	)
 else
-  notify.debug(
-    "Notify",
-    "nvim-notify not found!",
-    "Outputting incoming notifications to the default :messages provider..."
-  )
+	notify.debug(
+		"Notify",
+		"nvim-notify not found!",
+		"Outputting incoming notifications to the default :messages provider..."
+	)
 end
