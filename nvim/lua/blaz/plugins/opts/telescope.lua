@@ -15,8 +15,8 @@ local opts = {
 	defaults = {
 		mappings = {
 			i = {
-        ["<C-n>"] = false,
-        ["<C-p>"] = false,
+				["<C-n>"] = false,
+				["<C-p>"] = false,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 			},
