@@ -1,13 +1,13 @@
-vim.api.nvim_set_keymap("", "gf", ":edit <cfile><cr>", {})
+vim.keymap.set("", "gf", ":edit <cfile><cr>")
 
 -- Move split panes to left/bottom/top/right
-vim.api.nvim_set_keymap("n", "<A-h>", "<C-W>H", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-j>", "<C-W>J", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-k>", "<C-W>K", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-l>", "<C-W>L", { noremap = true })
+vim.keymap.set("n", "<A-h>", "<C-W>H", { remap = false })
+vim.keymap.set("n", "<A-j>", "<C-W>J", { remap = false })
+vim.keymap.set("n", "<A-k>", "<C-W>K", { remap = false })
+vim.keymap.set("n", "<A-l>", "<C-W>L", { remap = false })
 
 -- Move between panes to left/bottom/top/right
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { remap = false })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { remap = false })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { remap = false })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { remap = false })
