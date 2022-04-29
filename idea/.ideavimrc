@@ -17,7 +17,7 @@ set idearefactormode=keep
 set number relativenumber
 
 """ Remap commands --------------------------
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 sethandler <C-j> a:vim
 sethandler <C-k> a:vim
