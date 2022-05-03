@@ -1,7 +1,9 @@
+local notify = require("blaz.helper.notify")
+
 -- NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
-vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>", { noremap = true })
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeFindFileToggle<CR>", { remap = false })
+vim.keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", { remap = false })
+-- vim.keymap.set("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>", { remap = false })
 
 -- this variable must be enabled for colors to be applied properly
 -- set termguicolors
@@ -11,11 +13,23 @@ vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>", { noremap
 
 local has_nvim_tree, nvim_tree = pcall(require, "nvim-tree")
 if not has_nvim_tree then
+	notify.warn(
+		"File Explorer",
+		"nvim-tree not found!",
+		"Skipping configuration for this plugin...",
+		"Some features will not work properly..."
+	)
 	return
 end
 
-local has_nvim_tree_config, nvim_tree_config = pcall(require, "nvim-tree.config")
+local has_nvim_tree_config, _ = pcall(require, "nvim-tree.config")
 if not has_nvim_tree_config then
+	notify.warn(
+		"File Explorer",
+		"nvim-tree.config not found!",
+		"Skipping configuration for this plugin...",
+		"Some features will not work properly..."
+	)
 	return
 end
 
