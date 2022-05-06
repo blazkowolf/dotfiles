@@ -1,5 +1,10 @@
 -- Handle file types
-vim.cmd([[autocmd BufNewFile,BufRead *.rs set filetype=rust]])
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.rs",
+	callback = function()
+		vim.opt.filetype = "rust"
+	end,
+})
 
 local notify = require("blaz.helper.notify")
 

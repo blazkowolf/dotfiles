@@ -8,7 +8,10 @@ end
 vim.opt.background = "dark"
 
 -- Workaround for setting a transparent background
--- vim.cmd([[autocmd VimEnter * highlight Normal guibg=NONE ctermbg=NONE]])
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   pattern = "*",
+--   command = "highlight Normal guibg=NONE",
+-- })
 
 vim.opt.backup = false
 -- I want as-you-type autocompletion
@@ -20,6 +23,11 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 2
 vim.opt.fileencoding = "utf-8"
 vim.opt.ignorecase = true
+-- I want global statusline
+vim.opt.laststatus = 3
+-- I want crisp window separators
+-- vim.cmd([[highlight WinSeparator guibg=NONE]])
+
 vim.opt.pumheight = 10
 -- Avoid vertical jitter from lsp diagnostics populating
 -- by always showing the sign column they display inside of
@@ -45,6 +53,8 @@ vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
 vim.opt.guifont = [[CaskaydiaCove Nerd Font:h12]]
+-- vim.opt.guifont = [[JetBrainsMono Nerd Font Mono:h12]]
+-- vim.opt.guifont = [[FixedsysExcelsiorIIIb NF:h14]]
 
 vim.cmd([[syntax enable]])
 -- vim.cmd([[syntax on]])

@@ -19,9 +19,10 @@ local function download_vim_plug()
 	print(out)
 	print("(Downloading Vim-Plug...)")
 
-	vim.cmd(
-		[[autocmd VimEnter * PlugInstall --sync | execute "source" stdpath("config") . '/init.lua']]
-	)
+	vim.api.nvim_create_autocmd("VimEnter", {
+		pattern = "*",
+		command = [[PlugInstall --sync | execute "source" stdpath("config") . '/init.lua']],
+	})
 end
 
 ---@module "blaz.plugins"
