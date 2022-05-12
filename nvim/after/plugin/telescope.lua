@@ -44,6 +44,10 @@ vim.keymap.set("n", "<leader>fg", function()
 	return require("telescope.builtin").live_grep()
 end, { remap = false })
 
+vim.keymap.set("n", "<leader>fv", function()
+	return require("telescope.builtin").git_branches()
+end, { remap = false })
+
 vim.keymap.set("n", "<leader>fb", function()
 	return require("telescope.builtin").buffers()
 end, { remap = false })

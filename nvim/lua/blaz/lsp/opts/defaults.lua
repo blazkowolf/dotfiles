@@ -3,7 +3,7 @@ local notify = require("blaz.helper.notify")
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
-	if client.name == "tsserver" or client.name == "sumneko_lua" then
+	if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "jsonls" then
 		client.resolved_capabilities.document_formatting = false
 	end
 
