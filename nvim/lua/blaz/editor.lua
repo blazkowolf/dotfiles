@@ -52,7 +52,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
-vim.opt.guifont = [[CaskaydiaCove Nerd Font:h12]]
+vim.opt.guifont = [[CaskaydiaCove Nerd Font:h11]]
 -- vim.opt.guifont = [[JetBrainsMono Nerd Font Mono:h12]]
 -- vim.opt.guifont = [[FixedsysExcelsiorIIIb NF:h14]]
 

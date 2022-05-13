@@ -41,6 +41,8 @@ M.load = function(plugin_download_dir)
 		download_vim_plug()
 	end
 
+  ---@param plugin string
+  ---@param opts_str string
 	local function Plug(plugin, opts_str)
 		if type(plugin) ~= "string" then
 			return
@@ -56,6 +58,7 @@ M.load = function(plugin_download_dir)
 	Plug("windwp/nvim-autopairs")
 	Plug("ellisonleao/gruvbox.nvim")
 	Plug("folke/tokyonight.nvim", "{ 'branch': 'main' }")
+  Plug("projekt0n/github-nvim-theme")
 
 	Plug("preservim/nerdcommenter")
 
