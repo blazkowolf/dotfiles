@@ -39,6 +39,10 @@ vim.keymap.set("n", "<leader>ff", function()
 	return require("blaz.helper.telescope").project_files()
 end, { remap = false })
 
+vim.keymap.set("n", "<leader>fc", function()
+	return require("telescope.builtin").colorscheme()
+end, { remap = false })
+
 -- Need ripgrep installed for the `live-grep` functionality
 vim.keymap.set("n", "<leader>fg", function()
 	return require("telescope.builtin").live_grep()

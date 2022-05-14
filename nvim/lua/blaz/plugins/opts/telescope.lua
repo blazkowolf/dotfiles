@@ -44,6 +44,11 @@ local opts = {
 		color_devicons = true,
 	},
 	pickers = {
+		colorscheme = {
+			theme = "cursor",
+			previewer = false,
+      prompt_prefix = "🎨 "
+		},
 		find_files = {
 			theme = "dropdown",
 			previewer = false,
