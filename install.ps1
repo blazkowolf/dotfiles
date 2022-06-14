@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$CONFIG = "install.pwsh.yaml"
+$CONFIG = "install.win.yaml"
 $DOTBOT_DIR = "dotbot"
 
 $DOTBOT_BIN = "bin/dotbot"

@@ -2,7 +2,7 @@
 
 set -e
 
-CONFIG="install.bash.yaml"
+CONFIG="install.linux.yaml"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"

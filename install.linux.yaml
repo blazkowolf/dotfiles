@@ -3,13 +3,19 @@
       relink: true
 
 - clean: 
+  - '~/.config/kitty'
   - '~/.config/nvim'
   - '~/.config/nvim/plugins'
   - '~/.config/nvim/lua/*'
 
 - link:
-    ~/.custom.omp.yaml:
-      path: posh/.custom.omp.yaml
+    ~/.bashrc:
+      path: bash/.bashrc
+      create: true
+      force: true
+    ~/.config/kitty/kitty.conf:
+      path: kitty/kitty.conf
+      create: true
     ~/.config/nvim/:
       path: nvim/**/*
       create: true
