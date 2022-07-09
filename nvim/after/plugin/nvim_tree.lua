@@ -39,7 +39,7 @@ end
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
-  create_in_closed_folder = false,
+	create_in_closed_folder = false,
 	disable_netrw = false,
 	hijack_cursor = false,
 	hijack_netrw = true,
@@ -50,7 +50,7 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 	open_on_tab = false,
 	sort_by = "name",
 	update_cwd = false,
-  respect_buf_cwd = false,
+	respect_buf_cwd = false,
 	view = {
 		width = 30,
 		height = 30,
@@ -68,11 +68,11 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 		},
 	},
 	renderer = {
-    highlight_git = false,
-    highlight_opened_files = "all",
-    root_folder_modifier = ":~",
-    add_trailing = false,
-    group_empty = false,
+		highlight_git = false,
+		highlight_opened_files = "all",
+		root_folder_modifier = ":~",
+		add_trailing = false,
+		group_empty = false,
 		indent_markers = {
 			enable = false,
 			icons = {
@@ -83,59 +83,59 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 		},
 		icons = {
 			webdev_colors = true,
-      git_placement = "before",
-      padding = " ",
-      symlink_arrow = " ➛ ",
-      -- If `false`, do not show the icons for one of 'git' 'folder' and 'files'
-      -- 1 by default, notice that if 'files' is `true`, it will only display
-      -- if nvim-web-devicons is installed and on your runtimepath.
-      -- if folder is `true`, you can also tell folder_arrows `true` to show
-      -- small arrows next to the folder icons.
-      -- But this will not work when you set indent_markers (because of UI conflict)
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = true,
-      },
-      glyphs = {
-        -- default will show icon by default if no icon is provided
-        -- default shows no icon by default
-	      ["default"] = "",
-	      ["symlink"] = "",
-	      ["git"] = {
-		      ["unstaged"] = "✗",
-		      ["staged"] = "✓",
-		      ["unmerged"] = "",
-		      ["renamed"] = "➜",
-		      ["untracked"] = "★",
-		      ["deleted"] = "",
-		      ["ignored"] = "◌",
-	      },
-	      ["folder"] = {
-		      ["arrow_open"] = "",
-		      ["arrow_closed"] = "",
-		      ["default"] = "",
-		      ["open"] = "",
-		      ["empty"] = "",
-		      ["empty_open"] = "",
-		      ["symlink"] = "",
-		      ["symlink_open"] = "",
-	      },
-      },
+			git_placement = "before",
+			padding = " ",
+			symlink_arrow = " ➛ ",
+			-- If `false`, do not show the icons for one of 'git' 'folder' and 'files'
+			-- 1 by default, notice that if 'files' is `true`, it will only display
+			-- if nvim-web-devicons is installed and on your runtimepath.
+			-- if folder is `true`, you can also tell folder_arrows `true` to show
+			-- small arrows next to the folder icons.
+			-- But this will not work when you set indent_markers (because of UI conflict)
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+			},
+			glyphs = {
+				-- default will show icon by default if no icon is provided
+				-- default shows no icon by default
+				["default"] = "",
+				["symlink"] = "",
+				["git"] = {
+					["unstaged"] = "✗",
+					["staged"] = "✓",
+					["unmerged"] = "",
+					["renamed"] = "➜",
+					["untracked"] = "★",
+					["deleted"] = "",
+					["ignored"] = "◌",
+				},
+				["folder"] = {
+					["arrow_open"] = "",
+					["arrow_closed"] = "",
+					["default"] = "",
+					["open"] = "",
+					["empty"] = "",
+					["empty_open"] = "",
+					["symlink"] = "",
+					["symlink_open"] = "",
+				},
+			},
 		},
-    -- List of filenames that gets highlighted with NvimTreeSpecialFile
-    special_files = {
-      "Cargo.toml",
-	    "CONTRIBUTING.md",
-	    "LICENSE",
-	    "LICENSE.md",
-	    "Makefile",
-	    "MAKEFILE",
-	    "NOTICE",
-	    "README.md",
-	    "readme.md",
-    },
+		-- List of filenames that gets highlighted with NvimTreeSpecialFile
+		special_files = {
+			"Cargo.toml",
+			"CONTRIBUTING.md",
+			"LICENSE",
+			"LICENSE.md",
+			"Makefile",
+			"MAKEFILE",
+			"NOTICE",
+			"README.md",
+			"readme.md",
+		},
 	},
 	hijack_directories = {
 		enable = true,
@@ -185,7 +185,16 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 				enable = false,
 				chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 				exclude = {
-					filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", "lspinfo", "vim-plug" },
+					filetype = {
+						"notify",
+						"packer",
+						"qf",
+						"diff",
+						"fugitive",
+						"fugitiveblame",
+						"lspinfo",
+						"vim-plug",
+					},
 					buftype = { "nofile", "terminal", "help" },
 				},
 			},

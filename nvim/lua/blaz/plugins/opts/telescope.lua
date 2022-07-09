@@ -47,7 +47,7 @@ local opts = {
 		colorscheme = {
 			theme = "cursor",
 			previewer = false,
-      prompt_prefix = "🎨 "
+			prompt_prefix = "🎨 ",
 		},
 		find_files = {
 			theme = "dropdown",
