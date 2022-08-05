@@ -22,6 +22,8 @@ vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 2
 vim.opt.fileencoding = "utf-8"
+-- I don't want search results highlighted
+vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 -- I want global statusline
 vim.opt.laststatus = 3
@@ -32,7 +34,7 @@ vim.opt.pumheight = 10
 -- Avoid vertical jitter from lsp diagnostics populating
 -- by always showing the sign column they display inside of
 vim.opt.signcolumn = "yes"
--- I  don't want extra messages showing when using completion
+-- I don't want extra messages showing when using completion
 vim.opt.shortmess:append("c")
 -- I don't want vim's status indicators for the various
 -- editor modes to visually conflict with lualine's
