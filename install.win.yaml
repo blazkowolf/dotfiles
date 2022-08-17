@@ -2,7 +2,7 @@
     link:
       relink: true
 
-- clean: 
+- clean:
   - '$LOCALAPPDATA/nvim'
   - '$LOCALAPPDATA/clink'
   - '$LOCALAPPDATA/lf'
@@ -14,10 +14,8 @@
       path: idea/.ideavimrc
     $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
       path: winget/settings.json
-    $LOCALAPPDATA/clink/lf.lua:
-      path: clink/lf.lua
-    $LOCALAPPDATA/clink/neovide.lua:
-      path: clink/neovide.lua
+    $LOCALAPPDATA/clink/env.lua:
+      path: clink/env.lua
     $LOCALAPPDATA/lf/lfrc:
       path: lf/lfrc
     $LOCALAPPDATA/lf/pv.cmd:

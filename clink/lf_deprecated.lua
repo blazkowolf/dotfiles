@@ -166,5 +166,3 @@ local lf_icons = ""
 for k, v in pairs(icons) do
 	lf_icons = lf_icons .. string.format("%s=%s", k, v)
 end
-
-os.setenv("LF_ICONS", lf_icons)
