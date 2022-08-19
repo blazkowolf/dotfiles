@@ -1,5 +1,7 @@
+---@diagnostic disable-next-line: unused-local
 local green = "\x1b[92m"
 local yellow = "\x1b[93m"
+---@diagnostic disable-next-line: unused-local
 local cyan = "\x1b[36m"
 local normal = "\x1b[m"
 
