@@ -17,6 +17,7 @@ Import-Module PSReadLine
 
 # I want Vi/Vim-like keybindings
 Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -ViModeIndicator Cursor
 
 # I want to search command history for commands
 # starting with the currently entered text
@@ -28,27 +29,32 @@ Set-PSReadLineKeyHandler -Chord 'Oem7','Shift+Oem7' `
                          -BriefDescription SmartInsertQuote `
                          -LongDescription "Insert paired quotes if not already on a quote" `
                          -ScriptBlock {
-  param($key, $arg)
+  param($Key, $Arg)
 
-  $line = $null
-  $cursor = $null
-  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+  $Line = $null
+  $Cursor = $null
+  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$Line, [ref]$Cursor)
 
-  if ($line[$cursor] -eq $key.KeyChar) {
+  if ($Line[$Cursor] -eq $Key.KeyChar) {
     # Just move the cursor
-    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($cursor + 1)
+    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($Cursor + 1)
   }
   else {
     # Insert matching quotes, move cursor to be in between the quotes
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("$($key.KeyChar)" * 2)
-    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
-    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($cursor - 1)
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("$($Key.KeyChar)" * 2)
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$Line, [ref]$Cursor)
+    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($Cursor - 1)
   }
 }
 
-# function Prompt
-# {
-#   # Determine if Powershell is running as Administrator
-#   $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-#   $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-# }
+# Determine if Powershell is running as Administrator
+$CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal($CurrentUser)
+$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$UserEmoji = $IsAdmin ? "🔒" : "🧔🏻"
+# I want the username separate from the domain in `domain\username`
+$Username = ($CurrentUser.Name -Split "\\")[1]
+
+function Prompt {
+  "[$($UserEmoji)$($Username)@$(HostName.exe)] 📂$(Split-Path -Path (Get-Location) -Leaf) ❯ "
+}

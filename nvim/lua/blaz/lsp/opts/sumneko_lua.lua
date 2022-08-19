@@ -4,8 +4,20 @@ local opts = {
 	settings = {
 		Lua = {
 			diagnostics = {
-				-- Make LSP recognize `vim` global
-				globals = { "vim" },
+				globals = {
+					-- Clink globals
+					"clink",
+					"console",
+					"io",
+					"log",
+					"os",
+					"path",
+					"rl",
+					"settings",
+					"unicode",
+					-- Neovim globals
+					"vim",
+				},
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
