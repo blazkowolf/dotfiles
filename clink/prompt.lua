@@ -5,7 +5,7 @@ local yellow = "\x1b[93m"
 local cyan = "\x1b[36m"
 local normal = "\x1b[m"
 
-local format_prompt_str = "[🧔🏻%s@%s] 📂%s ❯ "
+local format_prompt_str = "[%s@%s] 📂%s ❯ "
 
 local file = io.popen("HostName.exe")
 local hostname = file:read("*line")

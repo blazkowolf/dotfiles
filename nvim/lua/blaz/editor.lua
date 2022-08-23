@@ -8,10 +8,10 @@ end
 vim.opt.background = "dark"
 
 -- Workaround for setting a transparent background
--- vim.api.nvim_create_autocmd("VimEnter", {
---   pattern = "*",
---   command = "highlight Normal guibg=NONE",
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+	pattern = "*",
+	command = "highlight Normal guibg=NONE",
+})
 
 vim.opt.backup = false
 -- I want as-you-type autocompletion
