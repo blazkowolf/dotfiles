@@ -45,9 +45,12 @@ local DIR = {
 
 prepend_to_path(
 	string.format("%s\\bat", DIR.PROGRAM_FILES),
+	"G:\\evaldraw",
 	string.format("%s\\fd", DIR.PROGRAM_FILES),
+	string.format("%s\\hexyl", DIR.PROGRAM_FILES),
 	string.format("%s\\lf", DIR.PROGRAM_FILES),
 	string.format("%s\\ripgrep", DIR.PROGRAM_FILES),
+	string.format("%s\\VideoLAN\\VLC", DIR.PROGRAM_FILES_X86),
 	string.format(
 		"%s\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.31.31103\\bin\\Hostx64\\x86",
 		DIR.PROGRAM_FILES_X86

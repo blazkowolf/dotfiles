@@ -21,7 +21,17 @@ local function empty(thing)
 	return vim.fn.empty(thing) == 1
 end
 
+---Wrapper helper around `vim.fn.exists({expr})`
+---
+---Returns true if {var} exists, false otherwise.
+---@param var string global, buffer, or local variable to check
+---@return boolean
+local function exists(var)
+	return vim.api.nvim_eval(string.format('exists("%s")', var)) == 1
+end
+
 return {
 	has = has,
 	empty = empty,
+	exists = exists,
 }

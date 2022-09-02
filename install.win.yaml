@@ -18,6 +18,8 @@
       path: clink/.inputrc
     $LOCALAPPDATA/clink/env.lua:
       path: clink/env.lua
+    $LOCALAPPDATA/clink/argcmp.lua:
+      path: clink/argcmp.lua
     $LOCALAPPDATA/clink/prompt.lua:
       path: clink/prompt.lua
     $LOCALAPPDATA/lf/lfrc:

@@ -5,9 +5,12 @@ Import-Module -Name Terminal-Icons
 
 $env:Path =
   "$env:PROGRAMFILES\bat;" +
+  "G:\evaldraw;" +
   "$env:PROGRAMFILES\fd;" +
   "$env:PROGRAMFILES\lf;" +
+  "$env:PROGRAMFILES\hexyl;" +
   "$env:PROGRAMFILES\ripgrep;" +
+  "${env:PROGRAMFILES(x86)}\VideoLAN\VLC"+
   "${env:PROGRAMFILES(x86)}\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.31.31103\bin\Hostx64\x86;" +
   "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe;" +
   $env:Path

@@ -1,4 +1,5 @@
 local has = require("blaz.helper.vim").has
+local exists = require("blaz.helper.vim").exists
 
 if has("termguicolors") then
 	vim.opt.termguicolors = true
@@ -8,10 +9,14 @@ end
 vim.opt.background = "dark"
 
 -- Workaround for setting a transparent background
-vim.api.nvim_create_autocmd("VimEnter", {
-	pattern = "*",
-	command = "highlight Normal guibg=NONE",
-})
+-- only in a terminal Neovim client
+local using_neovide = exists("g:neovide")
+if not using_neovide then
+	vim.api.nvim_create_autocmd("VimEnter", {
+		pattern = "*",
+		command = "highlight Normal guibg=NONE",
+	})
+end
 
 vim.opt.backup = false
 -- I want as-you-type autocompletion
