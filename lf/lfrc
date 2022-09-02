@@ -32,8 +32,15 @@ set scrolloff 10
 
 set drawbox
 set icons
+# set colors
 
 set previewer ~/AppData/Local/lf/pv.cmd
+
+cmd extract $%LOCALAPPDATA%/lf/extract.cmd %f%
+map x extract
+
+cmd mkdir %mkdir "$@"
+map a push :mkdir<space>
 
 # use enter for shell commands
 map <enter> shell
@@ -41,4 +48,3 @@ map <enter> shell
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %~/AppData/Local/lf/rn.cmd $f $0
 # map r push :rename<space>
-

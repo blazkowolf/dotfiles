@@ -1,7 +1,8 @@
 -- I want a higher refresh rate when
 -- running Neovide from my desktop
 vim.g.neovide_refresh_rate = 60
-if vim.fn.tolower(vim.fn.hostname()) == "blazdesk" then
+local hostname = require("blaz.helper.vim").HOSTNAME:lower()
+if hostname == "blazdesk" then
 	vim.g.neovide_refresh_rate = 144
 end
 

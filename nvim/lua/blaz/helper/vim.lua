@@ -30,8 +30,15 @@ local function exists(var)
 	return vim.api.nvim_eval(string.format('exists("%s")', var)) == 1
 end
 
+---Helper returning the hostname of the system
+---Neovim is currently running on
+---
+---@type string
+local HOSTNAME = vim.api.nvim_eval("hostname()")
+
 return {
 	has = has,
 	empty = empty,
 	exists = exists,
+	HOSTNAME = HOSTNAME,
 }

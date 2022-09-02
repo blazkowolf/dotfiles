@@ -55,10 +55,7 @@ prepend_to_path(
 		"%s\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.31.31103\\bin\\Hostx64\\x86",
 		DIR.PROGRAM_FILES_X86
 	),
-	string.format(
-		"%s\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe",
-		DIR.LOCAL_APP_DATA
-	)
+	string.format("%s\\Microsoft\\WindowsApps", DIR.LOCAL_APP_DATA)
 )
 
 --#region Neovide environment settings

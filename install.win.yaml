@@ -26,6 +26,10 @@
       path: lf/lfrc
     $LOCALAPPDATA/lf/pv.cmd:
       path: lf/pv.cmd
+    $LOCALAPPDATA/lf/extract.cmd:
+      path: lf/extract.cmd
+    $LOCALAPPDATA/lf/colors:
+      path: lf/colors
     $LOCALAPPDATA/lf/icons:
       path: lf/icons
     $LOCALAPPDATA/:
