@@ -3,13 +3,16 @@
       relink: true
 
 - clean:
-  - '$LOCALAPPDATA/nvim'
   - '$LOCALAPPDATA/clink'
   - '$LOCALAPPDATA/lf'
+  - '$LOCALAPPDATA/nvim'
+  - '$LOCALAPPDATA/pwsh'
 
 - link:
     $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
-      path: pwsh/Microsoft.PowerShell_profile.ps1
+      path: pwsh/profile.ps1
+    $USERPROFILE/Documents/PowerShell/Scripts/lf.ps1:
+      path: pwsh/argcmp/lf.ps1
     $USERPROFILE/.ideavimrc:
       path: idea/.ideavimrc
     $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
@@ -32,6 +35,10 @@
       path: lf/colors
     $LOCALAPPDATA/lf/icons:
       path: lf/icons
+    $USERPROFILE/.config/winfetch/config.ps1:
+      path: winfetch/config.ps1
+    $USERPROFILE/.config/winfetch/image.png:
+      path: winfetch/image.png
     $LOCALAPPDATA/:
       glob: true
       create: true

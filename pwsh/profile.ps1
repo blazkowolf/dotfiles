@@ -10,13 +10,21 @@ $env:Path =
   "$env:PROGRAMFILES\lf;" +
   "$env:PROGRAMFILES\hexyl;" +
   "$env:PROGRAMFILES\ripgrep;" +
-  "${env:PROGRAMFILES(x86)}\VideoLAN\VLC"+
+  "${env:PROGRAMFILES(x86)}\VideoLAN\VLC;"+
   "${env:PROGRAMFILES(x86)}\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.31.31103\bin\Hostx64\x86;" +
-  "$env:LOCALAPPDATA\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe;" +
+  "$env:LOCALAPPDATA\Microsoft\WindowsApps" +
   $env:Path
 
+# Argument completion
+& $PSScriptRoot\Scripts\lf.ps1
+
+# Aliases
+Set-Alias winfetch pwshfetch-test-1
+
 # PSReadLine
-Import-Module PSReadLine
+Import-Module -Name PSReadLine
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
 
 # I want Vi/Vim-like keybindings
 Set-PSReadLineOption -EditMode Vi
@@ -54,10 +62,9 @@ Set-PSReadLineKeyHandler -Chord 'Oem7','Shift+Oem7' `
 $CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal($CurrentUser)
 $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-$UserEmoji = $IsAdmin ? "🔒" : "🧔🏻"
 # I want the username separate from the domain in `domain\username`
-$Username = ($CurrentUser.Name -Split "\\")[1]
+$Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
 
 function Prompt {
-  "[$($UserEmoji)$($Username)@$(HostName.exe)] 📂$(Split-Path -Path (Get-Location) -Leaf) ❯ "
+  "[$($Username)@$(HostName.exe)] 📂$(Split-Path -Path (Get-Location) -Leaf) ❯ "
 }
