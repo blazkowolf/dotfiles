@@ -9,14 +9,21 @@
   - '$LOCALAPPDATA/pwsh'
 
 - link:
+    # PowerShell
     $USERPROFILE/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
       path: pwsh/profile.ps1
     $USERPROFILE/Documents/PowerShell/Scripts/lf.ps1:
       path: pwsh/argcmp/lf.ps1
+
+    # Ideavim
     $USERPROFILE/.ideavimrc:
       path: idea/.ideavimrc
+
+    # Winget
     $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
       path: winget/settings.json
+
+    # Clink
     $LOCALAPPDATA/clink/.inputrc:
       path: clink/.inputrc
     $LOCALAPPDATA/clink/env.lua:
@@ -25,6 +32,8 @@
       path: clink/argcmp.lua
     $LOCALAPPDATA/clink/prompt.lua:
       path: clink/prompt.lua
+
+    # LF
     $LOCALAPPDATA/lf/lfrc:
       path: lf/lfrc
     $LOCALAPPDATA/lf/pv.cmd:
@@ -35,10 +44,20 @@
       path: lf/colors
     $LOCALAPPDATA/lf/icons:
       path: lf/icons
+
+    # Winfetch
     $USERPROFILE/.config/winfetch/config.ps1:
       path: winfetch/config.ps1
     $USERPROFILE/.config/winfetch/image.png:
       path: winfetch/image.png
+
+    # Workspacer
+    $USERPROFILE/.workspacer/workspacer.config.csx:
+      path: workspacer/workspacer.config.csx
+    $USERPROFILE/.workspacer/project.json:
+      path: workspacer/project.json
+
+    # Neovim
     $LOCALAPPDATA/:
       glob: true
       create: true
