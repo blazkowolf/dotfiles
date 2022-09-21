@@ -32,7 +32,12 @@ lsp_installer.on_server_ready(function(server)
 	end
 
 	if server.name == "jdtls" then
-		-- Let `ftplugin/jdtls.lua` handle it...
+		-- Let `ftplugin/java.lua` handle it...
+		return
+	end
+
+	if server.name == "omnisharp" then
+		-- Let `ftplugin/cs.lua` handle it...
 		return
 	end
 

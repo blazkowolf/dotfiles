@@ -1,7 +1,14 @@
 {
+  "$schema": "https://json.schemastore.org/omnisharp.json",
   "script": {
     "enabled": true,
     "defaultTargetFramework": "net5.0",
     "enableScriptNuGetReferences": true
+  },
+  "RoslynExtensionsOptions": {
+    "enableAnalyzersSupport": true
+  },
+  "FormattingOptions": {
+    "enableEditorConfigSupport": true
   }
 }

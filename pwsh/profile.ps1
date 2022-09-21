@@ -65,6 +65,15 @@ $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::A
 # I want the username separate from the domain in `domain\username`
 $Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
 
+# $nixPath = (((Get-Location) -Replace "\\", "/") -replace ":","").ToLower().Trim("/")
+#
+# "$user@$server/$nixpath"
+
 function Prompt {
-  "[$($Username)@$(HostName.exe)] 📂$(Split-Path -Path (Get-Location) -Leaf) ❯ "
+  $CurrentDir = (Convert-Path (Get-Location))
+  if ($CurrentDir.Contains($HOME)) {
+    $CurrentDir = $CurrentDir.Replace($HOME, "~")
+  }
+  $DisplayPath = $CurrentDir.Replace("\", "/").Replace(":", "").ToLower().Trim("/")
+  "[$($Username)@$(HostName.exe)] 📂$($DisplayPath) ❯ "
 }

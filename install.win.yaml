@@ -56,6 +56,10 @@
       path: workspacer/workspacer.config.csx
     $USERPROFILE/.workspacer/project.json:
       path: workspacer/project.json
+    $USERPROFILE/.workspacer/omnisharp.json:
+      path: workspacer/omnisharp.json
+    $USERPROFILE/.workspacer/ColorScheme.csx:
+      path: workspacer/ColorScheme.csx
 
     # Neovim
     $LOCALAPPDATA/:

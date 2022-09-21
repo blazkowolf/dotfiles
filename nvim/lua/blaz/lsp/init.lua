@@ -1,5 +1,11 @@
 -- Handle file types
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.csx",
+	callback = function()
+		vim.opt.filetype = "cs"
+	end,
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.rs",
 	callback = function()
 		vim.opt.filetype = "rust"
