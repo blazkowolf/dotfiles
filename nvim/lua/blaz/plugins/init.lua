@@ -43,6 +43,18 @@ M.load = function()
 
 		use({ "preservim/nerdcommenter" })
 
+		use({
+			"LhKipp/nvim-nu",
+			requires = {
+				"nvim-treesitter/nvim-treesitter",
+				"jose-elias-alvarez/null-ls.nvim",
+			},
+			run = ":TSInstall nu",
+			config = function()
+				require("nu").setup({ complete_cmd_names = true })
+			end,
+		})
+
 		use({ "neovim/nvim-lspconfig" })
 		use({ "williamboman/nvim-lsp-installer" })
 		-- use({ "williamboman/mason.nvim" })
