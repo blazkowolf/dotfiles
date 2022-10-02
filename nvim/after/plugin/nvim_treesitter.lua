@@ -29,6 +29,7 @@ nvim_treesitter_configs.setup({
 		"jsdoc",
 		"json",
 		"lua",
+		"nu",
 		"toml",
 		"typescript",
 		-- "markdown",

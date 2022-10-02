@@ -47,6 +47,8 @@ end
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Can add extra options to
 --    `client_capabilities`
+client_capabilities.textDocument.completion.snippetSupport = true
+
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not has_cmp_nvim_lsp then
 	notify.warn(

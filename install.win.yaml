@@ -8,6 +8,7 @@
   - '$LOCALAPPDATA/nvim'
   - '$LOCALAPPDATA/pwsh'
   - '$APPDATA/nushell'
+  - '$APPDATA/helix'
 
 - link:
     # PowerShell
@@ -68,11 +69,22 @@
     $APPDATA/nushell/config.nu:
       path: nu/config.nu
 
+    # Helix
+    $APPDATA/helix/config.toml:
+      path: helix/config.toml
+
     # Neovim
     $LOCALAPPDATA/:
       glob: true
       create: true
       path: nvim/**/*
+      exclude:
+        - '*nvim/lua/blaz/lsp/nvim_lsp_installer.lua'
+        - '*nvim/after/plugin/nerdcommenter.lua'
+        - '*nvim/after/plugin/nvim_autopairs.lua'
+        - '*nvim/after/plugin/nvim_notify.lua'
+        - '*nvim/after/plugin/nvim_tree.lua'
+        - '*nvim/lua/blaz/globals/nvim_tree.lua'
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

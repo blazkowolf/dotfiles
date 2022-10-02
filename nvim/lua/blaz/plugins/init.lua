@@ -1,23 +1,23 @@
 -- Inspiration from teej
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/first_load.lua
 
-local empty = require("blaz.helper.vim").empty
+-- local empty = require("blaz.helper.vim").empty
 
 -- Adapted from:
 -- https://github.com/wbthomason/packer.nvim#bootstrapping
-local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if empty(vim.fn.glob(packer_install_path)) then
-	---@diagnostic disable-next-line: lowercase-global
-	packer_bootstrap = vim.fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		packer_install_path,
-	})
-	vim.cmd([[packadd packer.nvim]])
-end
+-- local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if empty(vim.fn.glob(packer_install_path)) then
+--   ---@diagnostic disable-next-line: lowercase-global
+--   packer_bootstrap = vim.fn.system({
+--     "git",
+--     "clone",
+--     "--depth",
+--     "1",
+--     "https://github.com/wbthomason/packer.nvim",
+--     packer_install_path,
+--   })
+--   vim.cmd([[packadd packer.nvim]])
+-- end
 
 -- Adapted from:
 -- https://github.com/wbthomason/packer.nvim
@@ -34,14 +34,14 @@ local M = {}
 M.load = function()
 	require("packer").startup(function(use)
 		use({ "wbthomason/packer.nvim" })
-		use({ "windwp/nvim-autopairs" })
+		-- use({ "windwp/nvim-autopairs" })
 
 		-- Colorschemes
 		use({ "ellisonleao/gruvbox.nvim" })
 		use({ "folke/tokyonight.nvim" })
 		use({ "projekt0n/github-nvim-theme" })
 
-		use({ "preservim/nerdcommenter" })
+		-- use({ "preservim/nerdcommenter" })
 
 		use({
 			"LhKipp/nvim-nu",
@@ -56,7 +56,7 @@ M.load = function()
 		})
 
 		use({ "neovim/nvim-lspconfig" })
-		use({ "williamboman/nvim-lsp-installer" })
+		-- use({ "williamboman/nvim-lsp-installer" })
 		-- use({ "williamboman/mason.nvim" })
 		-- use({ "williamboman/mason-lspconfig.nvim" })
 		use({ "jose-elias-alvarez/null-ls.nvim" })
@@ -86,15 +86,15 @@ M.load = function()
 		use({ "L3MON4D3/LuaSnip" })
 
 		use({ "lewis6991/gitsigns.nvim" })
-		use({ "tpope/vim-fugitive" })
+		-- use({ "tpope/vim-fugitive" })
 
 		use({ "kyazdani42/nvim-web-devicons" }) -- for file icons
-		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = {
-				"kyazdani42/nvim-web-devicons",
-			},
-		})
+		-- use({
+		--   "kyazdani42/nvim-tree.lua",
+		--   requires = {
+		--     "kyazdani42/nvim-web-devicons",
+		--   },
+		-- })
 
 		use({ "nvim-lualine/lualine.nvim" })
 
@@ -112,7 +112,7 @@ M.load = function()
 
 		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-		use({ "rcarriga/nvim-notify" })
+		-- use({ "rcarriga/nvim-notify" })
 	end)
 end
 
