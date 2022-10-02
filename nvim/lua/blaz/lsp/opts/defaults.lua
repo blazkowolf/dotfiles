@@ -4,7 +4,7 @@ local notify = require("blaz.helper.notify")
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
 	if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "jsonls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	---@diagnostic disable-next-line

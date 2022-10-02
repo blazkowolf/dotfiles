@@ -1,9 +1,6 @@
 local has = require("blaz.helper.vim").has
 local exists = require("blaz.helper.vim").exists
 
-if has("termguicolors") then
-	vim.opt.termguicolors = true
-end
 -- I want the dark colorscheme variant by default
 -- Can also be "light"
 vim.opt.background = "dark"
@@ -24,11 +21,14 @@ vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
 
 -- I want Neovim to highlight what line I am on
 vim.opt.cursorline = true
+-- I want to use the system clipboard
 vim.opt.clipboard = "unnamedplus"
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
+vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
 -- I don't want search results highlighted
 vim.opt.hlsearch = false
+vim.opt.incsearch = true
 vim.opt.ignorecase = true
 -- I want global statusline
 vim.opt.laststatus = 3
@@ -39,6 +39,7 @@ vim.opt.pumheight = 10
 -- Avoid vertical jitter from lsp diagnostics populating
 -- by always showing the sign column they display inside of
 vim.opt.signcolumn = "yes"
+vim.opt.shiftwidth = 0
 -- I don't want extra messages showing when using completion
 vim.opt.shortmess:append("c")
 -- I don't want vim's status indicators for the various
@@ -47,10 +48,12 @@ vim.opt.showmode = false
 vim.opt.showtabline = 2
 vim.opt.smartcase = true
 vim.opt.smartindent = true
+vim.opt.softtabstop = 2
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.swapfile = false
-vim.opt.updatetime = 300
+-- I want a shorter update time ~ faster user experience
+vim.opt.updatetime = 50
 vim.opt.number = true
 vim.opt.numberwidth = 4
 vim.opt.relativenumber = true
@@ -68,6 +71,6 @@ vim.cmd([[syntax enable]])
 vim.cmd([[filetype plugin on]])
 
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 0
-vim.opt.expandtab = true
+if has("termguicolors") then
+	vim.opt.termguicolors = true
+end
