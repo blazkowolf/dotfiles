@@ -13,7 +13,7 @@ end
 
 -- Pulled from https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/lualine.lua
 -- cool function for progress
-local function progress()
+local function visual_progress()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
 	local chars = {
@@ -53,13 +53,14 @@ lualine.setup({
 			"NvimTree",
 			"Outline",
 			"packer",
+			"TelescopePrompt",
 			"terminal",
 			"vim-plug",
 		},
 		always_divide_middle = true,
 		-- Have single statusline at the bottom of Neovim instead of one for every window
 		-- Requires Neovim >= v7
-		-- globalstatus = true,
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -67,7 +68,7 @@ lualine.setup({
 		lualine_c = { "filename" },
 		lualine_x = { spaces, "encoding", "fileformat", "filetype" },
 		lualine_y = { "location" },
-		lualine_z = { progress },
+		lualine_z = { visual_progress },
 	},
 	inactive_sections = {
 		lualine_a = {},

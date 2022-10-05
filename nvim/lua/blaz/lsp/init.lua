@@ -37,8 +37,9 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-	-- disable virtual text
-	virtual_text = true,
+	-- I don't want virtual text because the screen
+	-- gets really busy with it on
+	virtual_text = false,
 	-- show signs
 	signs = {
 		active = signs,

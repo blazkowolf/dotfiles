@@ -30,10 +30,14 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.opt.isfname:append("@-@")
 -- I want global statusline
 vim.opt.laststatus = 3
 -- I want crisp window separators
 -- vim.cmd([[highlight WinSeparator guibg=NONE]])
+
+-- I want the mouse disabled by default
+vim.opt.mouse = ""
 
 vim.opt.pumheight = 10
 -- Avoid vertical jitter from lsp diagnostics populating
@@ -52,6 +56,8 @@ vim.opt.softtabstop = 2
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.swapfile = false
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
+vim.opt.undofile = true
 -- I want a shorter update time ~ faster user experience
 vim.opt.updatetime = 50
 vim.opt.number = true

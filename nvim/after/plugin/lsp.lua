@@ -36,3 +36,5 @@ rust_tools.setup({ server = default_opts })
 lspconfig.clangd.setup(default_opts)
 
 lspconfig.yamlls.setup(default_opts)
+
+lspconfig.tsserver.setup(default_opts)
