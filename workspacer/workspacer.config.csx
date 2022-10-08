@@ -1,8 +1,13 @@
 #r "C:\Program Files\workspacer\workspacer.Shared.dll"
+
 #r "C:\Program Files\workspacer\plugins\workspacer.Bar\workspacer.Bar.dll"
+
 #r "C:\Program Files\workspacer\plugins\workspacer.Gap\workspacer.Gap.dll"
+
 #r "C:\Program Files\workspacer\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+
 #r "C:\Program Files\workspacer\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+
 #r "C:\Program Files\workspacer\plugins\workspacer.TitleBar\workspacer.TitleBar.dll"
 
 using System;
@@ -66,7 +71,8 @@ private var gruvboxColors = new Dictionary<string, Color>()
 #endregion
 
 #region ColorScheme
-public struct ColorScheme {
+public struct ColorScheme
+{
   private readonly Color bg0;
   private readonly Color bg1;
   private readonly Color bg2;
@@ -88,26 +94,27 @@ public struct ColorScheme {
   private readonly Color orange;
 
   public ColorScheme(
-      Color bg0,
-      Color bg1,
-      Color bg2,
-      Color bg3,
-      Color bg4,
-      Color gray,
-      Color fg0,
-      Color fg1,
-      Color fg2,
-      Color fg3,
-      Color fg4,
-      Color fg4_256,
-      Color red,
-      Color green,
-      Color yellow,
-      Color blue,
-      Color purple,
-      Color aqua,
-      Color orange
-  ) {
+	  Color bg0,
+	  Color bg1,
+	  Color bg2,
+	  Color bg3,
+	  Color bg4,
+	  Color gray,
+	  Color fg0,
+	  Color fg1,
+	  Color fg2,
+	  Color fg3,
+	  Color fg4,
+	  Color fg4_256,
+	  Color red,
+	  Color green,
+	  Color yellow,
+	  Color blue,
+	  Color purple,
+	  Color aqua,
+	  Color orange
+  )
+  {
     this.bg0 = bg0;
     this.bg1 = bg1;
     this.bg2 = bg2;
@@ -152,29 +159,30 @@ public struct ColorScheme {
 #endregion
 
 public ColorScheme GruvboxDarkSoft = new(
-  bg0:     gruvboxColors["dark0_soft"],
-  bg1:     gruvboxColors["dark1"],
-  bg2:     gruvboxColors["dark2"],
-  bg3:     gruvboxColors["dark3"],
-  bg4:     gruvboxColors["dark4"],
-  gray:    gruvboxColors["gray_245"],
-  fg0:     gruvboxColors["light0"],
-  fg1:     gruvboxColors["light1"],
-  fg2:     gruvboxColors["light2"],
-  fg3:     gruvboxColors["light3"],
-  fg4:     gruvboxColors["light4"],
+  bg0: gruvboxColors["dark0_soft"],
+  bg1: gruvboxColors["dark1"],
+  bg2: gruvboxColors["dark2"],
+  bg3: gruvboxColors["dark3"],
+  bg4: gruvboxColors["dark4"],
+  gray: gruvboxColors["gray_245"],
+  fg0: gruvboxColors["light0"],
+  fg1: gruvboxColors["light1"],
+  fg2: gruvboxColors["light2"],
+  fg3: gruvboxColors["light3"],
+  fg4: gruvboxColors["light4"],
   fg4_256: gruvboxColors["light4_256"],
-  red:     gruvboxColors["bright_red"],
-  green:   gruvboxColors["bright_green"],
-  yellow:  gruvboxColors["bright_yellow"],
-  blue:    gruvboxColors["bright_blue"],
-  purple:  gruvboxColors["bright_purple"],
-  aqua:    gruvboxColors["bright_aqua"],
-  orange:  gruvboxColors["bright_orange"]
+  red: gruvboxColors["bright_red"],
+  green: gruvboxColors["bright_green"],
+  yellow: gruvboxColors["bright_yellow"],
+  blue: gruvboxColors["bright_blue"],
+  purple: gruvboxColors["bright_purple"],
+  aqua: gruvboxColors["bright_aqua"],
+  orange: gruvboxColors["bright_orange"]
 );
 
 private const int FONT_SIZE = 16;
-private const string FONT_NAME = "CaskaydiaCove NF";
+private const string FONT_NAME = "FixedsysExcelsiorIIIb NF";
+// private const string FONT_NAME = "CaskaydiaCove NF";
 
 private const int BAR_HEIGHT = 30;
 
@@ -188,8 +196,8 @@ Action<IConfigContext> doConfig = (context) =>
   var emptyColor = GruvboxDarkSoft.Gray;
   var backColor = GruvboxDarkSoft.Aqua;
 
-	// Uncomment to switch update branch (or to disable updates)
-	//context.Branch = Branch.None;
+  // Uncomment to switch update branch (or to disable updates)
+  //context.Branch = Branch.None;
 
   var gapPlugin = context.AddGap(new GapPluginConfig()
   {
@@ -198,7 +206,7 @@ Action<IConfigContext> doConfig = (context) =>
     Delta = gap / 2
   });
 
-	context.AddBar(new BarPluginConfig()
+  context.AddBar(new BarPluginConfig()
   {
     BarTitle = "workspacer.Bar",
     BarHeight = BAR_HEIGHT,
@@ -230,7 +238,7 @@ Action<IConfigContext> doConfig = (context) =>
     }
   });
 
-	context.AddFocusIndicator(new FocusIndicatorPluginConfig()
+  context.AddFocusIndicator(new FocusIndicatorPluginConfig()
   {
     BorderColor = focusIndicatorColor,
     BorderSize = 10,
@@ -238,12 +246,14 @@ Action<IConfigContext> doConfig = (context) =>
   });
 
   // I want to hide the title bar on ALL windows
-  var titleBarPluginConfig = new TitleBarPluginConfig(new TitleBarStyle(showTitleBar: false, showSizingBorder: false));
+  // var titleBarPluginConfig = new TitleBarPluginConfig(new TitleBarStyle(showTitleBar: false, showSizingBorder: false));
+  var titleBarPluginConfig = new TitleBarPluginConfig(new TitleBarStyle(false, false));
+  // titleBarPluginConfig.SetWindowTitleMAtch("Notepad", new TitleBarStyle(false, false));
   context.AddTitleBar(titleBarPluginConfig);
 
   // var actionMenu = context.AddActionMenu();
 
-	var actionMenu = context.AddActionMenu(new ActionMenuPluginConfig()
+  var actionMenu = context.AddActionMenu(new ActionMenuPluginConfig()
   {
     RegisterKeybind = true,
     KeybindMod = KeyModifiers.LAlt,
@@ -258,20 +268,22 @@ Action<IConfigContext> doConfig = (context) =>
     Foreground = foregroundColor,
   });
 
-  var subMenu = actionMenu.Create();
-  subMenu.Add("do a thing", () => Console.WriteLine("do a thing"));
+  // var subMenu = actionMenu.Create();
+  // subMenu.Add("do a thing", () => Console.WriteLine("do a thing"));
   // subMenu.AddMenu("sub-sub menu", () => Console.WriteLine("sub-sub menu"));
-  subMenu.AddFreeForm("Console WriteLine", (s) => Console.WriteLine(s));
+  // subMenu.AddFreeForm("Console WriteLine", (s) => Console.WriteLine(s));
 
-  actionMenu.DefaultMenu.AddMenu("make sub menu", subMenu);
+  // actionMenu.DefaultMenu.AddMenu("make sub menu", subMenu);
 
-  var newMenu = actionMenu.Create();
-  newMenu.Add("fun!", () => Console.WriteLine("fun!"));
+  // var newMenu = actionMenu.Create();
+  // newMenu.Add("fun!", () => Console.WriteLine("fun!"));
 
-  context.Keybinds.Subscribe(KeyModifiers.LAlt, Keys.Y, () => actionMenu.ShowMenu(newMenu));
+  // context.Keybinds.Subscribe(KeyModifiers.LAlt, Keys.Y, () => actionMenu.ShowMenu(newMenu));
 
-	context.WorkspaceContainer.CreateWorkspaces("one", "two", "three", "four", "five");
-	context.CanMinimizeWindows = true; // false by default
+  // Deal with unicode codepoints
+
+  context.WorkspaceContainer.CreateWorkspaces("💻dev", "🌎web", "📨mail", "✍🏻comm", "🎶vibes");
+  context.CanMinimizeWindows = true; // false by default
 };
 
 return doConfig;

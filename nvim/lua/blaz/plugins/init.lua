@@ -67,6 +67,7 @@ M.load = function()
 					local saga = require("lspsaga")
 					saga.init_lsp_saga({
 						border_style = "rounded",
+						saga_winblend = 100,
 						move_in_saga = {
 							prev = "<C-k>",
 							next = "<C-j>",
