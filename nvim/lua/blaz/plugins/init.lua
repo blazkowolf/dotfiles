@@ -35,12 +35,13 @@ M.load = function()
 	require("packer").startup({
 		function(use)
 			use({ "wbthomason/packer.nvim" })
-			-- use({ "windwp/nvim-autopairs" })
-
+			use({ "windwp/nvim-autopairs" })
+			use({ "lewis6991/impatient.nvim" })
 			-- Colorschemes
 			use({ "ellisonleao/gruvbox.nvim" })
 			use({ "folke/tokyonight.nvim" })
 			use({ "projekt0n/github-nvim-theme" })
+			use({ "Yazeed1s/minimal.nvim" })
 
 			-- use({ "preservim/nerdcommenter" })
 

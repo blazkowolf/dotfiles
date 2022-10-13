@@ -2,6 +2,9 @@
 
 vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
+-- I want to improve startup time
+require("impatient")
+
 require("blaz.editor")
 require("blaz.globals")
 require("blaz.keymap")
