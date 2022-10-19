@@ -29,6 +29,8 @@ lspconfig.omnisharp.setup(opts.omnisharp)
 
 lspconfig.sumneko_lua.setup(opts.sumneko_lua)
 
+lspconfig.cssls.setup(default_opts)
+
 lspconfig.jsonls.setup(opts.jsonls)
 
 rust_tools.setup({ server = default_opts })
