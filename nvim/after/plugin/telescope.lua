@@ -12,28 +12,28 @@ if not has_telescope then
 	return
 end
 
-local has_fzy_native, _ = pcall(require, "fzy_native")
-if not has_fzy_native then
-	notify.debug(
-		"Fuzzy Finder",
-		"telescope-fzy-native not found!",
-		"Will load nvim-telescope without it..."
-	)
-end
+-- local has_fzy_native, _ = pcall(require, "fzy_native")
+-- if not has_fzy_native then
+-- notify.debug(
+-- 	"Fuzzy Finder",
+-- 	"telescope-fzy-native not found!",
+-- 	"Will load nvim-telescope without it..."
+-- )
+-- end
 
-local has_ui_select, _ = pcall(require, "ui-select")
-if not has_ui_select then
-	notify.debug(
-		"Fuzzy Finder",
-		"telescope-ui-select not found!",
-		"Will load nvim-telescope without it..."
-	)
-end
+-- local has_ui_select, _ = pcall(require, "ui-select")
+-- if not has_ui_select then
+-- notify.debug(
+-- 	"Fuzzy Finder",
+-- 	"telescope-ui-select not found!",
+-- 	"Will load nvim-telescope without it..."
+-- )
+-- end
 
 telescope.setup(telescope_opts)
 
-telescope.load_extension("fzy_native")
-telescope.load_extension("ui-select")
+pcall(telescope.load_extension, "fzy_native")
+pcall(telescope.load_extension, "ui-select")
 
 vim.keymap.set("n", "<leader>ff", function()
 	return require("blaz.helper.telescope").project_files()

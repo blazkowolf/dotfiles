@@ -68,7 +68,9 @@ if not has_cmp_nvim_lsp then
 	return
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(client_capabilities)
+-- `update_capabilities` is now deprecated?
+-- local capabilities = cmp_nvim_lsp.update_capabilities(client_capabilities)
+local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 
 return {
 	on_attach = on_attach,

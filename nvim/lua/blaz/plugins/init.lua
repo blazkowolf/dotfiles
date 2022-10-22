@@ -20,11 +20,12 @@
 -- end
 
 -- Adapted from:
--- https://github.com/wbthomason/packer.nvim
+-- https://github.com/nvim-lua/kickstart.nvim
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("packer_user_config", { clear = false }),
-	pattern = "nvim/lua/blaz/plugins/init.lua",
 	command = [[source <afile> | PackerCompile]],
+	group = packer_group,
+	pattern = vim.fn.expand("$MYVIMRC"),
 })
 
 ---@module "blaz.plugins"
@@ -54,6 +55,18 @@ M.load = function()
 				run = ":TSInstall nu",
 				config = function()
 					require("nu").setup({ complete_cmd_names = true })
+				end,
+			})
+
+			use({
+				"Equilibris/nx.nvim",
+				requires = {
+					"nvim-telescope/telescope.nvim",
+				},
+				config = function()
+					require("nx").setup({
+						nx_cmd_root = "npm nx",
+					})
 				end,
 			})
 
@@ -89,26 +102,41 @@ M.load = function()
 
 			use({ "mfussenegger/nvim-jdtls" })
 
-			use({ "hrsh7th/cmp-nvim-lsp" })
-			use({ "hrsh7th/cmp-nvim-lsp-document-symbol" })
-			use({ "saadparwaiz1/cmp_luasnip" })
-			use({ "hrsh7th/cmp-nvim-lua" })
-			use({ "hrsh7th/cmp-buffer" })
-			use({ "hrsh7th/cmp-path" })
-			use({ "hrsh7th/cmp-cmdline" })
+			-- use({ "hrsh7th/cmp-nvim-lsp" })
+			-- use({ "hrsh7th/cmp-nvim-lsp-document-symbol" })
+			-- use({ "saadparwaiz1/cmp_luasnip" })
+			-- use({ "hrsh7th/cmp-nvim-lua" })
+			-- use({ "hrsh7th/cmp-buffer" })
+			-- use({ "hrsh7th/cmp-path" })
+			-- use({ "hrsh7th/cmp-cmdline" })
 			use({
 				"hrsh7th/nvim-cmp",
 				requires = {
-					"L3MON4D3/LuaSnip",
+					"hrsh7th/cmp-nvim-lsp",
+					"hrsh7th/cmp-nvim-lsp-document-symbol",
+					"hrsh7th/cmp-nvim-lua",
+					"hrsh7th/cmp-buffer",
+					"hrsh7th/cmp-path",
+					"hrsh7th/cmp-cmdline",
 				},
 			})
 
 			use({ "onsails/lspkind-nvim" })
 
 			-- nvim-cmp requires a snippet engine
-			use({ "L3MON4D3/LuaSnip" })
+			use({
+				"L3MON4D3/LuaSnip",
+				requires = {
+					"saadparwaiz1/cmp_luasnip",
+				},
+			})
 
-			use({ "lewis6991/gitsigns.nvim" })
+			use({
+				"lewis6991/gitsigns.nvim",
+				requires = {
+					"nvim-lua/plenary.nvim",
+				},
+			})
 			-- use({ "tpope/vim-fugitive" })
 
 			use({ "kyazdani42/nvim-web-devicons" }) -- for file icons
@@ -125,7 +153,7 @@ M.load = function()
 			use({ "nvim-lua/plenary.nvim" })
 			use({
 				"nvim-telescope/telescope.nvim",
-				tag = "0.1.0",
+				branch = "0.1.x",
 				requires = {
 					"nvim-lua/plenary.nvim",
 				},
@@ -134,6 +162,12 @@ M.load = function()
 			use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 			use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+			use({
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				after = {
+					"nvim-treesitter",
+				},
+			})
 
 			-- use({ "rcarriga/nvim-notify" })
 		end,

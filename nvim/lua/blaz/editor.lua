@@ -15,6 +15,16 @@ if not using_neovide then
 	})
 end
 
+-- I want to highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
+})
+
 vim.opt.backup = false
 -- I want as-you-type autocompletion
 vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
