@@ -80,7 +80,7 @@ vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
 -- vim.opt.guifont = [[CaskaydiaCove NF:h16]]
 -- vim.opt.guifont = [[JetBrainsMono Nerd Font Mono:h12]]
-vim.opt.guifont = [[FixedsysExcelsiorIIIb NF:h14]]
+vim.opt.guifont = [[FixedsysExcelsiorIIIb NF:h18]]
 
 vim.cmd([[syntax enable]])
 -- vim.cmd([[syntax on]])
