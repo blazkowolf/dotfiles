@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+YARN_GLOBAL_BIN=$(yarn global bin)
+export NVM_DIR="$HOME/.nvm"
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+. "$HOME/.cargo/env"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -d "${YARN_GLOBAL_BIN}" ]; then
+  PATH="${YARN_GLOBAL_BIN}:$PATH"
+fi
+

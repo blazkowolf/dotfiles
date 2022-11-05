@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+alias n="neovide.exe --wsl"
+
+alias luamake=/luamake

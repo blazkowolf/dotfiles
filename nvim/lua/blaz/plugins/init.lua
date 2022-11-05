@@ -1,23 +1,23 @@
 -- Inspiration from teej
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/first_load.lua
 
--- local empty = require("blaz.helper.vim").empty
+local empty = require("blaz.helper.vim").empty
 
 -- Adapted from:
 -- https://github.com/wbthomason/packer.nvim#bootstrapping
--- local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
--- if empty(vim.fn.glob(packer_install_path)) then
---   ---@diagnostic disable-next-line: lowercase-global
---   packer_bootstrap = vim.fn.system({
---     "git",
---     "clone",
---     "--depth",
---     "1",
---     "https://github.com/wbthomason/packer.nvim",
---     packer_install_path,
---   })
---   vim.cmd([[packadd packer.nvim]])
--- end
+local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if empty(vim.fn.glob(packer_install_path)) then
+	---@diagnostic disable-next-line: lowercase-global
+	packer_bootstrap = vim.fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		packer_install_path,
+	})
+	vim.cmd([[packadd packer.nvim]])
+end
 
 -- Adapted from:
 -- https://github.com/nvim-lua/kickstart.nvim

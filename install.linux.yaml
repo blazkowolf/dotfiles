@@ -3,6 +3,8 @@
       relink: true
 
 - clean: 
+  - '~'
+  - '~/.bashrc.d'
   - '~/.config/kitty'
   - '~/.config/nvim'
   - '~/.config/nvim/plugins'
@@ -16,13 +18,20 @@
     ~/.config/kitty/kitty.conf:
       path: kitty/kitty.conf
       create: true
+    ~/.config/starship.toml:
+      path: starship/starship.toml
+      create: true
+    ~/.bashrc.d/:
+      path: bash/.bashrc.d/**/*
+      create: true
+      glob: true
     ~/.config/nvim/:
       path: nvim/**/*
       create: true
       glob: true
       exclude:
-      - nvim/init.vim
-      - nvim/plugins/*
+        - nvim/init.vim
+        - nvim/plugins/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
