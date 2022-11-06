@@ -154,12 +154,12 @@ public ColorScheme GruvboxDarkSoft =
         orange: gruvboxColors["bright_orange"]
     );
 
-private const int FONT_SIZE = 16;
+private const int FONT_SIZE = 10;
 private const string FONT_NAME = "FixedsysExcelsiorIIIb NF";
 
 // private const string FONT_NAME = "CaskaydiaCove NF";
 
-private const int BAR_HEIGHT = 30;
+private const int BAR_HEIGHT = 15;
 private const string WORKSPACE_DEV = "💻dev";
 private const string WORKSPACE_WEB = "🌎web";
 private const string WORKSPACE_MAIL = "📨mail";
@@ -167,6 +167,19 @@ private const string WORKSPACE_COMM = "✍🏻comm";
 private const string WORKSPACE_VIBES = "🎶vibes";
 private const string WORKSPACE_STREAM = "🎙️stream";
 private const string WORKSPACE_GAME = "🕹️game";
+
+private const string WIN_TITLE_DISCORD = "Discord";
+private const string WIN_TITLE_TEAMS = "Microsoft Teams";
+private const string WIN_TITLE_SLACK = "Slack";
+private const string WIN_TITLE_OUTLOOK = "Outlook";
+private const string WIN_TITLE_OBS = "OBS";
+private const string WIN_TITLE_STEAM = "Steam";
+private const string WIN_TITLE_EAC = "EAC Launcher Progress Bar Window";
+private const string WIN_TITLE_HUNT = "Hunt: Showdown";
+private const string WIN_TITLE_QUAKE = "Quake";
+private const string WIN_TITLE_MINECRAFT = "Minecraft";
+private const string WIN_TITLE_NEOVIDE = "Neovide";
+private const string WIN_TITLE_VLC = "VLC media player";
 
 private Action<IConfigContext> doConfig = (context) =>
 {
@@ -267,38 +280,33 @@ private Action<IConfigContext> doConfig = (context) =>
         WORKSPACE_GAME
     );
 
+    context.WindowRouter.AddFilter(
+        (window) =>
+            !window.Title.Contains(WIN_TITLE_EAC)
+            && !window.Title.Contains(WIN_TITLE_HUNT)
+            && !window.Title.Contains(WIN_TITLE_QUAKE)
+    );
+
+    var routes = new Dictionary<string, IWorkspace> {
+        { WIN_TITLE_NEOVIDE, context.WorkspaceContainer[WORKSPACE_DEV] },
+        { WIN_TITLE_DISCORD, context.WorkspaceContainer[WORKSPACE_COMM] },
+        { WIN_TITLE_TEAMS, context.WorkspaceContainer[WORKSPACE_COMM] },
+        { WIN_TITLE_SLACK, context.WorkspaceContainer[WORKSPACE_COMM] },
+        { WIN_TITLE_OUTLOOK, context.WorkspaceContainer[WORKSPACE_MAIL] },
+        { WIN_TITLE_OBS, context.WorkspaceContainer[WORKSPACE_STREAM] },
+        { WIN_TITLE_VLC, context.WorkspaceContainer[WORKSPACE_VIBES] },
+        { WIN_TITLE_STEAM, context.WorkspaceContainer[WORKSPACE_GAME] },
+        { WIN_TITLE_HUNT, context.WorkspaceContainer[WORKSPACE_GAME] },
+        { WIN_TITLE_QUAKE, context.WorkspaceContainer[WORKSPACE_GAME] },
+    };
+
     // I want to route certain applications to a specific workspace
     //context.WindowRouter.AddRoute((window) => window.Title.Contains("Outlook") ? context.WorkspaceContainer["mail"] : null);
     context.WindowRouter.AddRoute(
         (window) =>
         {
-            if (
-                window.Title.Contains("Discord")
-                || window.Title.Contains("Microsoft Teams")
-                || window.Title.Contains("Slack")
-            )
-            {
-                return context.WorkspaceContainer[WORKSPACE_COMM];
-            }
-
-            if (window.Title.Contains("Outlook"))
-            {
-                return context.WorkspaceContainer[WORKSPACE_MAIL];
-            }
-
-            if (window.Title.Contains("OBS"))
-            {
-                return context.WorkspaceContainer[WORKSPACE_STREAM];
-            }
-
-            if (window.Title.Contains("Neovide"))
-            {
-                return context.WorkspaceContainer[WORKSPACE_DEV];
-            }
-
-            if (window.Title.Contains("Steam"))
-            {
-                return context.WorkspaceContainer[WORKSPACE_GAME];
+            foreach (var key in routes.Keys) {
+                if (window.Title.Contains(key)) return routes[key];
             }
 
             return null;

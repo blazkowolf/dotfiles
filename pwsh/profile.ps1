@@ -9,6 +9,7 @@ $env:Path =
   "$env:PROGRAMFILES\fd;" +
   "$env:PROGRAMFILES\lf;" +
   "$env:PROGRAMFILES\hexyl;" +
+  "$env:PROGRAMFILES\kotlin\kotlinc\bin;" +
   "$env:PROGRAMFILES\ripgrep;" +
   "${env:PROGRAMFILES(x86)}\VideoLAN\VLC;"+
   "${env:PROGRAMFILES(x86)}\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.31.31103\bin\Hostx64\x86;" +
