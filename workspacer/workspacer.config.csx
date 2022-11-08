@@ -171,6 +171,7 @@ private const string WORKSPACE_GAME = "🕹️game";
 private const string WIN_TITLE_DISCORD = "Discord";
 private const string WIN_TITLE_TEAMS = "Microsoft Teams";
 private const string WIN_TITLE_SLACK = "Slack";
+private const string WIN_TITLE_ZOOM = "Zoom";
 private const string WIN_TITLE_OUTLOOK = "Outlook";
 private const string WIN_TITLE_OBS = "OBS";
 private const string WIN_TITLE_STEAM = "Steam";
@@ -292,6 +293,7 @@ private Action<IConfigContext> doConfig = (context) =>
         { WIN_TITLE_DISCORD, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_TEAMS, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_SLACK, context.WorkspaceContainer[WORKSPACE_COMM] },
+        { WIN_TITLE_ZOOM, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_OUTLOOK, context.WorkspaceContainer[WORKSPACE_MAIL] },
         { WIN_TITLE_OBS, context.WorkspaceContainer[WORKSPACE_STREAM] },
         { WIN_TITLE_VLC, context.WorkspaceContainer[WORKSPACE_VIBES] },
@@ -301,7 +303,6 @@ private Action<IConfigContext> doConfig = (context) =>
     };
 
     // I want to route certain applications to a specific workspace
-    //context.WindowRouter.AddRoute((window) => window.Title.Contains("Outlook") ? context.WorkspaceContainer["mail"] : null);
     context.WindowRouter.AddRoute(
         (window) =>
         {

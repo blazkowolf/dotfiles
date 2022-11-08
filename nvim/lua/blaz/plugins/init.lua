@@ -58,17 +58,17 @@ M.load = function()
 				end,
 			})
 
-			use({
-				"Equilibris/nx.nvim",
-				requires = {
-					"nvim-telescope/telescope.nvim",
-				},
-				config = function()
-					require("nx").setup({
-						nx_cmd_root = "npm nx",
-					})
-				end,
-			})
+			--		use({
+			--			"Equilibris/nx.nvim",
+			--			requires = {
+			--				"nvim-telescope/telescope.nvim",
+			--			},
+			--			config = function()
+			--				require("nx").setup({
+			--					nx_cmd_root = "npm nx",
+			--				})
+			--			end,
+			--		})
 
 			use({ "neovim/nvim-lspconfig" })
 			use({
@@ -160,6 +160,7 @@ M.load = function()
 			})
 			use({ "nvim-telescope/telescope-fzy-native.nvim" })
 			use({ "nvim-telescope/telescope-ui-select.nvim" })
+			use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 			use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 			use({

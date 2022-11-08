@@ -33,6 +33,7 @@ end
 telescope.setup(telescope_opts)
 
 pcall(telescope.load_extension, "fzy_native")
+pcall(telescope.load_extension, "file_browser")
 pcall(telescope.load_extension, "ui-select")
 
 vim.keymap.set("n", "<leader>ff", function()
@@ -59,3 +60,5 @@ end, { remap = false })
 vim.keymap.set("n", "<leader>fh", function()
 	return require("telescope.builtin").help_tags()
 end, { remap = false })
+
+vim.keymap.set("n", "<C-n>", "<cmd>Telescope file_browser<CR>", { remap = false })

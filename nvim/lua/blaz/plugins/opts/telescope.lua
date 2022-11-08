@@ -84,6 +84,10 @@ local opts = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+		file_browser = {
+			theme = "ivy",
+			hijack_netrw = true,
+		},
 		["ui-select"] = {
 			themes.get_cursor({
 				-- even more opts
