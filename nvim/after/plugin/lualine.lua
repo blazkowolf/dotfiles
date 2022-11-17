@@ -13,6 +13,7 @@ end
 
 -- Pulled from https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/lualine.lua
 -- cool function for progress
+---@diagnostic disable-next-line: unused-function, unused-local
 local function visual_progress()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
@@ -32,6 +33,7 @@ local function visual_progress()
 	return chars[index]
 end
 
+---@diagnostic disable-next-line: unused-function, unused-local
 local function spaces()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
@@ -40,8 +42,10 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		-- component_separators = { left = "", right = "" },
+		component_separators = { left = "┃", right = "┃" },
+		-- section_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			"alpha",
 			"checkhealth",
@@ -66,9 +70,9 @@ lualine.setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { "filename" },
-		lualine_x = { spaces, "encoding", "fileformat", "filetype" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "location" },
-		lualine_z = { visual_progress },
+		lualine_z = {},
 	},
 	inactive_sections = {
 		lualine_a = {},
