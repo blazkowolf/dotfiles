@@ -46,8 +46,8 @@ vim.opt.laststatus = 3
 -- I want crisp window separators
 -- vim.cmd([[highlight WinSeparator guibg=NONE]])
 
--- I want the mouse disabled by default
-vim.opt.mouse = ""
+-- I want the mouse enabled by default
+vim.opt.mouse = "a"
 
 vim.opt.pumheight = 10
 -- Avoid vertical jitter from lsp diagnostics populating
