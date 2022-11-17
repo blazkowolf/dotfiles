@@ -20,7 +20,7 @@ using workspacer.ActionMenu;
 using workspacer.FocusIndicator;
 using workspacer.TitleBar;
 
-#region Gruvbox colors
+// Gruvbox colors {{{
 private var gruvboxColors = new Dictionary<string, Color>()
 {
     { "dark0_hard", new Color(0x1d, 0x20, 0x21) },
@@ -63,8 +63,9 @@ private var gruvboxColors = new Dictionary<string, Color>()
     { "faded_aqua", new Color(0x42, 0x7b, 0x58) },
     { "faded_orange", new Color(0xaf, 0x3a, 0x03) },
 };
-#endregion
+// }}}
 
+// ColorScheme struct {{{
 public struct ColorScheme
 {
     public ColorScheme(
@@ -130,7 +131,9 @@ public struct ColorScheme
     public Color Aqua { get; }
     public Color Orange { get; }
 }
+// }}}
 
+// GruboxDarkSoft colorscheme {{{
 public ColorScheme GruvboxDarkSoft =
     new(
         bg0: gruvboxColors["dark0_soft"],
@@ -153,6 +156,7 @@ public ColorScheme GruvboxDarkSoft =
         aqua: gruvboxColors["bright_aqua"],
         orange: gruvboxColors["bright_orange"]
     );
+// }}}
 
 private const int FONT_SIZE = 10;
 private const string FONT_NAME = "FixedsysExcelsiorIIIb NF";
@@ -175,6 +179,7 @@ private const string WIN_TITLE_ZOOM = "Zoom";
 private const string WIN_TITLE_OUTLOOK = "Outlook";
 private const string WIN_TITLE_OBS = "OBS";
 private const string WIN_TITLE_STEAM = "Steam";
+private const string WIN_TITLE_EVALDRAW = "Evaldraw by Ken Silverman";
 private const string WIN_TITLE_EAC = "EAC Launcher Progress Bar Window";
 private const string WIN_TITLE_HUNT = "Hunt: Showdown";
 private const string WIN_TITLE_QUAKE = "Quake";
@@ -281,9 +286,17 @@ private Action<IConfigContext> doConfig = (context) =>
         WORKSPACE_GAME
     );
 
+    var filters = new List<string> {
+        WIN_TITLE_EAC,
+        WIN_TITLE_MINECRAFT,
+        WIN_TITLE_HUNT,
+        WIN_TITLE_QUAKE,
+    };
+
     context.WindowRouter.AddFilter(
         (window) =>
             !window.Title.Contains(WIN_TITLE_EAC)
+            && !window.Title.Contains(WIN_TITLE_MINECRAFT)
             && !window.Title.Contains(WIN_TITLE_HUNT)
             && !window.Title.Contains(WIN_TITLE_QUAKE)
     );
