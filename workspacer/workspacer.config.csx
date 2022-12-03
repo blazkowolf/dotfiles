@@ -12,6 +12,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 using workspacer;
 using workspacer.Bar;
 using workspacer.Bar.Widgets;
@@ -164,6 +166,8 @@ private const string FONT_NAME = "FixedsysExcelsiorIIIb NF";
 // private const string FONT_NAME = "CaskaydiaCove NF";
 
 private const int BAR_HEIGHT = 15;
+
+// Workspace names {{{
 private const string WORKSPACE_DEV = "💻dev";
 private const string WORKSPACE_WEB = "🌎web";
 private const string WORKSPACE_MAIL = "📨mail";
@@ -171,7 +175,10 @@ private const string WORKSPACE_COMM = "✍🏻comm";
 private const string WORKSPACE_VIBES = "🎶vibes";
 private const string WORKSPACE_STREAM = "🎙️stream";
 private const string WORKSPACE_GAME = "🕹️game";
+// }}}
 
+// Window titles {{{
+private const string WIN_TITLE_INSTALLER = "Windows Installer";
 private const string WIN_TITLE_DISCORD = "Discord";
 private const string WIN_TITLE_TEAMS = "Microsoft Teams";
 private const string WIN_TITLE_SLACK = "Slack";
@@ -181,11 +188,15 @@ private const string WIN_TITLE_OBS = "OBS";
 private const string WIN_TITLE_STEAM = "Steam";
 private const string WIN_TITLE_EVALDRAW = "Evaldraw by Ken Silverman";
 private const string WIN_TITLE_EAC = "EAC Launcher Progress Bar Window";
+private const string WIN_TITLE_FALLOUT = "Fallout";
+private const string WIN_TITLE_MORROWIND = "Morrowind";
+private const string WIN_TITLE_OPENMW = "OpenMW";
 private const string WIN_TITLE_HUNT = "Hunt: Showdown";
 private const string WIN_TITLE_QUAKE = "Quake";
 private const string WIN_TITLE_MINECRAFT = "Minecraft";
 private const string WIN_TITLE_NEOVIDE = "Neovide";
 private const string WIN_TITLE_VLC = "VLC media player";
+// }}}
 
 private Action<IConfigContext> doConfig = (context) =>
 {
@@ -287,18 +298,19 @@ private Action<IConfigContext> doConfig = (context) =>
     );
 
     var filters = new List<string> {
+        WIN_TITLE_INSTALLER,
         WIN_TITLE_EAC,
         WIN_TITLE_MINECRAFT,
+        WIN_TITLE_FALLOUT,
+        WIN_TITLE_MORROWIND,
+        WIN_TITLE_OPENMW,
         WIN_TITLE_HUNT,
         WIN_TITLE_QUAKE,
     };
 
+    // I want to filter certain applications from being controlled by Workspacer
     context.WindowRouter.AddFilter(
-        (window) =>
-            !window.Title.Contains(WIN_TITLE_EAC)
-            && !window.Title.Contains(WIN_TITLE_MINECRAFT)
-            && !window.Title.Contains(WIN_TITLE_HUNT)
-            && !window.Title.Contains(WIN_TITLE_QUAKE)
+        (window) => filters.Aggregate(true, (acc, filter) => acc && !window.Title.Contains(filter))
     );
 
     var routes = new Dictionary<string, IWorkspace> {
@@ -317,7 +329,7 @@ private Action<IConfigContext> doConfig = (context) =>
 
     // I want to route certain applications to a specific workspace
     context.WindowRouter.AddRoute(
-        (window) =>
+        (window) => // routes.Keys.Aggregate<string, IWorkspace>(null, (acc, windowTitle) => acc = window.Title.Contains(windowTitle) ? routes[windowTitle] : null)
         {
             foreach (var key in routes.Keys) {
                 if (window.Title.Contains(key)) return routes[key];

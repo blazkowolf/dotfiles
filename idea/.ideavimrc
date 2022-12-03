@@ -8,6 +8,8 @@ let mapleader=" "
 
 """ Emulated VIM plugins --------------------
 set NERDTree
+set surround
+set highlightedyank
 
 """ Idea specific settings ------------------
 set ideajoin
@@ -34,6 +36,7 @@ map / <Action>(Find)
 map <leader>cc <Action>(CommentByLineComment)
 
 " Pickers
+map <leader>fc <Action>(ChangeLaf)
 map <leader>ff <Action>(GotoFile)
 map <leader>fg <Action>(FindInPath)
 map <leader>fb <Action>(Switcher)
@@ -61,4 +64,4 @@ map <leader>ru <Action>(Run)
 map <leader>st <Action>(Stop)
 
 map <leader>% <Action>(IdeaVim.ReloadVimRc.reload)
-" map <silent> <leader>, :e $USERPROFILE/.ideavimrc<CR>
+map <silent> <leader>, :e $USERPROFILE/.ideavimrc<CR>

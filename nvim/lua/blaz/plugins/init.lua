@@ -43,6 +43,7 @@ M.load = function()
 			use({ "folke/tokyonight.nvim" })
 			use({ "projekt0n/github-nvim-theme" })
 			use({ "Yazeed1s/minimal.nvim" })
+			use({ "mhartington/oceanic-next" })
 
 			-- use({ "preservim/nerdcommenter" })
 
