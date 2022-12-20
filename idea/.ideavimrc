@@ -34,6 +34,7 @@ set incsearch
 map / <Action>(Find)
 
 map <leader>cc <Action>(CommentByLineComment)
+nnoremap <silent> <C-k> <Action>(ActivateRunToolWindow)
 
 " Pickers
 map <leader>fc <Action>(ChangeLaf)

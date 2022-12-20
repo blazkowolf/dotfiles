@@ -36,6 +36,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
 vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"
+-- I want to define my own folds
+vim.opt.foldmethod = "marker"
 -- I don't want search results highlighted
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -78,9 +80,8 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
--- vim.opt.guifont = [[CaskaydiaCove NF:h16]]
--- vim.opt.guifont = [[JetBrainsMono Nerd Font Mono:h12]]
-vim.opt.guifont = [[FixedsysExcelsiorIIIb NF:h18]]
+vim.opt.guifont =
+	[[FixedsysExcelsiorIIIb NF:h18,CaskaydiaCove NF:h16,JetBrainsMono Nerd Font Mono:h12]]
 
 vim.cmd([[syntax enable]])
 -- vim.cmd([[syntax on]])

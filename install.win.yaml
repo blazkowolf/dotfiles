@@ -3,12 +3,12 @@
       relink: true
 
 - clean:
-  - '$LOCALAPPDATA/clink'
-  - '$LOCALAPPDATA/lf'
-  - '$LOCALAPPDATA/nvim'
-  - '$LOCALAPPDATA/pwsh'
-  - '$APPDATA/nushell'
-  - '$APPDATA/helix'
+    - "$LOCALAPPDATA/clink"
+    - "$LOCALAPPDATA/lf"
+    - "$LOCALAPPDATA/nvim"
+    - "$LOCALAPPDATA/pwsh"
+    - "$APPDATA/nushell"
+    - "$APPDATA/helix"
 
 - link:
     # PowerShell
@@ -79,12 +79,12 @@
       create: true
       path: nvim/**/*
       exclude:
-        - '*nvim/lua/blaz/lsp/nvim_lsp_installer.lua'
-        - '*nvim/after/plugin/nerdcommenter.lua'
+        - "*nvim/lua/blaz/lsp/nvim_lsp_installer.lua"
+        - "*nvim/after/plugin/nerdcommenter.lua"
         #- '*nvim/after/plugin/nvim_autopairs.lua'
-        - '*nvim/after/plugin/nvim_notify.lua'
-        - '*nvim/after/plugin/nvim_tree.lua'
-        - '*nvim/lua/blaz/globals/nvim_tree.lua'
+        - "*nvim/after/plugin/nvim_notify.lua"
+        - "*nvim/after/plugin/nvim_tree.lua"
+        - "*nvim/lua/blaz/globals/nvim_tree.lua"
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

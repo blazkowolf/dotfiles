@@ -1,17 +1,13 @@
 #r "C:\Program Files\workspacer\workspacer.Shared.dll"
-
 #r "C:\Program Files\workspacer\plugins\workspacer.Bar\workspacer.Bar.dll"
-
 #r "C:\Program Files\workspacer\plugins\workspacer.Gap\workspacer.Gap.dll"
-
 #r "C:\Program Files\workspacer\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
-
 #r "C:\Program Files\workspacer\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
-
 #r "C:\Program Files\workspacer\plugins\workspacer.TitleBar\workspacer.TitleBar.dll"
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using workspacer;
@@ -185,6 +181,7 @@ private const string WIN_TITLE_SLACK = "Slack";
 private const string WIN_TITLE_ZOOM = "Zoom";
 private const string WIN_TITLE_OUTLOOK = "Outlook";
 private const string WIN_TITLE_OBS = "OBS";
+private const string WIN_TITLE_SNAPCHAT = "Snapchat";
 private const string WIN_TITLE_STEAM = "Steam";
 private const string WIN_TITLE_EVALDRAW = "Evaldraw by Ken Silverman";
 private const string WIN_TITLE_EAC = "EAC Launcher Progress Bar Window";
@@ -196,6 +193,30 @@ private const string WIN_TITLE_QUAKE = "Quake";
 private const string WIN_TITLE_MINECRAFT = "Minecraft";
 private const string WIN_TITLE_NEOVIDE = "Neovide";
 private const string WIN_TITLE_VLC = "VLC media player";
+// }}}
+
+// Load filters from file {{{
+private IEnumerable<string> LoadFiltersFromFile()
+{
+    // var path = Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), @"\.workspacer\filters.txt");
+    var path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\.workspacer\filters.txt");
+
+    try
+    {
+        var lines = File.ReadAllLines(path);
+        return lines.Select(line => line.Trim());
+    }
+    catch(FileNotFoundException)
+    {
+        File.Create(path);
+    }
+    catch (DirectoryNotFoundException)
+    {
+        Directory.CreateDirectory(path);
+    }
+
+    return Enumerable.Empty<string>();
+}
 // }}}
 
 private Action<IConfigContext> doConfig = (context) =>
@@ -247,7 +268,7 @@ private Action<IConfigContext> doConfig = (context) =>
                 new IBarWidget[]
                 {
                     new BatteryWidget(),
-                    new TimeWidget(1000, "HH:mm:ss dd-MMM-yyyy"),
+                    new TimeWidget(1000, "[h:mm:ss tt MMMM dd, yyyy]"),
                     new ActiveLayoutWidget()
                 }
         }
@@ -297,16 +318,8 @@ private Action<IConfigContext> doConfig = (context) =>
         WORKSPACE_GAME
     );
 
-    var filters = new List<string> {
-        WIN_TITLE_INSTALLER,
-        WIN_TITLE_EAC,
-        WIN_TITLE_MINECRAFT,
-        WIN_TITLE_FALLOUT,
-        WIN_TITLE_MORROWIND,
-        WIN_TITLE_OPENMW,
-        WIN_TITLE_HUNT,
-        WIN_TITLE_QUAKE,
-    };
+    var filters = LoadFiltersFromFile().ToList()
+      .Append(WIN_TITLE_INSTALLER);
 
     // I want to filter certain applications from being controlled by Workspacer
     context.WindowRouter.AddFilter(
@@ -318,6 +331,7 @@ private Action<IConfigContext> doConfig = (context) =>
         { WIN_TITLE_DISCORD, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_TEAMS, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_SLACK, context.WorkspaceContainer[WORKSPACE_COMM] },
+        { WIN_TITLE_SNAPCHAT, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_ZOOM, context.WorkspaceContainer[WORKSPACE_COMM] },
         { WIN_TITLE_OUTLOOK, context.WorkspaceContainer[WORKSPACE_MAIL] },
         { WIN_TITLE_OBS, context.WorkspaceContainer[WORKSPACE_STREAM] },
