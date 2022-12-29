@@ -1,5 +1,6 @@
 local has = require("blaz.helper.vim").has
 local exists = require("blaz.helper.vim").exists
+local USING_NEOVIDE = require("blaz.helper.vim").USING_NEOVIDE
 
 -- I want the dark colorscheme variant by default
 -- Can also be "light"
@@ -7,12 +8,13 @@ vim.opt.background = "dark"
 
 -- Workaround for setting a transparent background
 -- only in a terminal Neovim client
-local using_neovide = exists("g:neovide")
-if not using_neovide then
+if not USING_NEOVIDE then
 	vim.api.nvim_create_autocmd("VimEnter", {
 		pattern = "*",
 		command = "highlight Normal guibg=NONE",
 	})
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 -- I want to highlight on yank
@@ -80,8 +82,10 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
-vim.opt.guifont =
-	[[FixedsysExcelsiorIIIb NF:h18,CaskaydiaCove NF:h16,JetBrainsMono Nerd Font Mono:h12]]
+vim.opt.guifont = [[FixedsysExcelsiorIIIb NF,CaskaydiaCove NF,JetBrainsMono Nerd Font Mono:h18]]
+if exists(":GuiFont") then
+	vim.cmd([[GuiFont! FixedsysExcelsiorIIIb NF,CaskaydiaCove NF,JetBrainsMono Nerd Font Mono:h18]])
+end
 
 vim.cmd([[syntax enable]])
 -- vim.cmd([[syntax on]])

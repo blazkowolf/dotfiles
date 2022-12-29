@@ -16,7 +16,7 @@ if empty(vim.fn.glob(packer_install_path)) then
 		"https://github.com/wbthomason/packer.nvim",
 		packer_install_path,
 	})
-	vim.cmd([[packadd packer.nvim]])
+	vim.cmd.packadd("packer.nvim")
 end
 
 -- Adapted from:
@@ -35,103 +35,100 @@ local M = {}
 M.load = function()
 	require("packer").startup({
 		function(use)
-			use({ "wbthomason/packer.nvim" })
-			use({ "windwp/nvim-autopairs" })
-			use({ "lewis6991/impatient.nvim" })
+			use("wbthomason/packer.nvim")
+			-- use("windwp/nvim-autopairs")
+			use("lewis6991/impatient.nvim")
 			-- Colorschemes
-			use({ "ellisonleao/gruvbox.nvim" })
-			use({ "folke/tokyonight.nvim" })
-			use({ "projekt0n/github-nvim-theme" })
-			use({ "Yazeed1s/minimal.nvim" })
-			use({ "mhartington/oceanic-next" })
+			use("ellisonleao/gruvbox.nvim")
+			use("folke/tokyonight.nvim")
+			use("projekt0n/github-nvim-theme")
+			use("Yazeed1s/minimal.nvim")
+			use("mhartington/oceanic-next")
 
-			-- use({ "preservim/nerdcommenter" })
+			-- use( "preservim/nerdcommenter" )
+
+			-- use({
+			-- 	"LhKipp/nvim-nu",
+			-- 	requires = {
+			-- 		"nvim-treesitter/nvim-treesitter",
+			-- 		"jose-elias-alvarez/null-ls.nvim",
+			-- 	},
+			-- 	run = ":TSInstall nu",
+			-- 	config = function()
+			-- 		require("nu").setup({ complete_cmd_names = true })
+			-- 	end,
+			-- })
+
+			-- use({
+			-- 	"Equilibris/nx.nvim",
+			-- 	requires = {
+			-- 		"nvim-telescope/telescope.nvim",
+			-- 	},
+			-- 	config = function()
+			-- 		require("nx").setup({
+			-- 			nx_cmd_root = "npm nx",
+			-- 		})
+			-- 	end,
+			-- })
 
 			use({
-				"LhKipp/nvim-nu",
+				"neovim/nvim-lspconfig",
 				requires = {
-					"nvim-treesitter/nvim-treesitter",
-					"jose-elias-alvarez/null-ls.nvim",
+					-- Useful status updates for LSP
+					"j-hui/fidget.nvim",
+					-- Additional lua configuration
+					"folke/neodev.nvim",
 				},
-				run = ":TSInstall nu",
-				config = function()
-					require("nu").setup({ complete_cmd_names = true })
-				end,
 			})
 
-			--		use({
-			--			"Equilibris/nx.nvim",
-			--			requires = {
-			--				"nvim-telescope/telescope.nvim",
-			--			},
-			--			config = function()
-			--				require("nx").setup({
-			--					nx_cmd_root = "npm nx",
-			--				})
-			--			end,
-			--		})
+			-- use({
+			-- 	"glepnir/lspsaga.nvim",
+			-- 	branch = "main",
+			-- 	requires = {
+			-- 		"neovim/nvim-lspconfig",
+			-- 	},
+			-- 	config = function()
+			-- 		local saga = require("lspsaga")
+			-- 		saga.init_lsp_saga({
+			-- 			border_style = "rounded",
+			-- 			-- `100` is fully transparent
+			-- 			saga_winblend = 0,
+			-- 			move_in_saga = {
+			-- 				prev = "<C-k>",
+			-- 				next = "<C-j>",
+			-- 			},
+			-- 			symbol_in_winbar = {
+			-- 				enable = false,
+			-- 			},
+			-- 		})
+			-- 	end,
+			-- })
+			-- use( "williamboman/nvim-lsp-installer" )
+			-- use( "williamboman/mason.nvim" )
+			-- use( "williamboman/mason-lspconfig.nvim" )
+			use("jose-elias-alvarez/null-ls.nvim")
 
-			use({ "neovim/nvim-lspconfig" })
-			use({
-				"glepnir/lspsaga.nvim",
-				branch = "main",
-				requires = {
-					"neovim/nvim-lspconfig",
-				},
-				config = function()
-					local saga = require("lspsaga")
-					saga.init_lsp_saga({
-						border_style = "rounded",
-						-- `100` is fully transparent
-						saga_winblend = 0,
-						move_in_saga = {
-							prev = "<C-k>",
-							next = "<C-j>",
-						},
-						symbol_in_winbar = {
-							enable = false,
-						},
-					})
-				end,
-			})
-			-- use({ "williamboman/nvim-lsp-installer" })
-			-- use({ "williamboman/mason.nvim" })
-			-- use({ "williamboman/mason-lspconfig.nvim" })
-			use({ "jose-elias-alvarez/null-ls.nvim" })
+			use("simrat39/rust-tools.nvim")
+			use("rust-lang/rust.vim")
 
-			use({ "simrat39/rust-tools.nvim" })
-			use({ "rust-lang/rust.vim" })
+			use("mfussenegger/nvim-jdtls")
 
-			use({ "mfussenegger/nvim-jdtls" })
-
-			-- use({ "hrsh7th/cmp-nvim-lsp" })
-			-- use({ "hrsh7th/cmp-nvim-lsp-document-symbol" })
-			-- use({ "saadparwaiz1/cmp_luasnip" })
-			-- use({ "hrsh7th/cmp-nvim-lua" })
-			-- use({ "hrsh7th/cmp-buffer" })
-			-- use({ "hrsh7th/cmp-path" })
-			-- use({ "hrsh7th/cmp-cmdline" })
 			use({
 				"hrsh7th/nvim-cmp",
 				requires = {
 					"hrsh7th/cmp-nvim-lsp",
-					"hrsh7th/cmp-nvim-lsp-document-symbol",
-					"hrsh7th/cmp-nvim-lua",
-					"hrsh7th/cmp-buffer",
-					"hrsh7th/cmp-path",
-					"hrsh7th/cmp-cmdline",
-				},
-			})
-
-			use({ "onsails/lspkind-nvim" })
-
-			-- nvim-cmp requires a snippet engine
-			use({
-				"L3MON4D3/LuaSnip",
-				requires = {
+					-- nvim-cmp requires a snippet engine
+					"L3MON4D3/LuaSnip",
 					"saadparwaiz1/cmp_luasnip",
+					-- "hrsh7th/cmp-nvim-lsp-document-symbol",
+					-- "hrsh7th/cmp-nvim-lua",
+					-- "hrsh7th/cmp-buffer",
+					-- "hrsh7th/cmp-path",
+					-- "hrsh7th/cmp-cmdline",
 				},
 			})
+
+			use("onsails/lspkind-nvim")
 
 			use({
 				"lewis6991/gitsigns.nvim",
@@ -139,9 +136,10 @@ M.load = function()
 					"nvim-lua/plenary.nvim",
 				},
 			})
-			-- use({ "tpope/vim-fugitive" })
 
-			use({ "kyazdani42/nvim-web-devicons" }) -- for file icons
+			use("tpope/vim-fugitive")
+
+			use("kyazdani42/nvim-web-devicons") -- for file icons
 			-- use({
 			--   "kyazdani42/nvim-tree.lua",
 			--   requires = {
@@ -149,10 +147,10 @@ M.load = function()
 			--   },
 			-- })
 
-			use({ "nvim-lualine/lualine.nvim" })
+			use("nvim-lualine/lualine.nvim")
 
-			use({ "nvim-lua/popup.nvim" })
-			use({ "nvim-lua/plenary.nvim" })
+			use("nvim-lua/popup.nvim")
+			use("nvim-lua/plenary.nvim")
 			use({
 				"nvim-telescope/telescope.nvim",
 				branch = "0.1.x",
@@ -160,11 +158,17 @@ M.load = function()
 					"nvim-lua/plenary.nvim",
 				},
 			})
-			use({ "nvim-telescope/telescope-fzy-native.nvim" })
-			use({ "nvim-telescope/telescope-ui-select.nvim" })
-			use({ "nvim-telescope/telescope-file-browser.nvim" })
+			use("nvim-telescope/telescope-fzy-native.nvim")
+			use("nvim-telescope/telescope-ui-select.nvim")
+			use("nvim-telescope/telescope-file-browser.nvim")
 
-			use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+			use({
+				"nvim-treesitter/nvim-treesitter",
+				run = function()
+					pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+				end,
+			})
+
 			use({
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				after = {
@@ -182,6 +186,11 @@ M.load = function()
 			},
 		},
 	})
+
+	local has_neodev, neodev = pcall(require, "neodev")
+	if has_neodev then
+		neodev.setup()
+	end
 end
 
 return M

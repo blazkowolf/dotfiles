@@ -192,6 +192,7 @@ private const string WIN_TITLE_HUNT = "Hunt: Showdown";
 private const string WIN_TITLE_QUAKE = "Quake";
 private const string WIN_TITLE_MINECRAFT = "Minecraft";
 private const string WIN_TITLE_NEOVIDE = "Neovide";
+private const string WIN_TITLE_NEOVIMQT = "Neovim";
 private const string WIN_TITLE_VLC = "VLC media player";
 // }}}
 
@@ -286,7 +287,8 @@ private Action<IConfigContext> doConfig = (context) =>
     // I want to hide the title bar on ALL windows
     // var titleBarPluginConfig = new TitleBarPluginConfig(new TitleBarStyle(showTitleBar: false, showSizingBorder: false));
     var titleBarPluginConfig = new TitleBarPluginConfig(new TitleBarStyle(false, false));
-    titleBarPluginConfig.SetWindowTitleMAtch("Neovide", new TitleBarStyle(false, false));
+    titleBarPluginConfig.SetWindowTitleMAtch(WIN_TITLE_NEOVIDE, new TitleBarStyle(false, false));
+    titleBarPluginConfig.SetWindowTitleMAtch(WIN_TITLE_NEOVIMQT, new TitleBarStyle(false, false));
     context.AddTitleBar(titleBarPluginConfig);
 
     // var actionMenu = context.AddActionMenu();

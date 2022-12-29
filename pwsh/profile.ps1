@@ -20,7 +20,8 @@ $env:Path =
 & $PSScriptRoot\Scripts\lf.ps1
 
 # Aliases
-Set-Alias winfetch pwshfetch-test-1
+Set-Alias -Name vim -Value neovide.exe
+Set-Alias -Name winfetch -Value pwshfetch-test-1
 
 # PSReadLine
 Import-Module -Name PSReadLine

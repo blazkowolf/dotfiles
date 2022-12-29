@@ -36,9 +36,16 @@ end
 ---@type string
 local HOSTNAME = vim.api.nvim_eval("hostname()")
 
+---Flag indicating whether the currently running
+---instance of Neovim is the graphical Neovide variant
+---
+---@type boolean
+local USING_NEOVIDE = exists("g:neovide")
+
 return {
 	has = has,
 	empty = empty,
 	exists = exists,
 	HOSTNAME = HOSTNAME,
+	USING_NEOVIDE = USING_NEOVIDE,
 }

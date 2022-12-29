@@ -91,11 +91,11 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "treesitter" },
+		-- { name = "nvim_lua" },
+		-- { name = "treesitter" },
 		{ name = "luasnip" },
-		{ name = "buffer", keyword_length = 5 },
-		{ name = "path" },
+		-- { name = "buffer", keyword_length = 5 },
+		-- { name = "path" },
 	},
 	experimental = {
 		ghost_text = false,
@@ -103,19 +103,19 @@ cmp.setup({
 })
 
 -- Use buffer source for "/" (if you enabled "native_menu", this won't work anymore)
-cmp.setup.cmdline("/", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "nvim_lsp_document_symbol" },
-		{ name = "buffer" },
-	},
-})
+-- cmp.setup.cmdline("/", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = {
+-- 		{ name = "nvim_lsp_document_symbol" },
+-- 		{ name = "buffer" },
+-- 	},
+-- })
 
 -- Use cmdline & path source for "/" (if you enabled "native_menu", this won't work anymore)
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "path" },
-		{ name = "cmdline" },
-	},
-})
+-- cmp.setup.cmdline(":", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = {
+-- 		{ name = "path" },
+-- 		{ name = "cmdline" },
+-- 	},
+-- })
