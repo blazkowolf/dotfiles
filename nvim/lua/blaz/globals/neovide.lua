@@ -6,10 +6,19 @@ if hostname == "blazdesk" then
 	vim.g.neovide_refresh_rate = 144
 end
 
+vim.g.neovide_scale_factor = 1.0
+
+---Scale Neovide by a percentage value
+---@param delta number percentage value
+function ChangeScaleFactor(delta)
+	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+
 vim.g.neovide_refresh_rate_idle = 30
 
 -- I want mild transparency
 vim.g.neovide_transparency = 0.8
+vim.g.neovide_hide_mouse_when_typing = true
 vim.g.neovide_fullscreen = false
 vim.g.neovide_remember_window_size = false
 vim.g.neovide_touch_deadzone = 6.0

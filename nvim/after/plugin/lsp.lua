@@ -45,7 +45,17 @@ lspconfig.cssls.setup(default_opts)
 
 lspconfig.jsonls.setup(opts.jsonls)
 
-rust_tools.setup({ server = default_opts })
+rust_tools.setup({
+	server = vim.tbl_deep_extend("force", default_opts, {
+		settings = {
+			["rust-analyzer"] = {
+				inlayHints = {
+					locationLinks = false,
+				},
+			},
+		},
+	}),
+})
 
 lspconfig.taplo.setup(default_opts)
 

@@ -1,3 +1,5 @@
+local USING_NEOVIDE = require("blaz.helper.vim").USING_NEOVIDE
+
 vim.keymap.set("", "gf", ":edit <cfile><cr>")
 
 -- Move split panes to left/bottom/top/right
@@ -19,3 +21,12 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- I want to move my cursor by visual lines when word wrap is on
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+if USING_NEOVIDE then
+	vim.keymap.set("n", "<C-=", function()
+		ChangeScaleFactor(1.25)
+	end, { expr = true, remap = false })
+	vim.keymap.set("n", "<C-->", function()
+		ChangeScaleFactor(1 / 1.25)
+	end, { expr = true, remap = false })
+end

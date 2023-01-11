@@ -1,0 +1,8 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+mouse = false
+cursorline = true
+auto-format = false
+auto-pairs = false

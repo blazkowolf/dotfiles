@@ -3,6 +3,7 @@
       relink: true
 
 - clean:
+    - "$APPDATA/alacritty"
     - "$LOCALAPPDATA/clink"
     - "$LOCALAPPDATA/lf"
     - "$LOCALAPPDATA/nvim"
@@ -24,6 +25,10 @@
     # Winget
     $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
       path: winget/settings.json
+
+    # Helix
+    $APPDATA/alacritty/alacritty.yml:
+      path: alacritty/alacritty.yml
 
     # Clink
     $LOCALAPPDATA/clink/.inputrc:
