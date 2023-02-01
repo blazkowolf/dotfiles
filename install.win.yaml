@@ -10,6 +10,7 @@
     - "$LOCALAPPDATA/pwsh"
     - "$APPDATA/nushell"
     - "$APPDATA/helix"
+    - "$USERPROFILE/.config/wezterm"
 
 - link:
     # PowerShell
@@ -77,6 +78,10 @@
     # Helix
     $APPDATA/helix/config.toml:
       path: helix/config.toml
+
+    # Helix
+    $USERPROFILE/.config/wezterm/wezterm.lua:
+      path: wezterm/wezterm.lua
 
     # Neovim
     $LOCALAPPDATA/:

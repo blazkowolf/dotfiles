@@ -47,13 +47,7 @@ lspconfig.jsonls.setup(opts.jsonls)
 
 rust_tools.setup({
 	server = vim.tbl_deep_extend("force", default_opts, {
-		settings = {
-			["rust-analyzer"] = {
-				inlayHints = {
-					locationLinks = false,
-				},
-			},
-		},
+		cmd = { "rustup", "run", "stable", "rust-analyzer" },
 	}),
 })
 
@@ -68,3 +62,10 @@ lspconfig.tsserver.setup(default_opts)
 lspconfig.tailwindcss.setup(default_opts)
 
 lspconfig.bashls.setup(default_opts)
+
+-- lspconfig.gdscript.setup(default_opts)
+lspconfig.gdscript.setup(vim.tbl_deep_extend("force", default_opts, {
+	cmd = { "ncat", "127.0.0.1", "6008" },
+}))
+
+lspconfig.remark_ls.setup(default_opts)
