@@ -28,11 +28,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = vim.fn.expand("$MYVIMRC"),
 })
 
----@module "blaz.plugins"
 local M = {}
 
 ---Load Neovim plugins
-M.load = function()
+function M.load()
 	require("packer").startup({
 		function(use)
 			use("wbthomason/packer.nvim")
@@ -44,6 +43,15 @@ M.load = function()
 			use("projekt0n/github-nvim-theme")
 			use("Yazeed1s/minimal.nvim")
 			use("mhartington/oceanic-next")
+			use({
+				"rose-pine/neovim",
+				as = "rose-pine",
+				config = function()
+					require("rose-pine").setup({
+						disable_italics = true,
+					})
+				end,
+			})
 			-- use("blazkowolf/gruber-darker.nvim")
 
 			-- use( "preservim/nerdcommenter" )
