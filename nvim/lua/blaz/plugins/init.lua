@@ -45,11 +45,13 @@ function M.load()
 			use("mhartington/oceanic-next")
 			use({
 				"rose-pine/neovim",
+				branch = "canary",
 				as = "rose-pine",
 				config = function()
 					require("rose-pine").setup({
 						disable_italics = true,
 					})
+					vim.cmd.colorscheme("rose-pine")
 				end,
 			})
 			-- use("blazkowolf/gruber-darker.nvim")
