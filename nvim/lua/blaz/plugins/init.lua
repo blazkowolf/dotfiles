@@ -54,35 +54,36 @@ function M.load()
 					vim.cmd.colorscheme("rose-pine")
 				end,
 			})
-			-- use("blazkowolf/gruber-darker.nvim")
+			use({ "blazkowolf/gruber-darker.nvim", disable = true })
 
-			-- use( "preservim/nerdcommenter" )
+			use({ "preservim/nerdcommenter", disable = true })
 
-			-- use({
-			-- 	"LhKipp/nvim-nu",
-			-- 	requires = {
-			-- 		"nvim-treesitter/nvim-treesitter",
-			-- 		"jose-elias-alvarez/null-ls.nvim",
-			-- 	},
-			-- 	run = ":TSInstall nu",
-			-- 	config = function()
-			-- 		require("nu").setup({ complete_cmd_names = true })
-			-- 	end,
-			-- })
+			use({
+				"LhKipp/nvim-nu",
+				requires = {
+					"nvim-treesitter/nvim-treesitter",
+					"jose-elias-alvarez/null-ls.nvim",
+				},
+				run = ":TSInstall nu",
+				config = function()
+					require("nu").setup({ complete_cmd_names = true })
+				end,
+			})
 
 			use("habamax/vim-godot")
 
-			-- use({
-			-- 	"Equilibris/nx.nvim",
-			-- 	requires = {
-			-- 		"nvim-telescope/telescope.nvim",
-			-- 	},
-			-- 	config = function()
-			-- 		require("nx").setup({
-			-- 			nx_cmd_root = "npm nx",
-			-- 		})
-			-- 	end,
-			-- })
+			use({
+				"Equilibris/nx.nvim",
+				disable = true,
+				requires = {
+					"nvim-telescope/telescope.nvim",
+				},
+				config = function()
+					require("nx").setup({
+						nx_cmd_root = "npm nx",
+					})
+				end,
+			})
 
 			use({
 				"neovim/nvim-lspconfig",
@@ -94,37 +95,41 @@ function M.load()
 				},
 			})
 
-			-- use({
-			-- 	"glepnir/lspsaga.nvim",
-			-- 	branch = "main",
-			-- 	requires = {
-			-- 		"neovim/nvim-lspconfig",
-			-- 	},
-			-- 	config = function()
-			-- 		local saga = require("lspsaga")
-			-- 		saga.init_lsp_saga({
-			-- 			border_style = "rounded",
-			-- 			-- `100` is fully transparent
-			-- 			saga_winblend = 0,
-			-- 			move_in_saga = {
-			-- 				prev = "<C-k>",
-			-- 				next = "<C-j>",
-			-- 			},
-			-- 			symbol_in_winbar = {
-			-- 				enable = false,
-			-- 			},
-			-- 		})
-			-- 	end,
-			-- })
-			-- use( "williamboman/nvim-lsp-installer" )
-			-- use( "williamboman/mason.nvim" )
-			-- use( "williamboman/mason-lspconfig.nvim" )
+			use({
+				"glepnir/lspsaga.nvim",
+				disable = true,
+				branch = "main",
+				requires = {
+					"neovim/nvim-lspconfig",
+				},
+				config = function()
+					local saga = require("lspsaga")
+					saga.init_lsp_saga({
+						border_style = "rounded",
+						-- `100` is fully transparent
+						saga_winblend = 0,
+						move_in_saga = {
+							prev = "<C-k>",
+							next = "<C-j>",
+						},
+						symbol_in_winbar = {
+							enable = false,
+						},
+					})
+				end,
+			})
+			use({ "williamboman/nvim-lsp-installer", disable = true })
+			use({ "williamboman/mason.nvim", disable = true })
+			use({ "williamboman/mason-lspconfig.nvim", disable = true })
 			use("jose-elias-alvarez/null-ls.nvim")
 
+			-- Language-specific plugins
 			use("simrat39/rust-tools.nvim")
 			use("rust-lang/rust.vim")
-
 			use("mfussenegger/nvim-jdtls")
+			use("jose-elias-alvarez/typescript.nvim")
+			use("b0o/SchemaStore.nvim")
+			use("p00f/clangd_extensions.nvim")
 
 			use({
 				"hrsh7th/nvim-cmp",
@@ -163,12 +168,13 @@ function M.load()
 			use("tpope/vim-fugitive")
 
 			use("kyazdani42/nvim-web-devicons") -- for file icons
-			-- use({
-			--   "kyazdani42/nvim-tree.lua",
-			--   requires = {
-			--     "kyazdani42/nvim-web-devicons",
-			--   },
-			-- })
+			use({
+				"kyazdani42/nvim-tree.lua",
+				disable = true,
+				requires = {
+					"kyazdani42/nvim-web-devicons",
+				},
+			})
 
 			use("nvim-lualine/lualine.nvim")
 
@@ -199,7 +205,7 @@ function M.load()
 				},
 			})
 
-			-- use({ "rcarriga/nvim-notify" })
+			use({ "rcarriga/nvim-notify", disable = true })
 		end,
 		config = {
 			display = {

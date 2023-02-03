@@ -22,6 +22,28 @@ if not has_rust_tools then
 	return
 end
 
+local has_typescript, typescript = pcall(require, "typescript")
+if not has_typescript then
+	notify.warn(
+		"LSP (Typescript)",
+		"typescript.nvim not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
+	)
+	return
+end
+
+local has_clangd, clangd_extensions = pcall(require, "clangd_extensions")
+if not has_clangd then
+	notify.warn(
+		"LSP (Clangd)",
+		"clangd_extensions.nvim not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
+	)
+	return
+end
+
 local has_fidget, fidget = pcall(require, "fidget")
 if not has_fidget then
 	notify.warn(
@@ -53,11 +75,16 @@ rust_tools.setup({
 
 lspconfig.taplo.setup(default_opts)
 
-lspconfig.clangd.setup(default_opts)
+clangd_extensions.setup({
+	server = default_opts,
+})
 
 lspconfig.yamlls.setup(default_opts)
 
-lspconfig.tsserver.setup(default_opts)
+-- lspconfig.tsserver.setup(default_opts)
+typescript.setup({
+	server = default_opts,
+})
 
 lspconfig.tailwindcss.setup(default_opts)
 

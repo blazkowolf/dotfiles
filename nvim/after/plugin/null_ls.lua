@@ -11,6 +11,17 @@ if not status_ok then
 	return
 end
 
+local has_typescript, typescript = pcall(require, "typescript.extensions.null-ls.code-actions")
+if not has_typescript then
+	notify.warn(
+		"LSP",
+		"typescript.nvim not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
+	)
+	return
+end
+
 null_ls.setup({
 	debug = false,
 	sources = {
@@ -18,5 +29,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		-- null_ls.builtins.diagnostics.eslint,
 		-- null_ls.builtins.completion.spell,
+		typescript,
 	},
 })
