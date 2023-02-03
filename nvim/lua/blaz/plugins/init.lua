@@ -150,6 +150,16 @@ function M.load()
 				},
 			})
 
+			use({
+				"lukas-reineke/indent-blankline.nvim",
+				config = function()
+					require("indent_blankline").setup({
+						char = "┊",
+						show_trailing_blankline_indent = false,
+					})
+				end,
+			})
+
 			use("tpope/vim-fugitive")
 
 			use("kyazdani42/nvim-web-devicons") -- for file icons
