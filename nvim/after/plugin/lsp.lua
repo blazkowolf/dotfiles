@@ -70,6 +70,13 @@ lspconfig.jsonls.setup(opts.jsonls)
 rust_tools.setup({
 	server = vim.tbl_deep_extend("force", default_opts, {
 		cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
 	}),
 })
 

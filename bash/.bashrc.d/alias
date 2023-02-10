@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+alias cat="bat"
+alias grep="rg"
+alias ls="exa --icons"
 alias n="neovide.exe --wsl"
 
 alias luamake=/luamake
