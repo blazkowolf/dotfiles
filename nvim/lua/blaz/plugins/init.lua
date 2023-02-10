@@ -3,217 +3,196 @@
 
 local empty = require("blaz.helper.vim").empty
 
--- Adapted from:
--- https://github.com/wbthomason/packer.nvim#bootstrapping
-local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if empty(vim.fn.glob(packer_install_path)) then
-	---@diagnostic disable-next-line: lowercase-global
-	packer_bootstrap = vim.fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
 		"git",
 		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		packer_install_path,
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
-	vim.cmd.packadd("packer.nvim")
 end
-
--- Adapted from:
--- https://github.com/nvim-lua/kickstart.nvim
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = [[source <afile> | PackerCompile]],
-	group = packer_group,
-	pattern = vim.fn.expand("$MYVIMRC"),
-})
+vim.opt.rtp:prepend(lazypath)
 
 local M = {}
 
 ---Load Neovim plugins
 function M.load()
-	require("packer").startup({
-		function(use)
-			use("wbthomason/packer.nvim")
-			-- use("windwp/nvim-autopairs")
-			use("lewis6991/impatient.nvim")
-			-- Colorschemes
-			use("ellisonleao/gruvbox.nvim")
-			use("folke/tokyonight.nvim")
-			use("projekt0n/github-nvim-theme")
-			use("Yazeed1s/minimal.nvim")
-			use("mhartington/oceanic-next")
-			use({
-				"rose-pine/neovim",
-				branch = "canary",
-				as = "rose-pine",
-				config = function()
-					require("rose-pine").setup({
-						disable_italics = true,
-					})
-					vim.cmd.colorscheme("rose-pine")
-				end,
-			})
-			use({ "blazkowolf/gruber-darker.nvim", disable = true })
+	require("lazy").setup({
+		-- "wbthomason/packer.nvim",
+		-- "windwp/nvim-autopairs",
+		{ "lewis6991/impatient.nvim", enabled = false },
+		-- Colorschemes
+		"ellisonleao/gruvbox.nvim",
+		"folke/tokyonight.nvim",
+		"projekt0n/github-nvim-theme",
+		"Yazeed1s/minimal.nvim",
+		"mhartington/oceanic-next",
+		{
+			"rose-pine/neovim",
+			branch = "canary",
+			name = "rose-pine",
+			config = function()
+				require("rose-pine").setup({
+					disable_italics = true,
+				})
+				vim.cmd.colorscheme("rose-pine")
+			end,
+		},
+		{ "blazkowolf/gruber-darker.nvim", enabled = false },
 
-			use({ "preservim/nerdcommenter", disable = true })
+		{ "preservim/nerdcommenter", enabled = false },
 
-			use({
-				"LhKipp/nvim-nu",
-				requires = {
-					"nvim-treesitter/nvim-treesitter",
-					"jose-elias-alvarez/null-ls.nvim",
-				},
-				run = ":TSInstall nu",
-				config = function()
-					require("nu").setup({ complete_cmd_names = true })
-				end,
-			})
-
-			use("habamax/vim-godot")
-
-			use({
-				"Equilibris/nx.nvim",
-				disable = true,
-				requires = {
-					"nvim-telescope/telescope.nvim",
-				},
-				config = function()
-					require("nx").setup({
-						nx_cmd_root = "npm nx",
-					})
-				end,
-			})
-
-			use({
-				"neovim/nvim-lspconfig",
-				requires = {
-					-- Useful status updates for LSP
-					"j-hui/fidget.nvim",
-					-- Additional lua configuration
-					"folke/neodev.nvim",
-				},
-			})
-
-			use({
-				"glepnir/lspsaga.nvim",
-				disable = true,
-				branch = "main",
-				requires = {
-					"neovim/nvim-lspconfig",
-				},
-				config = function()
-					local saga = require("lspsaga")
-					saga.init_lsp_saga({
-						border_style = "rounded",
-						-- `100` is fully transparent
-						saga_winblend = 0,
-						move_in_saga = {
-							prev = "<C-k>",
-							next = "<C-j>",
-						},
-						symbol_in_winbar = {
-							enable = false,
-						},
-					})
-				end,
-			})
-			use({ "williamboman/nvim-lsp-installer", disable = true })
-			use({ "williamboman/mason.nvim", disable = true })
-			use({ "williamboman/mason-lspconfig.nvim", disable = true })
-			use("jose-elias-alvarez/null-ls.nvim")
-
-			-- Language-specific plugins
-			use("simrat39/rust-tools.nvim")
-			use("rust-lang/rust.vim")
-			use("mfussenegger/nvim-jdtls")
-			use("jose-elias-alvarez/typescript.nvim")
-			use("b0o/SchemaStore.nvim")
-			use("p00f/clangd_extensions.nvim")
-
-			use({
-				"hrsh7th/nvim-cmp",
-				requires = {
-					"hrsh7th/cmp-nvim-lsp",
-					-- nvim-cmp requires a snippet engine
-					"L3MON4D3/LuaSnip",
-					"saadparwaiz1/cmp_luasnip",
-					-- "hrsh7th/cmp-nvim-lsp-document-symbol",
-					-- "hrsh7th/cmp-nvim-lua",
-					-- "hrsh7th/cmp-buffer",
-					-- "hrsh7th/cmp-path",
-					-- "hrsh7th/cmp-cmdline",
-				},
-			})
-
-			use("onsails/lspkind-nvim")
-
-			use({
-				"lewis6991/gitsigns.nvim",
-				requires = {
-					"nvim-lua/plenary.nvim",
-				},
-			})
-
-			use({
-				"lukas-reineke/indent-blankline.nvim",
-				config = function()
-					require("indent_blankline").setup({
-						char = "┊",
-						show_trailing_blankline_indent = false,
-					})
-				end,
-			})
-
-			use("tpope/vim-fugitive")
-
-			use("kyazdani42/nvim-web-devicons") -- for file icons
-			use({
-				"kyazdani42/nvim-tree.lua",
-				disable = true,
-				requires = {
-					"kyazdani42/nvim-web-devicons",
-				},
-			})
-
-			use("nvim-lualine/lualine.nvim")
-
-			use("nvim-lua/popup.nvim")
-			use("nvim-lua/plenary.nvim")
-			use({
-				"nvim-telescope/telescope.nvim",
-				branch = "0.1.x",
-				requires = {
-					"nvim-lua/plenary.nvim",
-				},
-			})
-			use("nvim-telescope/telescope-fzy-native.nvim")
-			use("nvim-telescope/telescope-ui-select.nvim")
-			use("nvim-telescope/telescope-file-browser.nvim")
-
-			use({
+		{
+			"LhKipp/nvim-nu",
+			dependencies = {
 				"nvim-treesitter/nvim-treesitter",
-				run = function()
-					pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-				end,
-			})
+				"jose-elias-alvarez/null-ls.nvim",
+			},
+			build = ":TSInstall nu",
+			config = function()
+				require("nu").setup({ complete_cmd_names = true })
+			end,
+		},
 
-			use({
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				after = {
-					"nvim-treesitter",
-				},
-			})
+		"habamax/vim-godot",
 
-			use({ "rcarriga/nvim-notify", disable = true })
-		end,
-		config = {
-			display = {
-				open_fn = function()
-					return require("packer.util").float({ border = "single" })
-				end,
+		{
+			"Equilibris/nx.nvim",
+			enabled = false,
+			dependencies = {
+				"nvim-telescope/telescope.nvim",
+			},
+			config = function()
+				require("nx").setup({
+					nx_cmd_root = "npm nx",
+				})
+			end,
+		},
+
+		{
+			"neovim/nvim-lspconfig",
+			dependencies = {
+				-- Useful status updates for LSP
+				"j-hui/fidget.nvim",
+				-- Additional lua configuration
+				"folke/neodev.nvim",
 			},
 		},
+
+		{
+			"glepnir/lspsaga.nvim",
+			enabled = false,
+			branch = "main",
+			dependencies = {
+				"neovim/nvim-lspconfig",
+			},
+			config = function()
+				local saga = require("lspsaga")
+				saga.init_lsp_saga({
+					border_style = "rounded",
+					-- `100` is fully transparent
+					saga_winblend = 0,
+					move_in_saga = {
+						prev = "<C-k>",
+						next = "<C-j>",
+					},
+					symbol_in_winbar = {
+						enable = false,
+					},
+				})
+			end,
+		},
+		{ "williamboman/nvim-lsp-installer", enabled = false },
+		{ "williamboman/mason.nvim", enabled = false },
+		{ "williamboman/mason-lspconfig.nvim", enabled = false },
+		"jose-elias-alvarez/null-ls.nvim",
+
+		-- Language-specific plugins
+		"simrat39/rust-tools.nvim",
+		"rust-lang/rust.vim",
+		"mfussenegger/nvim-jdtls",
+		"jose-elias-alvarez/typescript.nvim",
+		"b0o/SchemaStore.nvim",
+		"p00f/clangd_extensions.nvim",
+
+		{
+			"hrsh7th/nvim-cmp",
+			dependencies = {
+				"hrsh7th/cmp-nvim-lsp",
+				-- nvim-cmp dependencies a snippet engine
+				"L3MON4D3/LuaSnip",
+				"saadparwaiz1/cmp_luasnip",
+				-- "hrsh7th/cmp-nvim-lsp-document-symbol",
+				-- "hrsh7th/cmp-nvim-lua",
+				-- "hrsh7th/cmp-buffer",
+				-- "hrsh7th/cmp-path",
+				-- "hrsh7th/cmp-cmdline",
+			},
+		},
+
+		"onsails/lspkind-nvim",
+
+		{
+			"lewis6991/gitsigns.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+		},
+
+		{
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("indent_blankline").setup({
+					char = "┊",
+					show_trailing_blankline_indent = false,
+				})
+			end,
+		},
+
+		"tpope/vim-fugitive",
+
+		"kyazdani42/nvim-web-devicons", -- for file icons
+		{
+			"kyazdani42/nvim-tree.lua",
+			enabled = false,
+			dependencies = {
+				"kyazdani42/nvim-web-devicons",
+			},
+		},
+
+		"nvim-lualine/lualine.nvim",
+
+		"nvim-lua/popup.nvim",
+		"nvim-lua/plenary.nvim",
+		{
+			"nvim-telescope/telescope.nvim",
+			branch = "0.1.x",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+		},
+		"nvim-telescope/telescope-fzy-native.nvim",
+		"nvim-telescope/telescope-ui-select.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
+
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = function()
+				pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+			end,
+		},
+
+		{
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			after = {
+				"nvim-treesitter",
+			},
+		},
+
+		{ "rcarriga/nvim-notify", enabled = false },
 	})
 
 	local has_neodev, neodev = pcall(require, "neodev")
