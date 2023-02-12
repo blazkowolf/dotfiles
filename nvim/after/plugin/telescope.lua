@@ -32,6 +32,7 @@ end
 
 telescope.setup(telescope_opts)
 
+pcall(telescope.load_extension, "noice")
 pcall(telescope.load_extension, "fzy_native")
 pcall(telescope.load_extension, "file_browser")
 pcall(telescope.load_extension, "ui-select")

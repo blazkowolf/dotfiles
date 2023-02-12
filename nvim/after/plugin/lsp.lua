@@ -44,6 +44,7 @@ if not has_clangd then
 	return
 end
 
+--[[
 local has_fidget, fidget = pcall(require, "fidget")
 if not has_fidget then
 	notify.warn(
@@ -55,13 +56,13 @@ if not has_fidget then
 	return
 end
 fidget.setup()
-
+--]]
 local opts = require("blaz.lsp.opts")
 local default_opts = require("blaz.lsp.opts.defaults")
 
 lspconfig.omnisharp.setup(opts.omnisharp)
 
-lspconfig.sumneko_lua.setup(opts.sumneko_lua)
+lspconfig.lua_ls.setup(opts.sumneko_lua)
 
 lspconfig.cssls.setup(default_opts)
 
