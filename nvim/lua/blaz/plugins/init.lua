@@ -2,6 +2,8 @@
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/first_load.lua
 
 local empty = require("blaz.helper.vim").empty
+local has = require("blaz.helper.vim").has
+local HOSTNAME = require("blaz.helper.vim").HOSTNAME
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,6 +17,26 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+
+---@alias DevPath
+---| "~/dev"
+---| "G:\\dev"
+---| "~\\dev"
+
+---Retrieve the lazy.nvim `config.dev.path` value for the current host 
+---@return DevPath
+local function get_dev_path()
+  if not has("win32") then
+    return [[~/dev]]
+  end
+
+  if HOSTNAME:lower() == "blazdesk" then
+    return [[G:\dev]]
+  end
+
+  return [[~\dev]]
+end
+
 
 local M = {}
 
@@ -41,7 +63,7 @@ function M.load()
 				vim.cmd.colorscheme("rose-pine")
 			end,
 		},
-		{ "blazkowolf/gruber-darker.nvim", enabled = false },
+		{ "blazkowolf/gruber-darker.nvim", dev = true },
 
 		{ "preservim/nerdcommenter", enabled = false },
 
@@ -237,6 +259,10 @@ function M.load()
 		},
 
 		{ "rcarriga/nvim-notify", enabled = false },
+	}, {
+		dev = {
+			path = get_dev_path(),
+		},
 	})
 
 	local has_neodev, neodev = pcall(require, "neodev")
