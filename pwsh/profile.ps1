@@ -13,7 +13,7 @@ $env:Path =
   "$env:PROGRAMFILES\ripgrep;" +
   "${env:PROGRAMFILES(x86)}\VideoLAN\VLC;"+
   "${env:PROGRAMFILES(x86)}\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.31.31103\bin\Hostx64\x86;" +
-  "$env:LOCALAPPDATA\Microsoft\WindowsApps" +
+  "$env:LOCALAPPDATA\Microsoft\WindowsApps;" +
   $env:Path
 
 # Argument completion
@@ -71,11 +71,20 @@ $Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
 #
 # "$user@$server/$nixpath"
 
+# function Prompt {
+#   $CurrentDir = (Convert-Path (Get-Location))
+#   if ($CurrentDir.Contains($HOME)) {
+#     $CurrentDir = $CurrentDir.Replace($HOME, "~")
+#   }
+#   $DisplayPath = $CurrentDir.Replace("\", "/").Replace(":", "").ToLower().Trim("/")
+#   "[$($Username)@$(HostName.exe)] 📂$($DisplayPath) ❯ "
+# }
+
 function Prompt {
   $CurrentDir = (Convert-Path (Get-Location))
   if ($CurrentDir.Contains($HOME)) {
     $CurrentDir = $CurrentDir.Replace($HOME, "~")
   }
   $DisplayPath = $CurrentDir.Replace("\", "/").Replace(":", "").ToLower().Trim("/")
-  "[$($Username)@$(HostName.exe)] 📂$($DisplayPath) ❯ "
+  " $($DisplayPath) "
 }
