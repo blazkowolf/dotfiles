@@ -5,7 +5,9 @@
 - clean: 
   - '~'
   - '~/.bashrc.d'
+  - '~/.config/doom'
   - '~/.config/kitty'
+  - '~/.config/helix'
   - '~/.config/nvim'
   - '~/.config/nvim/plugins'
   - '~/.config/nvim/lua/*'
@@ -15,6 +17,10 @@
       path: bash/.bashrc
       create: true
       force: true
+    ~/.config/doom/:
+      path: doom/**/*
+      create: true
+      glob: true
     ~/.config/kitty/kitty.conf:
       path: kitty/kitty.conf
       create: true
@@ -25,13 +31,21 @@
       path: bash/.bashrc.d/**/*
       create: true
       glob: true
+    ~/.config/helix/:
+      path: helix/**/*
+      create: true
+      glob: true
     ~/.config/nvim/:
       path: nvim/**/*
       create: true
       glob: true
       exclude:
-        - nvim/init.vim
-        - nvim/plugins/*
+        - "*nvim/lua/blaz/lsp/nvim_lsp_installer.lua"
+        - "*nvim/after/plugin/nerdcommenter.lua"
+        - '*nvim/after/plugin/nvim_autopairs.lua'
+        - "*nvim/after/plugin/nvim_notify.lua"
+        - "*nvim/after/plugin/nvim_tree.lua"
+        - "*nvim/lua/blaz/globals/nvim_tree.lua"
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

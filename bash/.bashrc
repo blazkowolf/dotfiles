@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+	source /etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -12,7 +12,7 @@ fi
 if [ -d ~/.bashrc.d ]; then
 	for rc in ~/.bashrc.d/*; do
 		if [ -f "$rc" ]; then
-			. "$rc"
+			source "$rc"
 		fi
 	done
 fi
@@ -22,3 +22,4 @@ unset rc
 set -o vi
 
 eval "$(starship init bash)"
+eval "$(rtx activate bash)"

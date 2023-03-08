@@ -1,0 +1,19 @@
+[[language]]
+name = "gdscript"
+roots = ["project.godot"]
+
+[language.language-server]
+command = "nc"
+args = ["localhost", "6005"]
+language-id = "gdscript"
+
+[[language]]
+name = "rust"
+auto-format = false
+
+[language.language-server]
+command = "rustup"
+args = ["run", "stable", "rust-analyzer"]
+
+[language.config]
+"checkOnSave" = { "command" = "clippy" }
