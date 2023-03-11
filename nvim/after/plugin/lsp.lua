@@ -103,4 +103,4 @@ lspconfig.gdscript.setup(vim.tbl_deep_extend("force", default_opts, {
 	cmd = { "ncat", "127.0.0.1", "6008" },
 }))
 
-lspconfig.remark_ls.setup(default_opts)
+-- lspconfig.remark_ls.setup(default_opts)
