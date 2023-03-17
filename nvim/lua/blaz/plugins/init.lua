@@ -3,7 +3,7 @@
 
 local empty = require("blaz.helper.vim").empty
 local has = require("blaz.helper.vim").has
-local HOSTNAME = require("blaz.helper.vim").HOSTNAME
+local hostname = require("blaz.helper.vim").HOSTNAME:lower()
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -22,21 +22,23 @@ vim.opt.rtp:prepend(lazypath)
 ---| "~/dev"
 ---| "G:\\dev"
 ---| "~\\dev"
+---| "~\\dev\\repos"
 
----Retrieve the lazy.nvim `config.dev.path` value for the current host 
+---Retrieve the lazy.nvim `config.dev.path` value for the current host
 ---@return DevPath
 local function get_dev_path()
-  if not has("win32") then
-    return [[~/dev]]
-  end
+	if not has("win32") then
+		return [[~/dev]]
+	end
 
-  if HOSTNAME:lower() == "blazdesk" then
-    return [[G:\dev]]
-  end
+	if hostname == "blazdesk" then
+		return [[G:\dev]]
+	elseif hostname == "blaztop" then
+		return [[~\dev]]
+	end
 
-  return [[~\dev]]
+	return [[~\dev\repos]]
 end
-
 
 local M = {}
 
@@ -186,7 +188,7 @@ function M.load()
 			},
 		},
 
-		"nvim-lualine/lualine.nvim",
+		{ "nvim-lualine/lualine.nvim", enabled = false },
 
 		"nvim-lua/popup.nvim",
 		"nvim-lua/plenary.nvim",

@@ -8,11 +8,8 @@ local data_dir = string.format("%s/site", vim.fn.stdpath("data"))
 local function download_vim_plug()
 	local plug_download_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-	local cmd_str = string.format(
-		"curl -fLo %s/autoload/plug.vim --create-dirs %s",
-		data_dir,
-		plug_download_url
-	)
+	local cmd_str =
+		string.format("curl -fLo %s/autoload/plug.vim --create-dirs %s", data_dir, plug_download_url)
 	print(cmd_str)
 
 	local out = vim.fn.system(cmd_str)
