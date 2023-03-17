@@ -23,3 +23,4 @@ set -o vi
 
 eval "$(starship init bash)"
 eval "$(rtx activate bash)"
+source /home/blazkowolf/dev/alacritty/extra/completions/alacritty.bash

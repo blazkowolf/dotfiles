@@ -5,6 +5,7 @@
 - clean: 
   - '~'
   - '~/.bashrc.d'
+  - '~/.config/alacritty'
   - '~/.config/doom'
   - '~/.config/kitty'
   - '~/.config/helix'
@@ -17,8 +18,19 @@
       path: bash/.bashrc
       create: true
       force: true
+    ~/.bashrc.d/:
+      path: bash/.bashrc.d/**/*
+      create: true
+      glob: true
+    ~/.config/alacritty/alacritty.yml:
+      path: alacritty/alacritty.linux.yml
+      create: true
     ~/.config/doom/:
       path: doom/**/*
+      create: true
+      glob: true
+    ~/.config/helix/:
+      path: helix/**/*
       create: true
       glob: true
     ~/.config/kitty/kitty.conf:
@@ -27,14 +39,6 @@
     ~/.config/starship.toml:
       path: starship/starship.toml
       create: true
-    ~/.bashrc.d/:
-      path: bash/.bashrc.d/**/*
-      create: true
-      glob: true
-    ~/.config/helix/:
-      path: helix/**/*
-      create: true
-      glob: true
     ~/.config/nvim/:
       path: nvim/**/*
       create: true
@@ -46,6 +50,9 @@
         - "*nvim/after/plugin/nvim_notify.lua"
         - "*nvim/after/plugin/nvim_tree.lua"
         - "*nvim/lua/blaz/globals/nvim_tree.lua"
+    ~/.config/zellij/config.kdl:
+      path: zellij/config.kdl
+      create: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

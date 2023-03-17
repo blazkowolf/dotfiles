@@ -94,12 +94,24 @@ window:
     # General application class
     #general: Alacritty
 
-  # Decorations theme variant (Linux/BSD only)
+  # Decorations theme variant
   #
-  # Override the variant of the GTK theme/Wayland client side decorations.
-  # Commonly supported values are `dark` and `light`. Set this to `None` to use
-  # the default theme variant.
+  # Override the variant of the System theme/GTK theme/Wayland client side
+  # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
+  # auto pick-up. Set this to `None` to use the default theme variant.
   #decorations_theme_variant: None
+
+  # Resize increments
+  #
+  # Prefer resizing window by discrete steps equal to cell dimensions.
+  #resize_increments: false
+
+  # Make `Option` key behave as `Alt` (macOS only):
+  #   - OnlyLeft
+  #   - OnlyRight
+  #   - Both
+  #   - None (default)
+  #option_as_alt: None
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -113,26 +125,52 @@ window:
 font:
   # Normal (roman) font face
   normal:
-    family: CaskaydiaCove NF
-    #style: Regular
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    family: CaskaydiaCove Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Regular
 
   # Bold font face
   bold:
-    family: CaskaydiaCove NF
-    #style: Bold
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: CaskaydiaCove Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold
 
   # Italic font face
   italic:
-    family: CaskaydiaCove NF
-    #style: Italic
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: CaskaydiaCove Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: CaskaydiaCove NF
-    #style: Bold Italic
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: CaskaydiaCove Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -412,19 +450,16 @@ font:
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-shell:
-  program: pwsh
-  #args:
-  # - --login
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: C:/Users/danie
-
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+#working_directory: None
 
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
@@ -589,6 +624,7 @@ working_directory: C:/Users/danie
 #   - Quit
 #       Quit Alacritty.
 #   - ToggleFullscreen
+#   - ToggleMaximized
 #   - SpawnNewInstance
 #       Spawn a new instance of Alacritty.
 #   - CreateNewWindow
@@ -839,7 +875,7 @@ working_directory: C:/Users/danie
   #- { key: M,              mods: Command,                    action: Minimize              }
   #- { key: Q,              mods: Command,                    action: Quit                  }
   #- { key: W,              mods: Command,                    action: Quit                  }
-  #- { key: N,              mods: Command,                    action: SpawnNewInstance      }
+  #- { key: N,              mods: Command,                    action: CreateNewWindow       }
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
