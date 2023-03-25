@@ -50,6 +50,9 @@ vim.opt.laststatus = 3
 -- I want crisp window separators
 -- vim.cmd([[highlight WinSeparator guibg=NONE]])
 
+-- I don't want to display listchars by default
+vim.opt.list = false
+
 -- I want the mouse enabled by default
 vim.opt.mouse = "a"
 

@@ -62,10 +62,27 @@ function M.load()
 				require("rose-pine").setup({
 					disable_italics = true,
 				})
-				vim.cmd.colorscheme("rose-pine")
 			end,
 		},
 		{ "blazkowolf/gruber-darker.nvim", dev = true },
+		{
+			"fraso-dev/nvim-listchars",
+			dev = true,
+			config = function()
+				require("nvim-listchars").setup({
+					save_state = true,
+					listchars = {
+						tab = "│ ",
+						trail = "-",
+						nbsp = "+",
+						eol = "↲",
+					},
+          exclude_filetypes = {
+            "markdown",
+          },
+				})
+			end,
+		},
 
 		{ "preservim/nerdcommenter", enabled = false },
 
@@ -175,6 +192,7 @@ function M.load()
 					show_trailing_blankline_indent = false,
 				})
 			end,
+			enabled = true,
 		},
 
 		"tpope/vim-fugitive",
