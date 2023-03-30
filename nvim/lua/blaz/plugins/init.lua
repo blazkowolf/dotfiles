@@ -20,24 +20,18 @@ vim.opt.rtp:prepend(lazypath)
 
 ---@alias DevPath
 ---|"~/dev"
----|"G:\\dev"
+---|"~/dev/repos"
 ---|"~\\dev"
 ---|"~\\dev\\repos"
 
 ---Retrieve the lazy.nvim `config.dev.path` value for the current host
 ---@return DevPath
 local function get_dev_path()
-	if not has("win32") then
-		return [[~/dev]]
+	if has("win32") then
+		return hostname == "blaztop" and [[~\dev]] or [[~\dev\repos]]
 	end
 
-	if hostname == "blazdesk" then
-		return [[G:\dev]]
-	elseif hostname == "blaztop" then
-		return [[~\dev]]
-	end
-
-	return [[~\dev\repos]]
+  return (hostname == "blazdesk" or hostname == "blaztop2") and [[~/dev]] or [[~/dev/repos]]
 end
 
 local M = {}
@@ -84,7 +78,7 @@ function M.load()
 			end,
 		},
 
-		{ "preservim/nerdcommenter", enabled = false },
+		{ "numToStr/Comment.nvim", config = true },
 
 		{
 			"LhKipp/nvim-nu",
