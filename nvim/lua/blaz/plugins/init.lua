@@ -31,7 +31,7 @@ local function get_dev_path()
 		return hostname == "blaztop" and [[~\dev]] or [[~\dev\repos]]
 	end
 
-  return (hostname == "blazdesk" or hostname == "blaztop2") and [[~/dev]] or [[~/dev/repos]]
+	return (hostname == "blazdesk" or hostname == "blaztop2") and [[~/dev]] or [[~/dev/repos]]
 end
 
 local M = {}
@@ -39,7 +39,6 @@ local M = {}
 ---Load Neovim plugins
 function M.load()
 	require("lazy").setup({
-		-- "wbthomason/packer.nvim",
 		-- "windwp/nvim-autopairs",
 		{ "lewis6991/impatient.nvim", enabled = false },
 		-- Colorschemes
@@ -52,30 +51,26 @@ function M.load()
 			"rose-pine/neovim",
 			branch = "canary",
 			name = "rose-pine",
-			config = function()
-				require("rose-pine").setup({
-					disable_italics = true,
-				})
-			end,
+			opts = {
+				disable_italics = true,
+			},
 		},
 		{ "blazkowolf/gruber-darker.nvim", dev = true },
 		{
-			"fraso-dev/nvim-listchars",
+			"0xfraso/nvim-listchars",
 			dev = true,
-			config = function()
-				require("nvim-listchars").setup({
-					save_state = true,
-					listchars = {
-						tab = "│ ",
-						trail = "-",
-						nbsp = "+",
-						eol = "↲",
-					},
-          exclude_filetypes = {
-            "markdown",
-          },
-				})
-			end,
+			opts = {
+				save_state = true,
+				listchars = {
+					tab = "│ ",
+					trail = "-",
+					nbsp = "+",
+					eol = "↲",
+				},
+				exclude_filetypes = {
+					"markdown",
+				},
+			},
 		},
 
 		{ "numToStr/Comment.nvim", config = true },
@@ -100,11 +95,9 @@ function M.load()
 			dependencies = {
 				"nvim-telescope/telescope.nvim",
 			},
-			config = function()
-				require("nx").setup({
-					nx_cmd_root = "npm nx",
-				})
-			end,
+			opts = {
+				nx_cmd_root = "npm nx",
+			},
 		},
 
 		{
@@ -140,7 +133,6 @@ function M.load()
 				})
 			end,
 		},
-		{ "williamboman/nvim-lsp-installer", enabled = false },
 		{ "williamboman/mason.nvim", enabled = false },
 		{ "williamboman/mason-lspconfig.nvim", enabled = false },
 		"jose-elias-alvarez/null-ls.nvim",
@@ -179,14 +171,12 @@ function M.load()
 
 		{
 			"lukas-reineke/indent-blankline.nvim",
-			config = function()
-				require("indent_blankline").setup({
-					-- char = "┊",
-					char = "│",
-					show_trailing_blankline_indent = false,
-				})
-			end,
 			enabled = true,
+			opts = {
+				-- char = "┊",
+				char = "│",
+				show_trailing_blankline_indent = false,
+			},
 		},
 
 		"tpope/vim-fugitive",
@@ -206,7 +196,7 @@ function M.load()
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope.nvim",
-			branch = "0.1.x",
+			branch = "*",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 			},
@@ -219,9 +209,9 @@ function M.load()
 			"folke/noice.nvim",
 			config = function()
 				require("noice").setup({
-          cmdline = {
-            view = "cmdline",
-          },
+					cmdline = {
+						view = "cmdline",
+					},
 					lsp = {
 						-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 						override = {
