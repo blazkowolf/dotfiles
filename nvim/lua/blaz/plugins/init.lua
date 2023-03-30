@@ -19,10 +19,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 ---@alias DevPath
----| "~/dev"
----| "G:\\dev"
----| "~\\dev"
----| "~\\dev\\repos"
+---|"~/dev"
+---|"G:\\dev"
+---|"~\\dev"
+---|"~\\dev\\repos"
 
 ---Retrieve the lazy.nvim `config.dev.path` value for the current host
 ---@return DevPath
@@ -225,6 +225,9 @@ function M.load()
 			"folke/noice.nvim",
 			config = function()
 				require("noice").setup({
+          cmdline = {
+            view = "cmdline",
+          },
 					lsp = {
 						-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 						override = {
