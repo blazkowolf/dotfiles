@@ -1,9 +1,13 @@
--- Remap <leader> key to SPACE ----------------------------------------
+-- ███   █    ██   ▄▄▄▄▄▄   █  █▀ ████▄   ▄ ▄   ████▄ █    ▄████  
+-- █  █  █    █ █ ▀   ▄▄▀   █▄█   █   █  █   █  █   █ █    █▀   ▀ 
+-- █ ▀ ▄ █    █▄▄█ ▄▀▀   ▄▀ █▀▄   █   █ █ ▄   █ █   █ █    █▀▀    
+-- █  ▄▀ ███▄ █  █ ▀▀▀▀▀▀   █  █  ▀████ █  █  █ ▀████ ███▄ █      
+-- ███       ▀   █            █          █ █ █            ▀ █     
+--              █            ▀            ▀ ▀                ▀    
+--             ▀                                                  
 
 vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
-
--- I want to improve startup time
--- require("impatient")
+vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
 require("blaz.globals")
 require("blaz.editor")
