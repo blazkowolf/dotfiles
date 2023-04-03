@@ -190,8 +190,36 @@ target = "nvim/lua/blaz/lsp/opts/sumneko_lua.lua"
 ### plugins ###
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/plugins/init.lua"
-target = "nvim/lua/blaz/plugins/init.lua"
+path = "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
+target = "nvim/lua/plugins/colorscheme.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/completion.lua"
+target = "nvim/lua/plugins/completion.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/editor.lua"
+target = "nvim/lua/plugins/editor.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/lsp.lua"
+target = "nvim/lua/plugins/lsp.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/tool.lua"
+target = "nvim/lua/plugins/tool.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/treesitter.lua"
+target = "nvim/lua/plugins/treesitter.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/ui.lua"
+target = "nvim/lua/plugins/ui.lua"
+
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/vcs.lua"
+target = "nvim/lua/plugins/vcs.lua"
 
 [[apps.nvim.links]]
 path = "$HOME/.config/nvim/lua/blaz/plugins/opts/telescope.lua"

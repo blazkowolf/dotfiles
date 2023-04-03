@@ -10,6 +10,7 @@
 vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
+local has = require("blaz.helper.vim").has
 local hostname = require("blaz.helper.vim").HOSTNAME:lower()
 
 ---Retrieve the lazy.nvim `config.dev.path` value for the current host
@@ -43,11 +44,11 @@ require("blaz.keymap")
 
 -- require("blaz.plugins").load()
 require("lazy").setup({
-  { import = "plugins" },
+	{ import = "plugins" },
 }, {
-  dev = {
-    path = get_dev_path(),
-  },
+	dev = {
+		path = get_dev_path(),
+	},
 })
 
 -- The following must be `required` after plugins load
