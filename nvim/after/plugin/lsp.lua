@@ -60,6 +60,10 @@ fidget.setup()
 local opts = require("blaz.lsp.opts")
 local default_opts = require("blaz.lsp.opts.defaults")
 
+lspconfig.angularls.setup(default_opts)
+
+lspconfig.nxls.setup(default_opts)
+
 lspconfig.omnisharp.setup(opts.omnisharp)
 
 lspconfig.lua_ls.setup(opts.sumneko_lua)
@@ -96,6 +100,8 @@ typescript.setup({
 
 lspconfig.tailwindcss.setup(default_opts)
 
+lspconfig.html.setup(default_opts)
+
 lspconfig.bashls.setup(default_opts)
 
 -- lspconfig.gdscript.setup(default_opts)
@@ -104,3 +110,4 @@ lspconfig.gdscript.setup(vim.tbl_deep_extend("force", default_opts, {
 }))
 
 -- lspconfig.remark_ls.setup(default_opts)
+lspconfig.marksman.setup(default_opts)
