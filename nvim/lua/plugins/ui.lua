@@ -10,7 +10,7 @@ return {
 	"nvim-lua/popup.nvim",
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "*",
+		tag = "0.1.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
