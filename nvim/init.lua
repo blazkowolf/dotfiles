@@ -11,11 +11,11 @@ vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
 local has = require("blaz.helper.vim").has
-local hostname = require("blaz.helper.vim").HOSTNAME:lower()
 
 ---Retrieve the lazy.nvim `config.dev.path` value for the current host
 ---@return "~/dev"|"~/dev/repos"|"~\\dev"|"~\\dev\\repos"
 local function get_dev_path()
+	local hostname = vim.loop.os_gethostname():lower()
 	if has("win32") then
 		return hostname == "blaztop" and [[~\dev]] or [[~\dev\repos]]
 	end
