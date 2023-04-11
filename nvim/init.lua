@@ -42,12 +42,12 @@ require("blaz.globals")
 require("blaz.editor")
 require("blaz.keymap")
 
--- require("blaz.plugins").load()
-require("lazy").setup({
-	{ import = "plugins" },
-}, {
+require("lazy").setup("plugins", {
 	dev = {
 		path = get_dev_path(),
+	},
+	ui = {
+		border = "rounded",
 	},
 })
 
