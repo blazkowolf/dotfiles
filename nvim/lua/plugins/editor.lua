@@ -1,7 +1,7 @@
 return {
 	{
 		"0xfraso/nvim-listchars",
-		dev = true,
+		dev = false,
 		opts = {
 			save_state = true,
 			listchars = {
