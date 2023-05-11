@@ -1,4 +1,14 @@
-# .bashrc
+# ███   █    ██   ▄▄▄▄▄▄   █  █▀ ████▄   ▄ ▄   ████▄ █    ▄████
+# █  █  █    █ █ ▀   ▄▄▀   █▄█   █   █  █   █  █   █ █    █▀   ▀
+# █ ▀ ▄ █    █▄▄█ ▄▀▀   ▄▀ █▀▄   █   █ █ ▄   █ █   █ █    █▀▀
+# █  ▄▀ ███▄ █  █ ▀▀▀▀▀▀   █  █  ▀████ █  █  █ ▀████ ███▄ █
+# ███       ▀   █            █          █ █ █            ▀ █
+#              █            ▀            ▀ ▀                ▀
+#             ▀
+
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -19,8 +29,6 @@ fi
 
 unset rc
 
-set -o vi
-
 eval "$(starship init bash)"
 eval "$(rtx activate bash)"
-source /home/blazkowolf/dev/alacritty/extra/completions/alacritty.bash
+source ~/dev/alacritty/extra/completions/alacritty.bash

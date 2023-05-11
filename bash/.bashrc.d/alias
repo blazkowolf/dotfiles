@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-alias cat="bat"
-alias grep="rg"
-alias ls="exa --icons"
+alias ls="exa -la --icons --color=always --group-directories-first"
+alias la="exa -a --icons --color=always --group-directories-first"
+alias ll="exa -l --icons --color=always --group-directories-first"
+alias lt="exa -aT --icons --color=always --group-directories-first"
+
 alias emacs="emacsclient --create-frame --alternate-editor='emacs'"
 # alias n="neovide.exe --wsl"
-
-# alias luamake=/luamake
-alias luamake=/home/blazkowolf/.local/share/nvim/lsp_servers/lua-language-server/3rd/luamake/luamake
