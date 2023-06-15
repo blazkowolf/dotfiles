@@ -1,13 +1,14 @@
 return {
-	"ellisonleao/gruvbox.nvim",
-	"folke/tokyonight.nvim",
-	"projekt0n/github-nvim-theme",
-	"Yazeed1s/minimal.nvim",
-	"mhartington/oceanic-next",
+	{ "ellisonleao/gruvbox.nvim", lazy = true },
+	{ "folke/tokyonight.nvim", lazy = true },
+	{ "projekt0n/github-nvim-theme", lazy = true },
+	{ "Yazeed1s/minimal.nvim", lazy = true },
+	{ "mhartington/oceanic-next", lazy = true },
 	{
 		"rose-pine/neovim",
 		branch = "canary",
 		name = "rose-pine",
+		lazy = true,
 		opts = {
 			disable_italics = true,
 		},

@@ -77,6 +77,10 @@ name = "Neovim"
 path = "$HOME/.config/nvim/init.lua"
 target = "nvim/init.lua"
 
+[[apps.nvim.links]]
+path = "$HOME/.config/nvim/filetype.lua"
+target = "nvim/filetype.lua"
+
 ### after/plugin ###
 
 [[apps.nvim.links]]

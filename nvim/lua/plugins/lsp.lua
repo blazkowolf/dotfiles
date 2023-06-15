@@ -1,17 +1,5 @@
 return {
 	{
-		"LhKipp/nvim-nu",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-		build = ":TSInstall nu",
-		config = function()
-			require("nu").setup({ complete_cmd_names = true })
-		end,
-	},
-	"habamax/vim-godot",
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Useful status updates for LSP
@@ -19,29 +7,6 @@ return {
 			-- Additional lua configuration
 			{ "folke/neodev.nvim", config = true },
 		},
-	},
-	{
-		"glepnir/lspsaga.nvim",
-		enabled = false,
-		branch = "main",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			local saga = require("lspsaga")
-			saga.init_lsp_saga({
-				border_style = "rounded",
-				-- `100` is fully transparent
-				saga_winblend = 0,
-				move_in_saga = {
-					prev = "<C-k>",
-					next = "<C-j>",
-				},
-				symbol_in_winbar = {
-					enable = false,
-				},
-			})
-		end,
 	},
 	{ "williamboman/mason-lspconfig.nvim", enabled = false },
 	"jose-elias-alvarez/null-ls.nvim",
@@ -53,14 +18,18 @@ return {
 	"jose-elias-alvarez/typescript.nvim",
 	"b0o/SchemaStore.nvim",
 	"p00f/clangd_extensions.nvim",
+	"udalov/kotlin-vim",
+	"habamax/vim-godot",
 	{
-		"Equilibris/nx.nvim",
+		"LhKipp/nvim-nu",
 		enabled = false,
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"jose-elias-alvarez/null-ls.nvim",
 		},
+		build = ":TSInstall nu",
 		opts = {
-			nx_cmd_root = "npm nx",
+			complete_cmd_names = true
 		},
 	},
 }
