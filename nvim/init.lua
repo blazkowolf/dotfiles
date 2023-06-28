@@ -46,6 +46,9 @@ require("lazy").setup("plugins", {
 	dev = {
 		path = get_dev_path(),
 	},
+	install = {
+		colorscheme = { "gruber-darker" },
+	},
 	ui = {
 		border = "rounded",
 	},

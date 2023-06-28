@@ -13,5 +13,9 @@ return {
 			disable_italics = true,
 		},
 	},
-	{ "blazkowolf/gruber-darker.nvim", dev = true },
+	{
+		"blazkowolf/gruber-darker.nvim",
+		dev = true,
+		priority = 1000,
+	},
 }

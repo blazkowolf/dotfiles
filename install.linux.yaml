@@ -2,16 +2,16 @@
     link:
       relink: true
 
-- clean: 
-  - '~'
-  - '~/.bashrc.d'
-  - '~/.config/alacritty'
-  - '~/.config/doom'
-  - '~/.config/kitty'
-  - '~/.config/helix'
-  - '~/.config/nvim'
-  - '~/.config/nvim/plugins'
-  - '~/.config/nvim/lua/*'
+- clean:
+    - "~"
+    - "~/.bashrc.d"
+    - "~/.config/alacritty"
+    - "~/.config/doom"
+    - "~/.config/kitty"
+    - "~/.config/helix"
+    - "~/.config/nvim"
+    - "~/.config/nvim/plugins"
+    - "~/.config/nvim/lua/*"
 
 - link:
     ~/.bashrc:
@@ -48,7 +48,7 @@
         - "*nvim/lua/blaz/plugins/plug.lua"
         - "*nvim/lua/blaz/lsp/nvim_lsp_installer.lua"
         - "*nvim/after/plugin/nerdcommenter.lua"
-        - '*nvim/after/plugin/nvim_autopairs.lua'
+        - "*nvim/after/plugin/nvim_autopairs.lua"
         - "*nvim/after/plugin/nvim_notify.lua"
         - "*nvim/after/plugin/nvim_tree.lua"
         - "*nvim/after/plugin/lualine.lua"
@@ -58,4 +58,4 @@
       create: true
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

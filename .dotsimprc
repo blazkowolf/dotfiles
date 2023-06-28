@@ -194,6 +194,10 @@ target = "nvim/lua/blaz/lsp/opts/sumneko_lua.lua"
 ### plugins ###
 
 [[apps.nvim.links]]
+path = "$HOME/.config/nvim/lazy-lock.json"
+target = "nvim/lazy-lock.json"
+
+[[apps.nvim.links]]
 path = "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
 target = "nvim/lua/plugins/colorscheme.lua"
 
