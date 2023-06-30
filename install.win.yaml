@@ -27,9 +27,9 @@
     $LOCALAPPDATA/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json:
       path: winget/settings.json
 
-    # Helix
+    # Alacritty
     $APPDATA/alacritty/alacritty.yml:
-      path: alacritty/alacritty.yml
+      path: alacritty/alacritty.win.yml
 
     # Clink
     $LOCALAPPDATA/clink/.inputrc:
