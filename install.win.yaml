@@ -53,6 +53,10 @@
     $LOCALAPPDATA/lf/icons:
       path: lf/icons
 
+    # Starship
+    $LOCALAPPDATA/starship/starship.toml:
+      path: starship/starship.toml
+
     # Winfetch
     $USERPROFILE/.config/winfetch/config.ps1:
       path: winfetch/config.ps1
@@ -94,6 +98,7 @@
         - "*nvim/after/plugin/nvim_autopairs.lua"
         - "*nvim/after/plugin/nvim_notify.lua"
         - "*nvim/after/plugin/nvim_tree.lua"
+        - "*nvim/after/plugin/lualine.lua"
         - "*nvim/lua/blaz/globals/nvim_tree.lua"
 
 - shell:

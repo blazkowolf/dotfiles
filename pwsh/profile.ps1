@@ -37,39 +37,15 @@ Set-PSReadLineOption -ViModeIndicator Cursor
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-# I want auto-pair functionality for quotes
-Set-PSReadLineKeyHandler -Chord 'Oem7','Shift+Oem7' `
-                         -BriefDescription SmartInsertQuote `
-                         -LongDescription "Insert paired quotes if not already on a quote" `
-                         -ScriptBlock {
-  param($Key, $Arg)
-
-  $Line = $null
-  $Cursor = $null
-  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$Line, [ref]$Cursor)
-
-  if ($Line[$Cursor] -eq $Key.KeyChar) {
-    # Just move the cursor
-    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($Cursor + 1)
-  }
-  else {
-    # Insert matching quotes, move cursor to be in between the quotes
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("$($Key.KeyChar)" * 2)
-    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$Line, [ref]$Cursor)
-    [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($Cursor - 1)
-  }
-}
+$env:STARSHIP_CONFIG = "$env:LOCALAPPDATA\starship\starship.toml"
+Invoke-Expression (&starship init powershell)
 
 # Determine if Powershell is running as Administrator
-$CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal($CurrentUser)
-$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+# $CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal($CurrentUser)
+# $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 # I want the username separate from the domain in `domain\username`
-$Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
-
-# $nixPath = (((Get-Location) -Replace "\\", "/") -replace ":","").ToLower().Trim("/")
-#
-# "$user@$server/$nixpath"
+# $Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
 
 # function Prompt {
 #   $CurrentDir = (Convert-Path (Get-Location))
@@ -77,14 +53,5 @@ $Username = $IsAdmin ? "root" : "$(($CurrentUser.Name -Split "\\")[1])"
 #     $CurrentDir = $CurrentDir.Replace($HOME, "~")
 #   }
 #   $DisplayPath = $CurrentDir.Replace("\", "/").Replace(":", "").ToLower().Trim("/")
-#   "[$($Username)@$(HostName.exe)] 📂$($DisplayPath) ❯ "
+#   " $($DisplayPath) "
 # }
-
-function Prompt {
-  $CurrentDir = (Convert-Path (Get-Location))
-  if ($CurrentDir.Contains($HOME)) {
-    $CurrentDir = $CurrentDir.Replace($HOME, "~")
-  }
-  $DisplayPath = $CurrentDir.Replace("\", "/").Replace(":", "").ToLower().Trim("/")
-  " $($DisplayPath) "
-}
