@@ -22,20 +22,23 @@ nvim_treesitter_configs.setup({
 		"cpp",
 		"css",
 		"dockerfile",
-		"help",
+		"vim",
+		"vimdoc",
 		"java",
 		"javascript",
 		"jsdoc",
 		"json",
 		"lua",
+		"luadoc",
 		"toml",
 		"typescript",
-		-- "markdown",
+		"markdown",
+		"markdown_inline",
 		"rust",
 		"scss",
 		"todotxt",
 		"yaml",
-		-- "html",
+		"html",
 	},
 
 	-- Install languages synchronously (only applied to `ensure_installed`)
@@ -59,7 +62,10 @@ nvim_treesitter_configs.setup({
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
-	indent = { enable = true, disable = { "python" } },
+	indent = {
+		enable = true,
+		disable = { "python" }
+	},
 	incremental_selection = {
 		enable = true,
 		keymaps = {
