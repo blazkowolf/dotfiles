@@ -12,17 +12,6 @@ vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, tru
 
 local has = require("blaz.helper.vim").has
 
----Retrieve the lazy.nvim `config.dev.path` value for the current host
----@return "~/dev"|"~/dev/repos"|"~\\dev"|"~\\dev\\repos"
-local function get_dev_path()
-	local hostname = vim.loop.os_gethostname():lower()
-	if has("win32") then
-		return hostname == "blaztop" and [[~\dev]] or [[~\dev\repos]]
-	end
-
-	return (hostname == "blazdesk" or hostname == "blaztop2") and [[~/dev]] or [[~/dev/repos]]
-end
-
 -- Bootstrap plugin manager
 -- Snippet from https://github.com/folke/lazy.nvim#-installation
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -44,7 +33,7 @@ require("blaz.keymap")
 
 require("lazy").setup("plugins", {
 	dev = {
-		path = get_dev_path(),
+		path = "~/dev",
 	},
 	install = {
 		colorscheme = { "gruber-darker" },
