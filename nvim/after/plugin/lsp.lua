@@ -104,6 +104,8 @@ lspconfig.tailwindcss.setup(default_opts)
 
 lspconfig.html.setup(default_opts)
 
+lspconfig.emmet_ls.setup(default_opts)
+
 lspconfig.bashls.setup(default_opts)
 
 -- lspconfig.gdscript.setup(default_opts)
