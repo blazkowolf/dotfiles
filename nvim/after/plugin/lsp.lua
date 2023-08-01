@@ -44,19 +44,6 @@ if not has_clangd then
 	return
 end
 
---[[
-local has_fidget, fidget = pcall(require, "fidget")
-if not has_fidget then
-	notify.warn(
-		"LSP",
-		"fidget not found!",
-		"Skipping configuration for this plugin...",
-		"Some features may not work properly..."
-	)
-	return
-end
-fidget.setup()
---]]
 local opts = require("blaz.lsp.opts")
 local default_opts = require("blaz.lsp.opts.defaults")
 

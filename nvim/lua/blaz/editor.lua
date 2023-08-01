@@ -63,9 +63,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.shiftwidth = 0
 -- I don't want extra messages showing when using completion
 vim.opt.shortmess:append("c")
--- I don't want vim's status indicators for the various
--- editor modes to visually conflict with lualine's
-vim.opt.showmode = false
+-- I want to show --INSERT--, --VISUAL--, etc.
+vim.opt.showmode = true
 vim.opt.showtabline = 2
 vim.opt.smartcase = true
 vim.opt.smartindent = true

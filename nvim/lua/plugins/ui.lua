@@ -17,9 +17,13 @@ return {
 	},
 	"nvim-telescope/telescope-fzy-native.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
-	"nvim-telescope/telescope-file-browser.nvim",
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		enabled = false,
+	},
 	{
 		"folke/noice.nvim",
+		enabled = false,
 		config = function()
 			require("noice").setup({
 				cmdline = {

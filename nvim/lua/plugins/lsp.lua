@@ -3,7 +3,12 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Useful status updates for LSP
-			-- "j-hui/fidget.nvim",
+			{
+				"j-hui/fidget.nvim",
+				-- tag = "legacy",
+				event = "LspAttach",
+				opts = {},
+			},
 			-- Additional lua configuration
 			{ "folke/neodev.nvim", config = true },
 		},

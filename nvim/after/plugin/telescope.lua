@@ -34,7 +34,7 @@ telescope.setup(telescope_opts)
 
 pcall(telescope.load_extension, "noice")
 pcall(telescope.load_extension, "fzy_native")
-pcall(telescope.load_extension, "file_browser")
+-- pcall(telescope.load_extension, "file_browser")
 pcall(telescope.load_extension, "ui-select")
 
 vim.keymap.set(
@@ -86,7 +86,7 @@ vim.keymap.set(
 	require("telescope.builtin").help_tags,
 	{ desc = "[F]ind [H]elp tags" }
 )
-vim.keymap.set("n", "<C-n>", "<cmd>Telescope file_browser<CR>", { remap = false })
+-- vim.keymap.set("n", "<C-n>", "<cmd>Telescope file_browser<CR>", { remap = false })
 vim.keymap.set("n", "<leader>/", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
