@@ -22,6 +22,17 @@ if not has_rust_tools then
 	return
 end
 
+local has_flutter_tools, flutter_tools = pcall(require, "flutter-tools")
+if not has_flutter_tools then
+	notify.warn(
+		"LSP (Flutter)",
+		"flutter-tools not found!",
+		"Skipping configuration for this plugin...",
+		"Some features may not work properly..."
+	)
+	return
+end
+
 local has_typescript, typescript = pcall(require, "typescript")
 if not has_typescript then
 	notify.warn(
@@ -72,6 +83,13 @@ rust_tools.setup({
 			},
 		},
 	}),
+})
+
+flutter_tools.setup({
+	lsp = {
+		on_attach = default_opts.on_attach,
+		capabilities = default_opts.capabilities,
+	},
 })
 
 lspconfig.taplo.setup(default_opts)

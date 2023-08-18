@@ -18,6 +18,13 @@ return {
 	"onsails/lspkind-nvim",
 	-- Language-specific plugins
 	"simrat39/rust-tools.nvim",
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	"rust-lang/rust.vim",
 	"mfussenegger/nvim-jdtls",
 	"jose-elias-alvarez/typescript.nvim",
