@@ -10,7 +10,10 @@ return {
 				opts = {},
 			},
 			-- Additional lua configuration
-			{ "folke/neodev.nvim", config = true },
+			{
+				"folke/neodev.nvim",
+				opts = {},
+			},
 		},
 	},
 	{ "williamboman/mason-lspconfig.nvim", enabled = false },
@@ -41,7 +44,7 @@ return {
 		},
 		build = ":TSInstall nu",
 		opts = {
-			complete_cmd_names = true
+			complete_cmd_names = true,
 		},
 	},
 }
