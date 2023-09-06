@@ -230,6 +230,10 @@ path = "$HOME/.config/nvim/lua/plugins/vcs.lua"
 target = "nvim/lua/plugins/vcs.lua"
 
 [[apps.nvim.links]]
+path = "$HOME/.config/nvim/lua/plugins/obsidian.lua"
+target = "nvim/lua/plugins/obsidian.lua"
+
+[[apps.nvim.links]]
 path = "$HOME/.config/nvim/lua/blaz/plugins/opts/telescope.lua"
 target = "nvim/lua/blaz/plugins/opts/telescope.lua"
 

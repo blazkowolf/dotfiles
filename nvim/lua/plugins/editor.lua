@@ -29,4 +29,5 @@ return {
 	"kyazdani42/nvim-web-devicons", -- for file icons
 	{ "numToStr/Comment.nvim", config = true },
 	-- "windwp/nvim-autopairs",
+	"tpope/vim-sleuth",
 }
