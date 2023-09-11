@@ -98,6 +98,8 @@ clangd_extensions.setup({
 	server = default_opts,
 })
 
+lspconfig.cmake.setup(default_opts)
+
 lspconfig.yamlls.setup(default_opts)
 
 -- lspconfig.tsserver.setup(default_opts)
