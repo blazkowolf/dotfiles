@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-alias ls="exa -la --icons --color=always --group-directories-first"
-alias la="exa -a --icons --color=always --group-directories-first"
-alias ll="exa -l --icons --color=always --group-directories-first"
-alias lt="exa -aT --icons --color=always --group-directories-first"
+alias ls="eza -la --icons --color=always --group-directories-first"
+alias la="eza -a --icons --color=always --group-directories-first"
+alias ll="eza -l --icons --color=always --group-directories-first"
+alias lt="eza -aT --icons --color=always --group-directories-first"
 
 alias emacs="emacsclient --create-frame --alternate-editor='emacs'"
 # alias n="neovide.exe --wsl"
