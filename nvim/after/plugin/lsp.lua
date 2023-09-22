@@ -55,22 +55,63 @@ if not has_clangd then
 	return
 end
 
-local opts = require("blaz.lsp.opts")
+-- local opts = require("blaz.lsp.opts")
 local default_opts = require("blaz.lsp.opts.defaults")
 
-lspconfig.angularls.setup(default_opts)
+local servers = {
+	angularls = {},
+	eslint = {},
+	nxls = {},
+	-- omnisharp = {
+	-- 	-- This is the default if not provided, you can remove it. Or adjust as needed.
+	-- 	-- One dedicated LSP server & client will be started per unique root_dir
+	-- 	root_dir = function(file, _)
+	-- 		if file:sub(-#".csx") == ".csx" then
+	-- 			return lspconfig.util.path.dirname(file)
+	-- 		end
+	-- 		return lspconfig.util.root_pattern("*.sln")(file)
+	-- 			or lspconfig.util.root_pattern("*.csproj")(file)
+	-- 	end,
+	-- },
+	lua_ls = {
+		Lua = {
+			workspace = {
+				-- Make the serve aware of Neovim runtime files
+				-- library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = { enable = false },
+		},
+	},
+	cssls = {},
+	jsonls = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+	-- rust_analyzer = {},
+	taplo = {},
+	-- clangd = {},
+	cmake = {},
+	yamlls = {},
+	-- tsserver = {},
+	tailwindcss = {},
+	html = {},
+	emmet_ls = {},
+	bashls = {},
+	-- gdscript = {},
+	marksman = {},
+	kotlin_language_server = {},
+}
 
-lspconfig.eslint.setup(default_opts)
-
-lspconfig.nxls.setup(default_opts)
-
-lspconfig.omnisharp.setup(opts.omnisharp)
-
-lspconfig.lua_ls.setup(opts.sumneko_lua)
-
-lspconfig.cssls.setup(default_opts)
-
-lspconfig.jsonls.setup(opts.jsonls)
+for key, value in pairs(servers) do
+	lspconfig[key].setup({
+		capabilities = default_opts.capabilities,
+		settings = value,
+		filetypes = (value or {}).filetypes,
+	})
+end
 
 rust_tools.setup({
 	server = vim.tbl_deep_extend("force", default_opts, {
@@ -87,45 +128,19 @@ rust_tools.setup({
 
 flutter_tools.setup({
 	lsp = {
-		on_attach = default_opts.on_attach,
+		-- on_attach = default_opts.on_attach,
 		capabilities = default_opts.capabilities,
 	},
 })
-
-lspconfig.taplo.setup(default_opts)
 
 clangd_extensions.setup({
 	server = default_opts,
 })
 
-lspconfig.cmake.setup(default_opts)
-
-lspconfig.yamlls.setup(default_opts)
-
--- lspconfig.tsserver.setup(default_opts)
 typescript.setup({
 	server = default_opts,
 })
 
-lspconfig.tailwindcss.setup(default_opts)
-
-lspconfig.html.setup(default_opts)
-
-lspconfig.emmet_ls.setup(default_opts)
-
-lspconfig.bashls.setup(default_opts)
-
--- lspconfig.gdscript.setup(default_opts)
 lspconfig.gdscript.setup(vim.tbl_deep_extend("force", default_opts, {
 	cmd = { "ncat", "127.0.0.1", "6008" },
-}))
-
--- lspconfig.remark_ls.setup(default_opts)
-lspconfig.marksman.setup(default_opts)
-
-lspconfig.kotlin_language_server.setup(vim.tbl_deep_extend("force", default_opts, {
-	cmd = {
-		vim.fn.stdpath("data")
-			.. "/lsp_servers/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-	},
 }))

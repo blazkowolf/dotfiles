@@ -187,10 +187,6 @@ target = "nvim/lua/blaz/lsp/opts/jsonls.lua"
 path = "$HOME/.config/nvim/lua/blaz/lsp/opts/omnisharp.lua"
 target = "nvim/lua/blaz/lsp/opts/omnisharp.lua"
 
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/sumneko_lua.lua"
-target = "nvim/lua/blaz/lsp/opts/sumneko_lua.lua"
-
 ### plugins ###
 
 [[apps.nvim.links]]

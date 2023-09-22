@@ -10,8 +10,6 @@
 vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
 
-local has = require("blaz.helper.vim").has
-
 -- Bootstrap plugin manager
 -- Snippet from https://github.com/folke/lazy.nvim#-installation
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -31,7 +29,11 @@ require("blaz.globals")
 require("blaz.editor")
 require("blaz.keymap")
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+		-- { import = "plugins.extras" },
+	},
 	dev = {
 		path = "~/dev",
 	},
