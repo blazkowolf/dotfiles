@@ -1,7 +1,14 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
+			{
+				"folke/neoconf.nvim",
+				cmd = "Neoconf",
+				opts = {},
+				dependencies = { "nvim-lspconfig" },
+			},
 			-- Useful status updates for LSP
 			{
 				"j-hui/fidget.nvim",

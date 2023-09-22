@@ -74,6 +74,10 @@ target = "starship/starship.toml"
 name = "Neovim"
 
 [[apps.nvim.links]]
+path = "$HOME/.config/nvim/neoconf.json"
+target = "nvim/neoconf.json"
+
+[[apps.nvim.links]]
 path = "$HOME/.config/nvim/init.lua"
 target = "nvim/init.lua"
 
