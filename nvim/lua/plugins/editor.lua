@@ -18,12 +18,14 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		enabled = true,
+		main = "ibl",
 		opts = {
-			-- char = "┊",
-			char = "│",
-			show_current_context = true,
-			show_trailing_blankline_indent = false,
+			indent = {
+				-- char = "┊",
+				char = "│",
+				-- show_current_context = true,
+				-- show_trailing_blankline_indent = false,
+			},
 		},
 	},
 	"kyazdani42/nvim-web-devicons", -- for file icons

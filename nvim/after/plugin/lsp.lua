@@ -92,7 +92,7 @@ local servers = {
 	},
 	-- rust_analyzer = {},
 	taplo = {},
-	-- clangd = {},
+	clangd = {},
 	cmake = {},
 	yamlls = {},
 	-- tsserver = {},
@@ -133,9 +133,9 @@ flutter_tools.setup({
 	},
 })
 
-clangd_extensions.setup({
-	server = default_opts,
-})
+-- clangd_extensions.setup({
+-- 	server = default_opts,
+-- })
 
 typescript.setup({
 	server = default_opts,
