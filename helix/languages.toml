@@ -7,6 +7,9 @@ config = { "checkOnSave" = { "command" = "clippy" } }
 command = "nc"
 args = ["localhost", "6005"]
 
+[language-server.pylsp]
+command = "pylsp"
+
 [[language]]
 name = "gdscript"
 roots = ["project.godot"]
@@ -16,3 +19,7 @@ language-servers = ["gdscript"]
 name = "rust"
 auto-format = false
 language-servers = ["rust-analyzer"]
+
+[[language]]
+name = "python"
+language-servers = ["pylsp"]
