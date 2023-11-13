@@ -78,164 +78,24 @@ path = "$HOME/.config/nvim/neoconf.json"
 target = "nvim/neoconf.json"
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/init.lua"
-target = "nvim/init.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/filetype.lua"
-target = "nvim/filetype.lua"
-
-### after/plugin ###
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/colorscheme.lua"
-target = "nvim/after/plugin/colorscheme.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/gitsigns.lua"
-target = "nvim/after/plugin/gitsigns.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/lsp.lua"
-target = "nvim/after/plugin/lsp.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/null_ls.lua"
-target = "nvim/after/plugin/null_ls.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/nvim_cmp.lua"
-target = "nvim/after/plugin/nvim_cmp.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/nvim_treesitter.lua"
-target = "nvim/after/plugin/nvim_treesitter.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/after/plugin/telescope.lua"
-target = "nvim/after/plugin/telescope.lua"
-
-### ftplugin ###
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/ftplugin/java.lua"
-target = "nvim/ftplugin/java.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/editor.lua"
-target = "nvim/lua/blaz/editor.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/keymap.lua"
-target = "nvim/lua/blaz/keymap.lua"
-
-### globals ###
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/globals/init.lua"
-target = "nvim/lua/blaz/globals/init.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/globals/gruvbox.lua"
-target = "nvim/lua/blaz/globals/gruvbox.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/globals/neovide.lua"
-target = "nvim/lua/blaz/globals/neovide.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/globals/tokyonight.lua"
-target = "nvim/lua/blaz/globals/tokyonight.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/globals/misc.lua"
-target = "nvim/lua/blaz/globals/misc.lua"
-
-### helper ###
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/helper/notify.lua"
-target = "nvim/lua/blaz/helper/notify.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/helper/telescope.lua"
-target = "nvim/lua/blaz/helper/telescope.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/helper/vim.lua"
-target = "nvim/lua/blaz/helper/vim.lua"
-
-### lsp ###
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/init.lua"
-target = "nvim/lua/blaz/lsp/init.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/defaults.lua"
-target = "nvim/lua/blaz/lsp/opts/defaults.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/init.lua"
-target = "nvim/lua/blaz/lsp/opts/init.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/jdtls.lua"
-target = "nvim/lua/blaz/lsp/opts/jdtls.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/jsonls.lua"
-target = "nvim/lua/blaz/lsp/opts/jsonls.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/lsp/opts/omnisharp.lua"
-target = "nvim/lua/blaz/lsp/opts/omnisharp.lua"
-
-### plugins ###
-
-[[apps.nvim.links]]
 path = "$HOME/.config/nvim/lazy-lock.json"
 target = "nvim/lazy-lock.json"
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
-target = "nvim/lua/plugins/colorscheme.lua"
+path = "$HOME/.config/nvim/init.lua"
+target = "nvim/init.lua"
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/completion.lua"
-target = "nvim/lua/plugins/completion.lua"
+path = "$HOME/.config/nvim/custom/plugins/init.lua"
+target = "nvim/custom/plugins/init.lua"
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/editor.lua"
-target = "nvim/lua/plugins/editor.lua"
+path = "$HOME/.config/nvim/kickstart/plugins/autoformat.lua"
+target = "nvim/kickstart/plugins/autoformat.lua"
 
 [[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/lsp.lua"
-target = "nvim/lua/plugins/lsp.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/tool.lua"
-target = "nvim/lua/plugins/tool.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/treesitter.lua"
-target = "nvim/lua/plugins/treesitter.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/ui.lua"
-target = "nvim/lua/plugins/ui.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/vcs.lua"
-target = "nvim/lua/plugins/vcs.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/plugins/obsidian.lua"
-target = "nvim/lua/plugins/obsidian.lua"
-
-[[apps.nvim.links]]
-path = "$HOME/.config/nvim/lua/blaz/plugins/opts/telescope.lua"
-target = "nvim/lua/blaz/plugins/opts/telescope.lua"
+path = "$HOME/.config/nvim/kickstart/plugins/debug.lua"
+target = "nvim/kickstart/plugins/debug.lua"
 
 [apps.zellij]
 name = "Zellij"

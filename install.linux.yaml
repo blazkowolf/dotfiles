@@ -10,7 +10,6 @@
     - "~/.config/kitty"
     - "~/.config/helix"
     - "~/.config/nvim"
-    - "~/.config/nvim/plugins"
     - "~/.config/nvim/lua/*"
 
 - link:
@@ -43,16 +42,6 @@
       path: nvim/**/*
       create: true
       glob: true
-      exclude:
-        - "*nvim/lua/blaz/plugins/packer.lua"
-        - "*nvim/lua/blaz/plugins/plug.lua"
-        - "*nvim/lua/blaz/lsp/nvim_lsp_installer.lua"
-        - "*nvim/after/plugin/nerdcommenter.lua"
-        - "*nvim/after/plugin/nvim_autopairs.lua"
-        - "*nvim/after/plugin/nvim_notify.lua"
-        - "*nvim/after/plugin/nvim_tree.lua"
-        - "*nvim/after/plugin/lualine.lua"
-        - "*nvim/lua/blaz/globals/nvim_tree.lua"
     ~/.config/zellij/config.kdl:
       path: zellij/config.kdl
       create: true
