@@ -103,6 +103,8 @@ local servers = {
 	-- gdscript = {},
 	marksman = {},
 	kotlin_language_server = {},
+	pylsp = {},
+	zls = {},
 }
 
 for key, value in pairs(servers) do

@@ -1,3 +1,4 @@
+" vim:ft=vim
 
 """ Use system clipboard
 set clipboard+=unnamed
@@ -33,7 +34,7 @@ nnoremap <C-l> <C-w>l
 set incsearch
 map / <Action>(Find)
 
-map <leader>cc <Action>(CommentByLineComment)
+map gcc <Action>(CommentByLineComment)
 nnoremap <silent> <C-k> <Action>(ActivateRunToolWindow)
 
 " Pickers
@@ -65,4 +66,4 @@ map <leader>ru <Action>(Run)
 map <leader>st <Action>(Stop)
 
 map <leader>% <Action>(IdeaVim.ReloadVimRc.reload)
-map <silent> <leader>, :e $USERPROFILE/.ideavimrc<CR>
+map <silent> <leader>, :e ~/.ideavimrc<CR>

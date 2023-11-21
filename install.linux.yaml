@@ -21,6 +21,9 @@
       path: bash/.bashrc.d/**/*
       create: true
       glob: true
+    ~/.ideavimrc:
+      path: idea/.ideavimrc
+      create: true
     ~/.config/alacritty/alacritty.yml:
       path: alacritty/alacritty.linux.yml
       create: true
