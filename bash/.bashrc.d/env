@@ -22,6 +22,10 @@ if [ -d "$HOME/.config/emacs/bin" ]; then
   PATH="$HOME/.config/emacs/bin:$PATH"
 fi
 
+if [ -d "$HOME/packages/zigup.ubuntu-latest-x86_64" ]; then
+  PATH="$HOME/packages/zigup.ubuntu-latest-x86_64:$PATH"
+fi
+
 # export PATH
 
 if [ -z "$XDG_CONFIG_HOME" ]; then
