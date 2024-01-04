@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.backup = false
 -- I want as-you-type autocompletion
 vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
+vim.opt.colorcolumn = "80"
 
 -- I want Neovim to highlight what line I am on
 vim.opt.cursorline = true
