@@ -27,6 +27,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "3e24abe1ae66532135cec911562f553fe247cb56" },
   "obsidian.nvim": { "branch": "main", "commit": "f8b6bb95da3087bf5c29fe0acc77c4617895e9b8" },
   "oceanic-next": { "branch": "master", "commit": "09833f72d5ba23de2e8bcae18f479f326f5f677a" },
+  "overseer.nvim": { "branch": "master", "commit": "78e893394cef6efee05f31bd65f6dff08b0bac09" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "rose-pine": { "branch": "canary", "commit": "ae50dc2130b7778bd062786750c042c1dcdc99dc" },
