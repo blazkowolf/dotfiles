@@ -73,16 +73,6 @@ local servers = {
 	-- 			or lspconfig.util.root_pattern("*.csproj")(file)
 	-- 	end,
 	-- },
-	lua_ls = {
-		Lua = {
-			workspace = {
-				-- Make the serve aware of Neovim runtime files
-				-- library = vim.api.nvim_get_runtime_file("", true),
-				checkThirdParty = false,
-			},
-			telemetry = { enable = false },
-		},
-	},
 	cssls = {},
 	jsonls = {
 		json = {
@@ -114,6 +104,37 @@ for key, value in pairs(servers) do
 		filetypes = (value or {}).filetypes,
 	})
 end
+
+lspconfig.lua_ls.setup({
+	on_init = function(client)
+		local path = client.workspace_folders[1].name
+		if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc")
+		then
+			client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+				Lua = {
+					runtime = {
+						-- Tell the language server which version of Lua you're using
+						-- (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+					},
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- "${3rd}/luv/library"
+							-- "${3rd}/busted/library",
+						},
+					},
+					telemetry = { enable = false },
+				},
+			})
+
+			client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+		end
+
+		return true
+	end,
+})
 
 rust_tools.setup({
 	server = vim.tbl_deep_extend("force", default_opts, {
