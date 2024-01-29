@@ -30,6 +30,6 @@ fi
 unset rc
 
 eval "$(starship init bash)"
-eval "$(rtx activate bash)"
+eval "$(mise activate bash)"
 source ~/dev/alacritty/extra/completions/alacritty.bash
 source ~/.config/broot/launcher/bash/br
