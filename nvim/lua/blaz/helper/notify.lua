@@ -7,7 +7,6 @@ local has_nvim_notify, _ = pcall(require, "notify")
 ---| 'vim.log.levels.TRACE'
 ---| 'vim.log.levels.WARN'
 
----@diagnostic disable-next-line
 local M = {}
 
 ---Send notification via Neovim's currently set notification provider
@@ -30,7 +29,7 @@ end
 ---Send error notification
 ---@param title string
 ---@param ... string message parts
-local function error(title, ...)
+function M.error(title, ...)
 	send_notification(vim.log.levels.ERROR, title, ...)
 end
 
@@ -53,35 +52,29 @@ end
 ---```
 ---@param title string notification title
 ---@param ... string message parts
-local function warn(title, ...)
+function M.warn(title, ...)
 	send_notification(vim.log.levels.WARN, title, ...)
 end
 
 ---Send info notification
 ---@param title string notification title
 ---@param ... string message parts
-local function info(title, ...)
+function M.info(title, ...)
 	send_notification(vim.log.levels.INFO, title, ...)
 end
 
 ---Send debug notification
 ---@param title string notification title
 ---@param ... string message parts
-local function debug(title, ...)
+function M.debug(title, ...)
 	send_notification(vim.log.levels.DEBUG, title, ...)
 end
 
 ---Send trace notification
 ---@param title string notification title
 ---@param ... string message parts
-local function trace(title, ...)
+function M.trace(title, ...)
 	send_notification(vim.log.levels.TRACE, title, ...)
 end
 
-return {
-	error = error,
-	warn = warn,
-	info = info,
-	debug = debug,
-	trace = trace,
-}
+return M

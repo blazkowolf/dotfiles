@@ -39,3 +39,5 @@ vim.g.neovide_cursor_vfx_particle_density = 7.0
 vim.g.neovide_cursor_vfx_particle_speed = 10.0
 vim.g.neovide_cursor_vfx_particle_phase = 1.5
 vim.g.neovide_cursor_vfx_particle_curl = 1.0
+
+vim.g.rustfmt_autosave = 1

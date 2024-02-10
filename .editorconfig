@@ -11,5 +11,8 @@ trim_trailing_whitespace = true
 [*.bash]
 indent_size = 4
 
+[{*.cs,*.csx}]
+indent_size = 4
+
 [*.yml]
 indent_size = 2
