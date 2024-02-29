@@ -38,7 +38,8 @@ require("lazy").setup({
 		path = "~/dev",
 	},
 	install = {
-		colorscheme = { "gruber-darker" },
+		-- colorscheme = { "gruber-darker" },
+		colorscheme = { "gruvbox" },
 	},
 	ui = {
 		border = "rounded",
