@@ -15,6 +15,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+-- I want to disable some options in terminal buffers
+local terminal_buffer_group = vim.api.nvim_create_augroup("TerminalOpts", { clear = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+	end,
+	group = terminal_buffer_group,
+	pattern = "*",
+})
+
 vim.opt.backup = false
 -- I want as-you-type autocompletion
 vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
