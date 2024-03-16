@@ -38,6 +38,8 @@ vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
 vim.opt.expandtab = true
+-- I want to set project-local options
+vim.opt.exrc = true
 vim.opt.fileencoding = "utf-8"
 -- I want to define my own folds
 vim.opt.foldmethod = "marker"
