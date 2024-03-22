@@ -19,9 +19,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local terminal_buffer_group = vim.api.nvim_create_augroup("TerminalOpts", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen", {
 	callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.signcolumn = "no"
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.signcolumn = "no"
+		vim.opt_local.wrap = false
 	end,
 	group = terminal_buffer_group,
 	pattern = "*",
@@ -43,6 +44,13 @@ vim.opt.exrc = true
 vim.opt.fileencoding = "utf-8"
 -- I want to define my own folds
 vim.opt.foldmethod = "marker"
+
+-- I want Neovim to use ripgrep if I have it installed
+if vim.fn.executable("rg") == 1 then
+	vim.opt.grepprg = "rg --vimgrep"
+	vim.opt.grepformat = "%f:%l:%c:%m"
+end
+
 -- I don't want search results highlighted
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

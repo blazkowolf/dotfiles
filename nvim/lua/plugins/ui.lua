@@ -9,17 +9,17 @@ return {
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		keys = {
-			{ "<leader>ff", "<cmd>Telescope git_files<cr>",   desc = "[F]ind [F]iles" },
+			{ "<leader>ff", "<cmd>Telescope git_files<cr>", desc = "[F]ind [F]iles" },
 			{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "[F]ind [C]olorscheme" },
 			{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "[F]ind [D]iagnostics" },
-			{ "<leader>fg", "<cmd>Telescope live_grep<cr>",   desc = "[F]ind by [G]rep" },
+			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "[F]ind by [G]rep" },
 			{ "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "[F]ind current [W]ord" },
 			{
 				"<leader>fv",
 				"<cmd>Telescope git_branches<cr>",
 				desc = "[F]ind Git [V]branches",
 			},
-			{ "<leader>fb", "<cmd>Telescope buffers<cr>",   desc = "[F]ind [B]uffers" },
+			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "[F]ind [B]uffers" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "[F]ind [H]elp tags" },
 			-- {
 			-- 	"<leader>/",
