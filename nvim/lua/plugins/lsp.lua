@@ -22,6 +22,7 @@ return {
 	-- Language-specific plugins
 	"simrat39/rust-tools.nvim",
 	"rust-lang/rust.vim",
+	"ziglang/zig.vim",
 	"mfussenegger/nvim-jdtls",
 	"jose-elias-alvarez/typescript.nvim",
 	"b0o/SchemaStore.nvim",
