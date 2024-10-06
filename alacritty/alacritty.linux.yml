@@ -62,7 +62,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: none
+  decorations: full
 
   # Background opacity
   #
@@ -127,26 +127,34 @@ font:
   normal:
     family: CaskaydiaCove Nerd Font
     # family: IntelOneMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # family: GohuFont Nerd Font
     style: Regular
 
   bold:
     family: CaskaydiaCove Nerd Font
     # family: IntelOneMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # family: GohuFont Nerd Font
     style: Bold
 
   italic:
     family: CaskaydiaCove Nerd Font
     # family: IntelOneMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # family: GohuFont Nerd Font
     style: Italic
 
   bold_italic:
     family: CaskaydiaCove Nerd Font
     # family: IntelOneMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # family: GohuFont Nerd Font
     style: Bold Italic
 
   # Point size
   # size: 16.0
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

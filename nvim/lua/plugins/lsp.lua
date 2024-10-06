@@ -59,7 +59,7 @@ return {
 						},
 					},
 				},
-				tsserver = {
+				ts_ls = {
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
@@ -69,7 +69,7 @@ return {
 				emmet_ls = {},
 				bashls = {},
 				gdscript = {
-					cmd = { "ncat", "127.0.0.1", "6008" },
+					-- cmd = { "ncat", "127.0.0.1", "6008" },
 				},
 				lua_ls = {
 					on_init = function(client)

@@ -53,7 +53,7 @@ end
 -- I don't want search results highlighted
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.ignorecase = true
+vim.opt.ignorecase = false
 vim.opt.isfname:append("@-@")
 -- I want global statusline
 vim.opt.laststatus = 3
