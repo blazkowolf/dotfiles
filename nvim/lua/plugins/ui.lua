@@ -1,6 +1,45 @@
 return {
 	"nvim-lua/popup.nvim",
 	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = {
+				-- char = "┊",
+				char = "│",
+				-- show_current_context = true,
+				-- show_trailing_blankline_indent = false,
+			},
+		},
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		-- lazy = true,
+		-- opts = function()
+		-- 	return { override = require("nvchad.icons.devicons") }
+		-- end,
+		-- config = function(_, opts)
+		-- 	dofile(vim.g.base46_cache .. "devicons")
+		-- 	require("nvim-web-devicons").setup(opts)
+		-- end,
+	},
+	-- {
+	-- 	"nvchad/ui",
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim", lazy = true },
+	-- 		{
+	-- 			"nvchad/base46",
+	-- 			lazy = true,
+	-- 			build = function()
+	-- 				require("base46").load_all_highlights()
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	config = function()
+	-- 		require("nvchad")
+	-- 	end,
+	-- },
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
 		dependencies = {
