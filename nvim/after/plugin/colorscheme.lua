@@ -6,8 +6,9 @@ local notify = require("blaz.helper.notify")
 
 -- local colorscheme = "default"
 -- local colorscheme = "gruber-darker"
-local colorscheme = "gruvbox"
+-- local colorscheme = "gruvbox"
 -- local colorscheme = "paper"
+local colorscheme = "monoglow"
 
 local ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
 if not ok then

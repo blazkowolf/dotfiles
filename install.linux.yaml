@@ -24,8 +24,8 @@
     ~/.ideavimrc:
       path: idea/.ideavimrc
       create: true
-    ~/.config/alacritty/alacritty.yml:
-      path: alacritty/alacritty.linux.yml
+    ~/.config/alacritty/alacritty.toml:
+      path: alacritty/alacritty.linux.toml
       create: true
     ~/.config/doom/:
       path: doom/**/*
