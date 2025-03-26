@@ -7,5 +7,4 @@ alias ls="eza --icons --color=always --group-directories-first"
 # alias ll="eza -l --icons --color=always --group-directories-first"
 # alias lt="eza -aT --icons --color=always --group-directories-first"
 
-alias emacs="emacsclient --create-frame --alternate-editor='emacs'"
 # alias n="neovide.exe --wsl"

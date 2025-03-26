@@ -6,7 +6,6 @@
     - "~"
     - "~/.bashrc.d"
     - "~/.config/alacritty"
-    - "~/.config/doom"
     - "~/.config/kitty"
     - "~/.config/helix"
     - "~/.config/nvim"
@@ -27,10 +26,6 @@
     ~/.config/alacritty/alacritty.toml:
       path: alacritty/alacritty.linux.toml
       create: true
-    ~/.config/doom/:
-      path: doom/**/*
-      create: true
-      glob: true
     ~/.config/helix/:
       path: helix/**/*
       create: true

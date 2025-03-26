@@ -3,6 +3,16 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
+			"saghen/blink.cmp",
+			{
+				"folke/lazydev.nvim",
+				ft = "lua",
+				opts = {
+					library = {
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			{
@@ -10,13 +20,11 @@ return {
 				cmd = "Neoconf",
 				opts = {},
 			},
-			"folke/neodev.nvim",
 			"nvimtools/none-ls.nvim",
 			-- JSON/YAML schemas
 			"b0o/SchemaStore.nvim",
 		},
 		config = function()
-			require("neodev").setup({})
 			require("mason").setup()
 			local lspconfig = require("lspconfig")
 
@@ -24,17 +32,6 @@ return {
 				angularls = {},
 				eslint = {},
 				nxls = {},
-				-- omnisharp = {
-				-- 	-- This is the default if not provided, you can remove it. Or adjust as needed.
-				-- 	-- One dedicated LSP server & client will be started per unique root_dir
-				-- 	root_dir = function(file, _)
-				-- 		if file:sub(-#".csx") == ".csx" then
-				-- 			return lspconfig.util.path.dirname(file)
-				-- 		end
-				-- 		return lspconfig.util.root_pattern("*.sln")(file)
-				-- 			or lspconfig.util.root_pattern("*.csproj")(file)
-				-- 	end,
-				-- },
 				cssls = {},
 				jsonls = {
 					settings = {
@@ -68,9 +65,7 @@ return {
 				html = {},
 				emmet_ls = {},
 				bashls = {},
-				gdscript = {
-					-- cmd = { "ncat", "127.0.0.1", "6008" },
-				},
+				gdscript = {},
 				lua_ls = {
 					on_init = function(client)
 						local path = client.workspace_folders[1].name
@@ -108,28 +103,17 @@ return {
 				},
 				marksman = {},
 				ols = {},
-				kotlin_language_server = {},
 				pylsp = {},
 				zls = {},
 			}
 
-      local disable_semantic_tokens = {
-        lua = true,
-      }
-
-			local capabilities = nil
-			local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-			if has_cmp_nvim_lsp then
-				capabilities = cmp_nvim_lsp.default_capabilities()
-			end
+			local disable_semantic_tokens = {
+				lua = true,
+			}
 
 			for server_name, server_config in pairs(servers) do
-				server_config = vim.tbl_deep_extend(
-					"force",
-					{},
-					{ capabilities = capabilities },
-					server_config
-				)
+				server_config.capabilities =
+					require("blink.cmp").get_lsp_capabilities(server_config.capabilities)
 				lspconfig[server_name].setup(server_config)
 			end
 
@@ -163,9 +147,9 @@ return {
 					end, opts)
 
 					local filetype = vim.bo[bufnr].filetype
-          if disable_semantic_tokens[filetype] then
-            client.server_capabilities.semanticTokensProvider = nil
-          end
+					if disable_semantic_tokens[filetype] then
+						client.server_capabilities.semanticTokensProvider = nil
+					end
 
 					-- Override server capabilities
 					if settings.server_capabilities then
@@ -191,6 +175,5 @@ return {
 			})
 		end,
 	},
-	"onsails/lspkind-nvim",
 	"mfussenegger/nvim-jdtls",
 }

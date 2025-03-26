@@ -2,19 +2,19 @@
 size = 14.0
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "DepartureMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "CaskaydiaCove Nerd Font"
+family = "DepartureMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font"
+family = "DepartureMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "DepartureMono Nerd Font"
 style = "Regular"
 
 [window]
