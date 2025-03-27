@@ -6,36 +6,44 @@
 --              █            ▀            ▀ ▀                ▀
 --             ▀
 
--- Set leader keys to SPACE
-vim.g.mapleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
-vim.g.maplocalleader = vim.api.nvim_replace_termcodes("<space>", true, true, true)
-
 -- Bootstrap plugin manager
--- Snippet from https://github.com/folke/lazy.nvim#-installation
+-- Snippet from https://lazy.folke.io/installation
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-	vim.fn.system({
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({
 		"git",
 		"clone",
 		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
 		"--branch=stable", -- latest stable release
+		lazyrepo,
 		lazypath,
 	})
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Set leader keys to SPACE
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		-- { import = "plugins.extras" },
 	},
 	dev = {
 		path = "~/dev",
 	},
 	install = {
-		-- colorscheme = { "gruber-darker" },
-		colorscheme = { "default" },
+		colorscheme = { "rose-pine" },
 	},
 	ui = {
 		border = "rounded",
