@@ -3,14 +3,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
-		opts = {
-			indent = {
-				-- char = "┊",
-				char = "│",
-				-- show_current_context = true,
-				-- show_trailing_blankline_indent = false,
-			},
-		},
+		opts = {},
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
