@@ -6,6 +6,8 @@
 --              █            ▀            ▀ ▀                ▀
 --             ▀
 
+-- vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
+
 -- Bootstrap plugin manager
 -- Snippet from https://lazy.folke.io/installation
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -49,3 +51,6 @@ require("lazy").setup({
 		border = "rounded",
 	},
 })
+
+-- dofile(vim.g.base46_cache .. "defaults")
+-- dofile(vim.g.base46_cache .. "statusline")

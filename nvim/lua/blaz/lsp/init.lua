@@ -25,7 +25,7 @@ end
 local config = {
 	-- I don't want virtual text because the screen
 	-- gets really busy with it on
-	virtual_text = false,
+	virtual_lines = { current_line = true },
 	-- show signs
 	signs = {
 		active = signs,

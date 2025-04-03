@@ -34,10 +34,13 @@ return {
 	-- },
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
+		tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzy-native.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+			},
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		keys = {
@@ -76,22 +79,14 @@ return {
 						["<C-k>"] = "move_selection_previous",
 					},
 				},
-				layout_config = {
-					prompt_position = "top",
-				},
-				prompt_prefix = "🔍 ",
-				selection_caret = "👉 ",
-				entry_prefix = "  ",
-				selection_strategy = "reset",
-				sorting_strategy = "descending",
-				scroll_strategy = "cycle",
-				color_devicons = true,
+				-- layout_config = {
+				-- 	prompt_position = "top",
+				-- },
 			},
 			pickers = {
 				colorscheme = {
 					theme = "cursor",
 					previewer = false,
-					prompt_prefix = "🎨 ",
 				},
 				find_files = {
 					theme = "dropdown",
@@ -103,33 +98,31 @@ return {
 				},
 				git_branches = {
 					theme = "dropdown",
-					prompt_prefix = " ",
-				},
-				git_commits = {
-					prompt_prefix = " ",
 				},
 				buffer = {
 					theme = "dropdown",
-					prompt_prefix = "﬘ ",
 				},
 				codeaction = {
 					theme = "cursor",
 				},
 				help_tags = {
 					theme = "ivy",
-					prompt_prefix = "⁉ ",
-				},
-				planets = {
-					prompt_prefix = "🌎 ",
 				},
 			},
-			extensions = {
-				fzy_native = {
-					override_generic_sorter = false,
-					override_file_sorter = true,
-				},
-			},
+			extensions = {},
 		},
+		config = function(_, opts)
+			local ui_select_opts = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({})
+				}
+			}
+			opts.extensions = vim.tbl_deep_extend("force", opts.extensions, ui_select_opts)
+			local telescope = require("telescope")
+			telescope.setup(opts)
+			telescope.load_extension("fzf")
+			telescope.load_extension("ui-select")
+		end
 	},
 	{
 		"j-hui/fidget.nvim",

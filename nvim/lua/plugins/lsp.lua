@@ -173,6 +173,8 @@ return {
 					null_ls.builtins.formatting.stylua,
 				},
 			})
+
+			require("blaz.lsp")
 		end,
 	},
 	"mfussenegger/nvim-jdtls",
