@@ -87,6 +87,10 @@
     $USERPROFILE/.config/wezterm/wezterm.lua:
       path: wezterm/wezterm.lua
 
+    # Neovide
+    $APPDATA/neovide/config.toml:
+      path: neovide/config.win.toml
+
     # Neovim
     $LOCALAPPDATA/:
       glob: true

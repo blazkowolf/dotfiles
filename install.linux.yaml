@@ -36,6 +36,9 @@
     ~/.config/starship.toml:
       path: starship/starship.toml
       create: true
+    ~/.config/neovide/config.toml:
+      path: neovide/config.linux.toml
+      create: true
     ~/.config/nvim/:
       path: nvim/**/*
       create: true

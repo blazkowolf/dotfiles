@@ -96,7 +96,7 @@ vim.opt.wrap = false
 
 -- Only used for Neovim GUI applications (i.e. nvim-qt, neovide, etc.)
 -- vim.opt.guifont = [[FixedsysExcelsiorIIIb NF,CaskaydiaCove NF,JetBrainsMono Nerd Font Mono:h18]]
-vim.opt.guifont = [[JetBrainsMono Nerd Font:h14]]
+-- vim.opt.guifont = [[JetBrainsMono Nerd Font:h14]]
 -- if exists(":GuiFont") then
 -- 	vim.cmd([[GuiFont! FixedsysExcelsiorIIIb NF,CaskaydiaCove NF,JetBrainsMono Nerd Font Mono:h18]])
 -- end
