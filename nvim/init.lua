@@ -63,7 +63,12 @@ require("lazy").setup({
 				require("nvim-treesitter.install").update({ with_sync = true })
 			end,
 			config = function()
-				require("nvim-treesitter.install").compilers = { "gcc", "clang", "zig cc", "cl" },
+				require("nvim-treesitter.install").compilers = {
+					"gcc",
+					"clang",
+					"zig cc",
+					"cl"
+				},
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = {
 						"bash",
@@ -142,6 +147,7 @@ require("lazy").setup({
 				})
 			end
 		},
+		"tpope/vim-sleuth",
 		"tpope/vim-fugitive",
 		"tpope/vim-rhubarb",
   },
@@ -164,7 +170,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Snippet from: https://github.com/folke/lazy.nvim/issues/1951#issuecomment-2860253949
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Fix backdrop for lazy.nvim window",
-	group = vim.api.nvim_create_augroup("LazyBackdropWinborder", { clear = true }),
+	group = vim.api.nvim_create_augroup(
+		"LazyBackdropWinborder",
+		{ clear = true }
+	),
 	pattern = "lazy_backdrop",
 	callback = function(ev)
 		local win = vim.fn.win_findbuf(ev.buf)[1]
@@ -292,7 +301,22 @@ end
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- I want to move my cursor by visual lines when word wrap is on
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set(
+	"n",
+	"k",
+	"v:count == 0 ? 'gk' : 'k'",
+	{ expr = true, silent = true }
+)
+vim.keymap.set(
+	"n",
+	"j",
+	"v:count == 0 ? 'gj' : 'j'",
+	{ expr = true, silent = true }
+)
 
-vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set(
+	"t",
+	"<Esc><Esc>",
+	[[<C-\><C-n>]],
+	{ desc = "Exit terminal mode" }
+)
