@@ -365,19 +365,17 @@ vim.diagnostic.config({
 	}
 })
 
--- I only want to enable "lua_ls" if the executable is on the PATH
-if vim.fn.executable("lua-language-server") == 1 then
-	vim.lsp.enable("lua_ls")
-end
+-- I only want to enable these LSPs if their executables are on the PATH
+local servers = {
+	lua_ls = "lua-language-server",
+	jsonls = "vscode-json-language-server",
+	yamlls = "yaml-language-server",
+}
 
--- I only want to enable "jsonls" if the executable is on the PATH
-if vim.fn.executable("vscode-json-language-server") == 1 then
-	vim.lsp.enable("jsonls")
-end
-
--- I only want to enable "jsonls" if the executable is on the PATH
-if vim.fn.executable("yaml-language-server") == 1 then
-	vim.lsp.enable("yamlls")
+for k, v in pairs(servers) do
+	if vim.fn.executable(v) then
+		vim.lsp.enable(k)
+	end
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
