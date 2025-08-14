@@ -341,14 +341,12 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set(
 	"n",
 	"k",
-	-- "v:count == 0 ? 'gk' : 'k'",
 	function() return vim.v.count == 0 and "gk" or "k" end,
 	{ expr = true, silent = true }
 )
 vim.keymap.set(
 	"n",
 	"j",
-	-- "v:count == 0 ? 'gj' : 'j'",
 	function() return vim.v.count == 0 and "gj" or "j" end,
 	{ expr = true, silent = true }
 )
