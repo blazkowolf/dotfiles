@@ -68,7 +68,7 @@ require("lazy").setup({
 					"clang",
 					"zig cc",
 					"cl"
-				},
+				}
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = {
 						"bash",
@@ -124,6 +124,43 @@ require("lazy").setup({
 				"b0o/SchemaStore.nvim",
 			},
 			config = function()
+				vim.lsp.config("lua_ls", {
+					on_init = function(client)
+						if client.workspace_folders then
+							local path = client.workspace_folders[1].name
+							if
+								path ~= vim.fn.stdpath("config")
+								and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+							then
+								return
+							end
+						end
+						client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+							runtime = {
+								-- Tell the language server which version of Lua you're using (most
+								-- likely LuaJIT in the case of Neovim)
+								version = "LuaJIT",
+								-- (see `:h lua-module-load`)
+								path = {
+									"lua/?.lua",
+									"lua/?/init.lua",
+								},
+							},
+							-- Make the server aware of Neovim runtime files
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME
+									-- '${3rd}/luv/library'
+									-- '${3rd}/busted/library'
+								}
+							}
+						})
+					end,
+					settings = {
+						Lua = {}
+					}
+				})
 				vim.lsp.config("jsonls", {
 					settings = {
 						json = {
@@ -304,13 +341,15 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set(
 	"n",
 	"k",
-	"v:count == 0 ? 'gk' : 'k'",
+	-- "v:count == 0 ? 'gk' : 'k'",
+	function() return vim.v.count == 0 and "gk" or "k" end,
 	{ expr = true, silent = true }
 )
 vim.keymap.set(
 	"n",
 	"j",
-	"v:count == 0 ? 'gj' : 'j'",
+	-- "v:count == 0 ? 'gj' : 'j'",
+	function() return vim.v.count == 0 and "gj" or "j" end,
 	{ expr = true, silent = true }
 )
 
@@ -320,3 +359,35 @@ vim.keymap.set(
 	[[<C-\><C-n>]],
 	{ desc = "Exit terminal mode" }
 )
+
+-- Snippet from: https://gpanders.com/blog/whats-new-in-neovim-0-11/#virtual-lines
+vim.diagnostic.config({
+	virtual_lines = {
+		current_line = true,
+	}
+})
+
+-- I only want to enable "lua_ls" if the executable is on the PATH
+if vim.fn.executable("lua-language-server") == 1 then
+	vim.lsp.enable("lua_ls")
+end
+
+-- I only want to enable "jsonls" if the executable is on the PATH
+if vim.fn.executable("vscode-json-language-server") == 1 then
+	vim.lsp.enable("jsonls")
+end
+
+-- I only want to enable "jsonls" if the executable is on the PATH
+if vim.fn.executable("yaml-language-server") == 1 then
+	vim.lsp.enable("yamlls")
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		-- I want as-you-type completion
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+	end
+})
