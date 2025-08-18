@@ -136,6 +136,9 @@ require("lazy").setup({
 							end
 						end
 						client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+							diagnostics = {
+								globals = { "vim" },
+							},
 							runtime = {
 								-- Tell the language server which version of Lua you're using (most
 								-- likely LuaJIT in the case of Neovim)
@@ -158,7 +161,14 @@ require("lazy").setup({
 						})
 					end,
 					settings = {
-						Lua = {}
+						Lua = {
+							hint = {
+								enable = true,
+								arrayIndex = "Disable",
+								paramName = "Literal",
+								setType = true,
+							},
+						}
 					}
 				})
 				vim.lsp.config("jsonls", {
@@ -233,7 +243,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.opt.backup = false
 
 -- I want as-you-type autocompletion
-vim.opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
+vim.opt.completeopt = {
+	"menu",
+	"menuone",
+	"popup",
+	"fuzzy",
+	"noinsert",
+	-- "noselect",
+}
 
 -- I want a column indicating when a line of text is too long
 vim.opt.colorcolumn = "80"
@@ -373,7 +390,7 @@ local servers = {
 }
 
 for k, v in pairs(servers) do
-	if vim.fn.executable(v) then
+	if vim.fn.executable(v) == 1 then
 		vim.lsp.enable(k)
 	end
 end
@@ -381,9 +398,15 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		-- I want as-you-type completion
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		local client = assert(
+			vim.lsp.get_client_by_id(ev.data.client_id),
+			"must have valid client"
+		)
 		if client:supports_method("textDocument/completion") then
 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+		if client:supports_method("textDocument/inlayHint") then
+			vim.lsp.inlay_hint.enable(true, { ev.buf })
 		end
 	end
 })
