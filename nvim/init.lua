@@ -58,6 +58,7 @@ require("lazy").setup({
 					TelescopePromptNormal = { bg = "#32302f" },
 					TelescopePromptBorder = { bg = "#32302f", fg = "#32302f" },
 					TelescopePromptTitle = { bg = "#32302f", fg = "#32302f" },
+					TelescopePreviewBorder = { bg = "#1d2021", fg = "#1d2021" },
 					TelescopePreviewTitle = { bg = "#1d2021", fg = "#1d2021" },
 					TelescopeResultsBorder = { bg = "#1d2021", fg = "#1d2021" },
 					TelescopeResultsTitle = { bg = "#1d2021", fg = "#1d2021" },
