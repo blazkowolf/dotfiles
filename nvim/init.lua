@@ -55,6 +55,8 @@ require("lazy").setup({
 				overrides = {
 					TelescopeNormal = { bg = "#1d2021" },
 					TelescopeBorder = { bg = "#1d2021", fg = "#1d2021" },
+					-- TelescopeSelectionCaret = { bg = "#665c54", fg = "#fb4934" },
+					TelescopeSelectionCaret = { bg = "#3c3836", fg = "#fb4934" },
 					TelescopePromptNormal = { bg = "#32302f" },
 					TelescopePromptBorder = { bg = "#32302f", fg = "#32302f" },
 					TelescopePromptTitle = { bg = "#32302f", fg = "#32302f" },
