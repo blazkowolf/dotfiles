@@ -43,7 +43,7 @@ require("lazy").setup({
 		colorscheme = { "gruvbox", "default" },
 	},
   ui = {
-    border = "bold",
+    border = "solid",
   },
   spec = {
 		{ "blazkowolf/gruber-darker.nvim", dev = true },
@@ -51,7 +51,20 @@ require("lazy").setup({
 			"ellisonleao/gruvbox.nvim",
 			lazy = false,
 			priority = 1000,
-			config = function()
+			opts = {
+				overrides = {
+					TelescopeNormal = { bg = "#1d2021" },
+					TelescopeBorder = { bg = "#1d2021", fg = "#1d2021" },
+					TelescopePromptNormal = { bg = "#32302f" },
+					TelescopePromptBorder = { bg = "#32302f", fg = "#32302f" },
+					TelescopePromptTitle = { bg = "#32302f", fg = "#32302f" },
+					TelescopePreviewTitle = { bg = "#1d2021", fg = "#1d2021" },
+					TelescopeResultsBorder = { bg = "#1d2021", fg = "#1d2021" },
+					TelescopeResultsTitle = { bg = "#1d2021", fg = "#1d2021" },
+				},
+			},
+			config = function(_, opts)
+				require("gruvbox").setup(opts)
 				vim.cmd.colorscheme("gruvbox")
 			end
 		},
@@ -192,6 +205,30 @@ require("lazy").setup({
 						},
 					},
 				})
+			end
+		},
+		{
+			"nvim-telescope/telescope.nvim",
+			branch = "0.1.x",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				{
+					"nvim-telescope/telescope-fzf-native.nvim",
+					build = "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+				},
+			},
+			opts = {},
+			config = function(_, opts)
+				local telescope = require("telescope")
+				telescope.setup(opts)
+				telescope.load_extension("fzf")
+				local builtin = require("telescope.builtin")
+				vim.keymap.set(
+					"n",
+					"<leader>ff",
+					builtin.find_files,
+					{ desc = "[F]ind [F]iles" }
+				)
 			end
 		},
 		"tpope/vim-sleuth",
@@ -335,7 +372,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
 -- I want windows to have a double line border
-vim.opt.winborder = "bold"
+vim.opt.winborder = "solid"
 
 -- I don't want long lines of text to wrap
 vim.opt.wrap = false
