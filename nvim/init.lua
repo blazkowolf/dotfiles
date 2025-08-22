@@ -36,16 +36,16 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
-  dev = {
-    path = "~/dev",
-  },
+	dev = {
+		path = "~/dev",
+	},
 	install = {
 		colorscheme = { "gruvbox", "default" },
 	},
-  ui = {
-    border = "solid",
-  },
-  spec = {
+	ui = {
+		border = "solid",
+	},
+	spec = {
 		{ "blazkowolf/gruber-darker.nvim", dev = true },
 		{
 			"ellisonleao/gruvbox.nvim",
@@ -209,6 +209,7 @@ require("lazy").setup({
 		},
 		{
 			"nvim-telescope/telescope.nvim",
+			event = "VimEnter",
 			branch = "0.1.x",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
@@ -220,9 +221,52 @@ require("lazy").setup({
 						require("telescope").load_extension("fzf")
 					end
 				},
+				{
+					"nvim-telescope/telescope-ui-select.nvim",
+					config = function()
+						require("telescope").load_extension("ui-select")
+					end,
+				},
 			},
-			opts = {},
+			opts = {
+				pickers = {
+					colorscheme = {
+						theme = "cursor",
+						previewer = false,
+					},
+					find_files = {
+						theme = "dropdown",
+						previewer = false,
+					},
+					git_files = {
+						theme = "dropdown",
+						previewer = false,
+					},
+					git_branches = {
+						theme = "dropdown",
+					},
+					buffer = {
+						theme = "dropdown",
+					},
+					codeaction = {
+						theme = "cursor",
+					},
+					help_tags = {
+						theme = "ivy",
+					},
+				},
+				-- extensions = {
+				-- 	["ui-select"] = {
+				-- 		theme = "cursor",
+				-- 	},
+				-- },
+			},
 			config = function(_, opts)
+				-- opts.extensions = vim.tbl_deep_extend('force', opts.extensions, {
+				-- 	["ui-select"] = {
+				-- 		require("telescope.themes").get_cursor({})
+				-- 	},
+				-- })
 				require("telescope").setup(opts)
 				local builtin = require("telescope.builtin")
 				vim.keymap.set(
@@ -236,7 +280,7 @@ require("lazy").setup({
 		"tpope/vim-sleuth",
 		"tpope/vim-fugitive",
 		"tpope/vim-rhubarb",
-  },
+	},
 })
 
 -- I want the dark colorscheme variant by default
@@ -386,7 +430,7 @@ vim.cmd.syntax("enable")
 vim.cmd.filetype("plugin on")
 
 if vim.fn.has("termguicolors") == 1 then
-  vim.opt.termguicolors = true
+	vim.opt.termguicolors = true
 end
 
 -- The following were taken from
@@ -452,5 +496,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "grf", function()
 			vim.lsp.buf.format({ async = true })
 		end, { buffer = ev.buf })
+		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 	end
 })
