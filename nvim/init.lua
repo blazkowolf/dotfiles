@@ -66,10 +66,7 @@ require("lazy").setup({
 					TelescopeResultsTitle = { bg = "#1d2021", fg = "#1d2021" },
 				},
 			},
-			config = function(_, opts)
-				require("gruvbox").setup(opts)
-				vim.cmd.colorscheme("gruvbox")
-			end
+			init = function() vim.cmd.colorscheme("gruvbox") end
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -217,14 +214,16 @@ require("lazy").setup({
 				"nvim-lua/plenary.nvim",
 				{
 					"nvim-telescope/telescope-fzf-native.nvim",
+					cond = function() return vim.fn.executable("cmake") == 1 end,
 					build = "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+					config = function()
+						require("telescope").load_extension("fzf")
+					end
 				},
 			},
 			opts = {},
 			config = function(_, opts)
-				local telescope = require("telescope")
-				telescope.setup(opts)
-				telescope.load_extension("fzf")
+				require("telescope").setup(opts)
 				local builtin = require("telescope.builtin")
 				vim.keymap.set(
 					"n",
