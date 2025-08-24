@@ -210,25 +210,35 @@ require("lazy").setup({
 		{
 			"nvim-telescope/telescope.nvim",
 			event = "VimEnter",
-			branch = "0.1.x",
+			branch = "master",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				{
 					"nvim-telescope/telescope-fzf-native.nvim",
 					cond = function() return vim.fn.executable("cmake") == 1 end,
 					build = "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-					config = function()
+					init = function()
 						require("telescope").load_extension("fzf")
-					end
+					end,
 				},
 				{
 					"nvim-telescope/telescope-ui-select.nvim",
-					config = function()
+					init = function()
 						require("telescope").load_extension("ui-select")
 					end,
 				},
 			},
 			opts = {
+				defaults = {
+					-- border = {
+					-- 	prompt = { 1, 1, 1, 1 },
+					-- 	results = { 1, 1, 1, 1 },
+					-- 	preview = { 1, 1, 1, 1 },
+					-- },
+					path_display = {
+						"filename_first",
+					},
+				},
 				pickers = {
 					colorscheme = {
 						theme = "cursor",
@@ -255,18 +265,14 @@ require("lazy").setup({
 						theme = "ivy",
 					},
 				},
-				-- extensions = {
-				-- 	["ui-select"] = {
-				-- 		theme = "cursor",
-				-- 	},
-				-- },
+				extensions = {},
 			},
 			config = function(_, opts)
-				-- opts.extensions = vim.tbl_deep_extend('force', opts.extensions, {
-				-- 	["ui-select"] = {
-				-- 		require("telescope.themes").get_cursor({})
-				-- 	},
-				-- })
+				opts.extensions = vim.tbl_deep_extend("force", opts.extensions, {
+					["ui-select"] = {
+						require("telescope.themes").get_cursor({})
+					},
+				})
 				require("telescope").setup(opts)
 				local builtin = require("telescope.builtin")
 				vim.keymap.set(
