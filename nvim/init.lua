@@ -347,8 +347,8 @@ vim.opt.colorcolumn = "80"
 -- I want Neovim to highlight what line I am on
 vim.opt.cursorline = true
 
--- I want to use the system clipboard
-vim.opt.clipboard = "unnamedplus"
+-- I want to use the system clipboard, and not slow down the startup time
+vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
 
 vim.opt.cmdheight = 1
 
