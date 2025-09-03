@@ -213,6 +213,7 @@ require("lazy").setup({
 			branch = "master",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
+				{ "nvim-tree/nvim-web-devicons", opts = {} },
 				{
 					"nvim-telescope/telescope-fzf-native.nvim",
 					cond = function() return vim.fn.executable("cmake") == 1 end,
@@ -283,6 +284,13 @@ require("lazy").setup({
 				)
 			end
 		},
+		{
+			"j-hui/fidget.nvim",
+			opts = {},
+			init = function()
+				require("telescope").load_extension("fidget")
+			end
+		},
 		"tpope/vim-sleuth",
 		"tpope/vim-fugitive",
 		"tpope/vim-rhubarb",
@@ -348,7 +356,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 
 -- I want to use the system clipboard, and not slow down the startup time
-vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
+vim.schedule(function()
+	vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+end)
 
 vim.opt.cmdheight = 1
 
