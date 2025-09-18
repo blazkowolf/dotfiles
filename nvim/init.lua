@@ -294,6 +294,7 @@ require("lazy").setup({
 		"tpope/vim-sleuth",
 		"tpope/vim-fugitive",
 		"tpope/vim-rhubarb",
+		{ "nvim-mini/mini.align", version = false, opts = {} },
 	},
 })
 

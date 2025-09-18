@@ -29,5 +29,5 @@ fi
 
 unset rc
 
-eval "$(starship init bash)"
 eval "$(mise activate bash)"
+eval "$(starship init bash)"
