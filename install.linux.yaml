@@ -39,6 +39,10 @@
     ~/.config/neovide/config.toml:
       path: neovide/config.linux.toml
       create: true
+    ~/.config/nushell/env.nu:
+      path: nu/env.nu
+    ~/.config/nushell/config.nu:
+      path: nu/config.nu
     ~/.config/nvim/:
       path: nvim/**/*
       create: true
