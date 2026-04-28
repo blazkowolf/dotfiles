@@ -270,13 +270,6 @@ require("lazy").setup({
 				)
 			end
 		},
-		{
-			"j-hui/fidget.nvim",
-			opts = {},
-			init = function()
-				require("telescope").load_extension("fidget")
-			end
-		},
 		"tpope/vim-sleuth",
 		"tpope/vim-fugitive",
 		"tpope/vim-rhubarb",
@@ -501,4 +494,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { buffer = ev.buf })
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 	end
+})
+
+vim.api.nvim_create_autocmd("LspProgress", {
+	callback = function(ev)
+		local value = ev.data.params.value
+		vim.api.nvim_echo(
+			{
+				{ value.message or "done" }
+			},
+			false,
+			{
+				id = "lsp." .. ev.data.client_id,
+				kind = "progress",
+				source = "vim.lsp",
+				title = value.title,
+				status = value.kind ~= "end" and "running" or "success",
+				percent = value.percentage,
+			}
+		)
+	end,
 })
