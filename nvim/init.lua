@@ -6,6 +6,14 @@
 --              █            ▀            ▀ ▀                ▀
 --             ▀
 
+require("vim._core.ui2").enable({
+	msg = {
+		targets = {
+			progress = "msg",
+		},
+	},
+})
+
 -- Bootstrap plugin manager
 -- Snippet from https://lazy.folke.io/installation
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
