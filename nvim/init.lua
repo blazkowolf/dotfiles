@@ -405,8 +405,8 @@ vim.opt.undofile = true
 -- I want short update times ~ faster user experience
 vim.opt.updatetime = 50
 
--- vim.opt.number = true
--- vim.opt.numberwidth = 4
+vim.opt.number = true
+vim.opt.numberwidth = 4
 -- vim.opt.relativenumber = true
 
 -- I don't want my cursor to be too close to the window boundaries
