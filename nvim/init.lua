@@ -114,6 +114,14 @@ require("lazy").setup({
 					"yaml",
 					"zig",
 				})
+				vim.api.nvim_create_autocmd("FileType", {
+					callback = function()
+						pcall(vim.treesitter.start)
+						-- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+						-- vim.wo[0][0].foldmethod = "expr"
+						vim.bo.indentexpr = [[v:lua.require("nvim-treesitter").indentexpr()]]
+					end
+				})
 			end
 		},
 		{
@@ -494,6 +502,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { buffer = ev.buf })
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 	end
+})
+
+vim.api.nvim_create_user_command("LspLog", function (_)
+	local state_path = vim.fn.stdpath("state")
+	local log_path = vim.fs.joinpath(state_path, "lsp.log")
+	vim.cmd.edit(log_path)
+end, {
+	desc = "Show LSP log",
 })
 
 vim.api.nvim_create_autocmd("LspProgress", {
