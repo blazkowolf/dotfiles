@@ -198,7 +198,7 @@ plugins {
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-default_shell "nu"
+// default_shell "nu"
 
 // Toggle between having pane frames around the panes
 // Options:
@@ -247,7 +247,7 @@ theme "gruvbox-dark"
 // Choose the mode that zellij uses when starting up.
 // Default: normal
 //
-// default_mode "locked"
+default_mode "locked"
 
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
