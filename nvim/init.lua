@@ -28,11 +28,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		lazypath,
 	})
 	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
+		vim.api.nvim_echo(
+			{
+				{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+				{ out, "WarningMsg" },
+				{ "\nPress any key to exit..." },
+			},
+			true,
+			{}
+		)
 		vim.fn.getchar()
 		os.exit(1)
 	end
@@ -48,7 +52,7 @@ require("lazy").setup({
 		path = "~/dev",
 	},
 	install = {
-		colorscheme = { "gruvbox", "default" },
+		colorscheme = { "rose-pine", "default" },
 	},
 	ui = {
 		border = "solid",
@@ -74,7 +78,15 @@ require("lazy").setup({
 					TelescopeResultsTitle = { bg = "#1d2021", fg = "#1d2021" },
 				},
 			},
-			init = function() vim.cmd.colorscheme("gruvbox") end
+			-- init = function() vim.cmd.colorscheme("gruvbox") end
+		},
+		{
+			"rose-pine/neovim",
+			name = "rose-pine",
+			lazy = false,
+			priority = 1000,
+			opts = {},
+			init = function() vim.cmd.colorscheme("rose-pine") end
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
