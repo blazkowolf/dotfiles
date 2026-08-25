@@ -31,3 +31,6 @@ unset rc
 
 eval "$(mise activate bash)"
 eval "$(starship init bash)"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

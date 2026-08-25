@@ -36,3 +36,4 @@ if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
 fi
 
 source "$HOME/.cargo/env"
+source "$HOME/.atuin/bin/env"
