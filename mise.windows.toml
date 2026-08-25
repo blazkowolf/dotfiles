@@ -1,0 +1,55 @@
+[dotfiles]
+# PowerShell
+"~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = "pwsh/profile.ps1"
+"~/Documents/PowerShell/Scripts/lf.ps1" = "pwsh/argcmp/lf.ps1"
+
+# Ideavim
+"~/.ideavimrc" = "idea/.ideavimrc"
+
+# Winget
+"~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json" = "winget/settings.json"
+
+# Alacritty
+"~/AppData/Roaming/alacritty/alacritty.yml" = "alacritty/alacritty.win.yml"
+
+# Clink
+"~/AppData/Local/clink/.inputrc" = "clink/.inputrc"
+"~/AppData/Local/clink/env.lua" = "clink/env.lua"
+"~/AppData/Local/clink/argcmp.lua" = "clink/argcmp.lua"
+"~/AppData/Local/clink/prompt.lua" = "clink/prompt.lua"
+
+# LF
+"~/AppData/Local/lf/lfrc" = "lf/lfrc"
+"~/AppData/Local/lf/pv.cmd" = "lf/pv.cmd"
+"~/AppData/Local/lf/extract.cmd" = "lf/extract.cmd"
+"~/AppData/Local/lf/colors" = "lf/colors"
+"~/AppData/Local/lf/icons" = "lf/icons"
+
+# Starship
+"~/AppData/Local/starship/starship.toml" = "starship/starship.toml"
+
+# Winfetch
+"~/.config/winfetch/config.ps1" = "winfetch/config.ps1"
+"~/.config/winfetch/image.png" = "winfetch/image.png"
+
+# Workspacer
+"~/.workspacer/workspacer.config.csx" = "workspacer/workspacer.config.csx"
+"~/.workspacer/project.json" = "workspacer/project.json"
+"~/.workspacer/omnisharp.json" = "workspacer/omnisharp.json"
+"~/.workspacer/ColorScheme.csx" = "workspacer/ColorScheme.csx"
+
+# Nushell
+"~/AppData/Roaming/nushell/env.nu" = "nu/env.nu"
+"~/AppData/Roaming/nushell/config.nu" = "nu/config.nu"
+
+# Helix
+"~/AppData/Roaming/helix/config.toml" = "helix/config.toml"
+
+# WezTerm
+"~/.config/wezterm/wezterm.lua" = "wezterm/wezterm.lua"
+
+# Neovide
+"~/AppData/Roaming/neovide/config.toml" = "neovide/config.win.toml"
+
+# Neovim
+"~/AppData/Local/nvim" = { source = "nvim", mode = "symlink-each" }

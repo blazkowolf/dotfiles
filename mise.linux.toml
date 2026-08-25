@@ -1,0 +1,13 @@
+[dotfiles]
+"~/.bashrc" = "bash/.bashrc"
+"~/.bashrc.d" = { source = "bash/.bashrc.d", mode = "symlink-each" }
+"~/.ideavimrc" = "idea/.ideavimrc"
+"~/.config/alacritty/alacritty.toml" = "alacritty/alacritty.linux.toml"
+"~/.config/helix" = { source = "helix", mode = "symlink-each" }
+"~/.config/kitty/kitty.conf" = "kitty/kitty.conf"
+"~/.config/starship.toml" = "starship/starship.toml"
+"~/.config/neovide/config.toml" = "neovide/config.linux.toml"
+"~/.config/nushell/env.nu" = "nu/env.nu"
+"~/.config/nushell/config.nu" = "nu/config.nu"
+"~/.config/nvim" = { source = "nvim", mode = "symlink-each" }
+"~/.config/zellij/config.kdl" = "zellij/config.kdl"
