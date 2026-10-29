@@ -31,8 +31,8 @@ if [ -z "$XDG_CACHE_HOME" ]; then
 	export XDG_CACHE_HOME="$HOME/.cache"
 fi
 
-if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
-	PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+if [ -d "/opt/nvim/bin" ]; then
+	PATH="$PATH:/opt/nvim/bin"
 fi
 
 source "$HOME/.cargo/env"
